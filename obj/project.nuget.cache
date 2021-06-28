@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "S8Ra8eLUn1jAExgxvMD+34qEwRT+dUGa+SPpd4OEoFyyJz1VLtvlxG+EzLy5QMjTw6/Y30PfzQujcuunoEEdyQ==",
+  "dgSpecHash": "HlV0nIx7J+zelXsA7oWvUVPo2ObU089h4utAr0/fzaKFoDZANMvSUCru6QfGmO9cTXLQ4ha1qZwCgwFdOcVkoQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\VNPT_Review.csproj",
   "expectedPackageFiles": [
@@ -54,6 +54,7 @@
     "C:\\Users\\gnoul\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\gnoul\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\gnoul\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\gnoul\\.nuget\\packages\\oracle.entityframeworkcore\\5.21.1\\oracle.entityframeworkcore.5.21.1.nupkg.sha512",
     "C:\\Users\\gnoul\\.nuget\\packages\\oracle.manageddataaccess.core\\3.21.1\\oracle.manageddataaccess.core.3.21.1.nupkg.sha512",
     "C:\\Users\\gnoul\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\gnoul\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",

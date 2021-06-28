@@ -1,0 +1,51 @@
+@model VNPT.Models.REVIEW
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>REVIEW</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RATING)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RATING)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CONTENT)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CONTENT)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CREATED_AT)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CREATED_AT)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UPDATED_AT)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UPDATED_AT)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OFFICE)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OFFICE.ID)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

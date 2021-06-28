@@ -11,10 +11,12 @@ namespace VNPT.Models
     {
         [Key]
         [Display(Name = "Mã đánh giá")]
+        [StringLength(64)]
         public string ID { get; set; }
 
-        [ForeignKey("ID")]
+        [ForeignKey("OFFICE")]
         [Display(Name = "Mã phòng ban")]
+        [StringLength(5)]
         public string OFFICE_ID { get; set; }
 
         [Required]
@@ -23,6 +25,7 @@ namespace VNPT.Models
 
         [Required]
         [Display(Name = "Nội dung đánh giá")]
+        [StringLength(200)]
         public string CONTENT { get; set; }
 
         [Display(Name = "Ngày tạo")]

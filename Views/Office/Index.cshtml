@@ -1,0 +1,79 @@
+@model IEnumerable<VNPT.Models.OFFICE>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NOTE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FATHERID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ACTIVE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CREATED_AT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UPDATED_AT)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() > 0)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NOTE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FATHERID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ACTIVE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CREATED_AT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UPDATED_AT)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <p>Hiện tại chưa có dữ liệu nào.</p>
+        }
+    </tbody>
+</table>
