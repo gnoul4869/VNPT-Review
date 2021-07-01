@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "Dapper/2.0.90": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Dapper.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Dapper.dll": {}
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -2132,6 +2141,24 @@
     }
   },
   "libraries": {
+    "Dapper/2.0.90": {
+      "sha512": "e4YjOLJptnpwHIbP8HxjaYf7So9lhUC43rvvGMEkH4Q4CiVlm4rOxYDo0HyuHlMQKj0U5Ob/nCMm52TUhTaZQg==",
+      "type": "package",
+      "path": "dapper/2.0.90",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Dapper.png",
+        "dapper.2.0.90.nupkg.sha512",
+        "dapper.nuspec",
+        "lib/net461/Dapper.dll",
+        "lib/net461/Dapper.xml",
+        "lib/net5.0/Dapper.dll",
+        "lib/net5.0/Dapper.xml",
+        "lib/netstandard2.0/Dapper.dll",
+        "lib/netstandard2.0/Dapper.xml"
+      ]
+    },
     "Humanizer.Core/2.8.26": {
       "sha512": "OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
       "type": "package",
@@ -7447,7 +7474,8 @@
       "Microsoft.EntityFrameWorkCore.Tools >= 5.0.7",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.2",
       "Oracle.EntityFrameWorkCore >= 5.21.1",
-      "Oracle.ManagedDataAccess.Core >= 3.21.1"
+      "Oracle.ManagedDataAccess.Core >= 3.21.1",
+      "dapper >= 2.0.90"
     ]
   },
   "packageFolders": {
@@ -7508,6 +7536,10 @@
           "Oracle.ManagedDataAccess.Core": {
             "target": "Package",
             "version": "[3.21.1, )"
+          },
+          "dapper": {
+            "target": "Package",
+            "version": "[2.0.90, )"
           }
         },
         "imports": [

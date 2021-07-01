@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "HlV0nIx7J+zelXsA7oWvUVPo2ObU089h4utAr0/fzaKFoDZANMvSUCru6QfGmO9cTXLQ4ha1qZwCgwFdOcVkoQ==",
+  "dgSpecHash": "/rk42xs2Jx8v55b1uHWNW0FUtkX2cRbriNYaBaTqEaXL/reIb9a3pndMLC16E1eEbbJNqYXcehJSfWz+4m8Sjg==",
   "success": true,
   "projectFilePath": "C:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\VNPT_Review.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\gnoul\\.nuget\\packages\\dapper\\2.0.90\\dapper.2.0.90.nupkg.sha512",
     "C:\\Users\\gnoul\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\gnoul\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\gnoul\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

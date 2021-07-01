@@ -26,7 +26,7 @@ namespace VNPT.Models
 
         [Display(Name = "Đơn vị cha")]
         [StringLength(5)]
-        public string FATHERID { get; set; }
+        public string FATHER_ID { get; set; }
 
         [Display(Name = "Hoạt động")]
         public bool ACTIVE { get; set; }
