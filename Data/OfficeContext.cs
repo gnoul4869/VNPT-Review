@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using VNPT.Models;
+using VNPT_Review.Models;
 
     public class OfficeContext : DbContext
     {
@@ -12,5 +12,5 @@ using VNPT.Models;
         {
         }
 
-        public DbSet<VNPT.Models.OFFICE> OFFICE { get; set; }
+        public DbSet<VNPT_Review.Models.OFFICE> OFFICE { get; set; }
     }

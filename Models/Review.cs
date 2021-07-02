@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
-namespace VNPT.Models
+namespace VNPT_Review.Models
 {
     public class REVIEW
     {

@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using VNPT_Review.Repository;
 
 namespace VNPT_Review
 {
@@ -26,12 +27,11 @@ namespace VNPT_Review
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<OfficeContext>(options =>
-                    options.UseOracle(Configuration.GetConnectionString("Oracle")));
-
-            services.AddDbContext<ReviewContext>(options =>
-                    options.UseOracle(Configuration.GetConnectionString("Oracle")));
-
+            services.AddDbContext<OfficeContext>(options => {
+                options.UseOracle(Configuration.GetConnectionString("Oracle"));
+            });
+            
+            services.AddScoped<IOfficeRepository, OfficeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

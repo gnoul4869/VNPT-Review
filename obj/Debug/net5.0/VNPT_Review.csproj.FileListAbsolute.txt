@@ -162,3 +162,4 @@ C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Review\Details.cshtml.g.cs
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Review\Edit.cshtml.g.cs
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Review\Index.cshtml.g.cs
+C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\bin\Debug\net5.0\Dapper.dll

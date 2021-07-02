@@ -5,23 +5,24 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using VNPT.Models;
+using VNPT_Review.Models;
+using VNPT_Review.Repository;
 
 namespace VNPT_Review.Controllers
 {
     public class OfficeController : Controller
     {
-        private readonly OfficeContext _context;
+        private readonly IOfficeRepository _repo;
 
-        public OfficeController(OfficeContext context)
+        public OfficeController(IOfficeRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         // GET: Office
         public async Task<IActionResult> Index()
         {
-            return View(await _context.OFFICE.ToListAsync());
+            return View(_repo.GetAllOffice());
         }
 
         // GET: Office/Details/5
@@ -32,14 +33,13 @@ namespace VNPT_Review.Controllers
                 return NotFound();
             }
 
-            var oFFICE = await _context.OFFICE
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (oFFICE == null)
+            var office = _repo.GetOffice(id );
+            if (office == null)
             {
                 return NotFound();
             }
 
-            return View(oFFICE);
+            return View(office);
         }
 
         // GET: Office/Create
@@ -53,15 +53,14 @@ namespace VNPT_Review.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,NAME,NOTE,FATHERID,ACTIVE,CREATED_AT,UPDATED_AT")] OFFICE oFFICE)
+        public async Task<IActionResult> Create([Bind("ID,NAME,NOTE,FATHER_ID,ACTIVE,CREATED_AT,UPDATED_AT")] OFFICE office)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(oFFICE);
-                await _context.SaveChangesAsync();
+                _repo.CreateOffice(office);
                 return RedirectToAction(nameof(Index));
             }
-            return View(oFFICE);
+            return View(office);
         }
 
         // GET: Office/Edit/5
@@ -72,12 +71,12 @@ namespace VNPT_Review.Controllers
                 return NotFound();
             }
 
-            var oFFICE = await _context.OFFICE.FindAsync(id);
-            if (oFFICE == null)
+            var office = _repo.GetOffice(id);
+            if (office == null)
             {
                 return NotFound();
             }
-            return View(oFFICE);
+            return View(office);
         }
 
         // POST: Office/Edit/5
@@ -85,34 +84,20 @@ namespace VNPT_Review.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("ID,NAME,NOTE,FATHERID,ACTIVE,CREATED_AT,UPDATED_AT")] OFFICE oFFICE)
+        public async Task<IActionResult> Edit(string id, [Bind("ID,NAME,NOTE,FATHER_ID,ACTIVE,CREATED_AT,UPDATED_AT")] OFFICE office)
         {
-            if (id != oFFICE.ID)
+            if (id != office.ID)
             {
                 return NotFound();
             }
 
+var errors = ModelState.Values.SelectMany(v => v.Errors);
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(oFFICE);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!OFFICEExists(oFFICE.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                _repo.UpdateOffice(office);
                 return RedirectToAction(nameof(Index));
             }
-            return View(oFFICE);
+            return View(office);
         }
 
         // GET: Office/Delete/5
@@ -123,14 +108,13 @@ namespace VNPT_Review.Controllers
                 return NotFound();
             }
 
-            var oFFICE = await _context.OFFICE
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (oFFICE == null)
+            var office = _repo.GetOffice(id);
+            if (office == null)
             {
                 return NotFound();
             }
 
-            return View(oFFICE);
+            return View(office);
         }
 
         // POST: Office/Delete/5
@@ -138,15 +122,9 @@ namespace VNPT_Review.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var oFFICE = await _context.OFFICE.FindAsync(id);
-            _context.OFFICE.Remove(oFFICE);
-            await _context.SaveChangesAsync();
+            _repo.DeleteOffice(id);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool OFFICEExists(string id)
-        {
-            return _context.OFFICE.Any(e => e.ID == id);
-        }
     }
 }
