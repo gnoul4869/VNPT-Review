@@ -32,7 +32,5 @@ namespace VNPT_Review.Models
 
         [Display(Name = "Ngày cập nhật")]
         public DateTime UPDATED_AT { get; set; }
-
-        public virtual REVIEW REVIEW { get; set; }
     }
 }
