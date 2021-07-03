@@ -26,12 +26,10 @@ namespace VNPT_Review
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
-            services.AddDbContext<OfficeContext>(options => {
-                options.UseOracle(Configuration.GetConnectionString("Oracle"));
-            });
             
             services.AddScoped<IOfficeRepository, OfficeRepository>();
+
+            services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
