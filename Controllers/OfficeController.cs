@@ -33,7 +33,7 @@ namespace VNPT_Review.Controllers
                 return NotFound();
             }
 
-            var office = _repo.GetOffice(id );
+            var office = _repo.GetOffice(id);
             if (office == null)
             {
                 return NotFound();
@@ -91,7 +91,6 @@ namespace VNPT_Review.Controllers
                 return NotFound();
             }
 
-var errors = ModelState.Values.SelectMany(v => v.Errors);
             if (ModelState.IsValid)
             {
                 _repo.UpdateOffice(office);

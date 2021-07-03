@@ -12,17 +12,21 @@ namespace VNPT_Review.Models
     {
         [Key]
         [Display(Name = "Mã phòng ban")]
+        [StringLength(5)]
         public string ID { get; set; }
 
         [Required]
         [Display(Name = "Tên phòng ban")]
+        [StringLength(50)]
         public string NAME { get; set; }
 
         [Display(Name = "Ghi chú")]
+        [StringLength(200)]
         public string? NOTE { get; set; }
 
         [Display(Name = "Đơn vị cha")]
-        public string FATHER_ID { get; set; }
+        [StringLength(5)]
+        public string FATHER_ID{ get; set; }
 
         [Display(Name = "Hoạt động")]
         public bool ACTIVE { get; set; }
