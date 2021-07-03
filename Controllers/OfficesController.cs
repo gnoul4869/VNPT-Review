@@ -10,11 +10,11 @@ using VNPT_Review.Repository;
 
 namespace VNPT_Review.Controllers
 {
-    public class OfficeController : Controller
+    public class OfficesController : Controller
     {
         private readonly IOfficeRepository _repo;
 
-        public OfficeController(IOfficeRepository repo)
+        public OfficesController(IOfficeRepository repo)
         {
             _repo = repo;
         }
@@ -22,10 +22,10 @@ namespace VNPT_Review.Controllers
         // GET: Office
         public async Task<IActionResult> Index()
         {
-            return View(_repo.GetAllOffice());
+            return View(await _repo.GetAllOffice());
         }
 
-        // GET: Office/Details/5
+        // GET: Offices/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -33,7 +33,7 @@ namespace VNPT_Review.Controllers
                 return NotFound();
             }
 
-            var office = _repo.GetOffice(id);
+            var office = await _repo.GetOffice(id);
             if (office == null)
             {
                 return NotFound();
@@ -42,13 +42,13 @@ namespace VNPT_Review.Controllers
             return View(office);
         }
 
-        // GET: Office/Create
+        // GET: Offices/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Office/Create
+        // POST: Offices/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -63,7 +63,7 @@ namespace VNPT_Review.Controllers
             return View(office);
         }
 
-        // GET: Office/Edit/5
+        // GET: Offices/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -79,7 +79,7 @@ namespace VNPT_Review.Controllers
             return View(office);
         }
 
-        // POST: Office/Edit/5
+        // POST: Offices/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -99,7 +99,7 @@ namespace VNPT_Review.Controllers
             return View(office);
         }
 
-        // GET: Office/Delete/5
+        // GET: Offices/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -116,7 +116,7 @@ namespace VNPT_Review.Controllers
             return View(office);
         }
 
-        // POST: Office/Delete/5
+        // POST: Offices/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)

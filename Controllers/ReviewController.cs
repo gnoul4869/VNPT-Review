@@ -6,23 +6,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using VNPT_Review.Models;
+using VNPT_Review.Repository;
 
 namespace VNPT_Review.Controllers
 {
     public class ReviewController : Controller
     {
-        private readonly ReviewContext _context;
+        private readonly IReviewRepository _repo;
 
-        public ReviewController(ReviewContext context)
+        public ReviewController(IReviewRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
 
         // GET: Review
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string id)
         {
-            var reviewContext = _context.REVIEW.Include(r => r.OFFICE);
-            return View(await reviewContext.ToListAsync());
+            return View(_repo.GetAllReviewInOffice(id));
         }
 
         // GET: Review/Details/5
@@ -33,21 +33,18 @@ namespace VNPT_Review.Controllers
                 return NotFound();
             }
 
-            var rEVIEW = await _context.REVIEW
-                .Include(r => r.OFFICE)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (rEVIEW == null)
+            var review = 1;
+            if (review == null)
             {
                 return NotFound();
             }
 
-            return View(rEVIEW);
+            return View(review);
         }
 
         // GET: Review/Create
         public IActionResult Create()
         {
-            ViewData["OFFICE_ID"] = new SelectList(_context.Set<OFFICE>(), "ID", "ID");
             return View();
         }
 
@@ -56,16 +53,13 @@ namespace VNPT_Review.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,OFFICE_ID,RATING,CONTENT,CREATED_AT,UPDATED_AT")] REVIEW rEVIEW)
+        public async Task<IActionResult> Create([Bind("ID,OFFICE_ID,RATING,CONTENT,CREATED_AT,UPDATED_AT")] REVIEW review)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(rEVIEW);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
             }
-            ViewData["OFFICE_ID"] = new SelectList(_context.Set<OFFICE>(), "ID", "ID", rEVIEW.OFFICE_ID);
-            return View(rEVIEW);
+            return View(review);
         }
 
         // GET: Review/Edit/5
@@ -76,13 +70,12 @@ namespace VNPT_Review.Controllers
                 return NotFound();
             }
 
-            var rEVIEW = await _context.REVIEW.FindAsync(id);
-            if (rEVIEW == null)
+            var review = 1;
+            if (review == null)
             {
                 return NotFound();
             }
-            ViewData["OFFICE_ID"] = new SelectList(_context.Set<OFFICE>(), "ID", "ID", rEVIEW.OFFICE_ID);
-            return View(rEVIEW);
+            return View(review);
         }
 
         // POST: Review/Edit/5
@@ -90,35 +83,18 @@ namespace VNPT_Review.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("ID,OFFICE_ID,RATING,CONTENT,CREATED_AT,UPDATED_AT")] REVIEW rEVIEW)
+        public async Task<IActionResult> Edit(string id, [Bind("ID,OFFICE_ID,RATING,CONTENT,CREATED_AT,UPDATED_AT")] REVIEW review)
         {
-            if (id != rEVIEW.ID)
+            if (id != review.ID)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(rEVIEW);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!REVIEWExists(rEVIEW.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["OFFICE_ID"] = new SelectList(_context.Set<OFFICE>(), "ID", "ID", rEVIEW.OFFICE_ID);
-            return View(rEVIEW);
+            return View(review);
         }
 
         // GET: Review/Delete/5
@@ -129,15 +105,13 @@ namespace VNPT_Review.Controllers
                 return NotFound();
             }
 
-            var rEVIEW = await _context.REVIEW
-                .Include(r => r.OFFICE)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (rEVIEW == null)
+            var review = 1;
+            if (review == null)
             {
                 return NotFound();
             }
 
-            return View(rEVIEW);
+            return View(review);
         }
 
         // POST: Review/Delete/5
@@ -145,15 +119,12 @@ namespace VNPT_Review.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var rEVIEW = await _context.REVIEW.FindAsync(id);
-            _context.REVIEW.Remove(rEVIEW);
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool REVIEWExists(string id)
         {
-            return _context.REVIEW.Any(e => e.ID == id);
+            return true;
         }
     }
 }

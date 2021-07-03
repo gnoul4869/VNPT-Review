@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using Oracle.ManagedDataAccess.Client;
@@ -17,14 +18,16 @@ namespace VNPT_Review.Repository
             this.db = new OracleConnection(configuration.GetConnectionString("Oracle"));
         }
 
-        public OFFICE GetOffice(string id)
+        public async Task<OFFICE> GetOffice(string id)
         {
-            return db.Query<OFFICE>("GET_OFFICE", new { P_ID = id }, commandType: CommandType.StoredProcedure).Single();
+            var result = await db.QueryAsync<OFFICE>("GET_OFFICE", new { P_ID = id }, commandType: CommandType.StoredProcedure);
+            return result.Single();
         }
 
-        public List<OFFICE> GetAllOffice()
+        public async Task<List<OFFICE>> GetAllOffice()
         { 
-            return db.Query<OFFICE>("GET_ALL_OFFICE", commandType: CommandType.StoredProcedure).ToList();
+            var result = await db.QueryAsync<OFFICE>("GET_ALL_OFFICE", commandType: CommandType.StoredProcedure);
+            return result.ToList();
         }
 
         public OFFICE CreateOffice(OFFICE office)
