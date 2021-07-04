@@ -57,7 +57,7 @@ namespace VNPT_Review.Controllers
         {
             if (ModelState.IsValid)
             {
-                _repo.CreateOffice(office);
+                await _repo.CreateOffice(office);
                 return RedirectToAction(nameof(Index));
             }
             return View(office);
@@ -71,7 +71,7 @@ namespace VNPT_Review.Controllers
                 return NotFound();
             }
 
-            var office = _repo.GetOffice(id);
+            var office = await _repo.GetOffice(id);
             if (office == null)
             {
                 return NotFound();
@@ -93,7 +93,7 @@ namespace VNPT_Review.Controllers
 
             if (ModelState.IsValid)
             {
-                _repo.UpdateOffice(office);
+                await _repo.UpdateOffice(office);
                 return RedirectToAction(nameof(Index));
             }
             return View(office);
@@ -107,7 +107,7 @@ namespace VNPT_Review.Controllers
                 return NotFound();
             }
 
-            var office = _repo.GetOffice(id);
+            var office = await _repo.GetOffice(id);
             if (office == null)
             {
                 return NotFound();
@@ -121,7 +121,7 @@ namespace VNPT_Review.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            _repo.DeleteOffice(id);
+            await _repo.DeleteOffice(id);
             return RedirectToAction(nameof(Index));
         }
 

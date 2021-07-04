@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
@@ -10,8 +11,8 @@ namespace VNPT_Review.Repository
     {
         Task<OFFICE> GetOffice(string id);
         Task<List<OFFICE>> GetAllOffice();
-        OFFICE CreateOffice(OFFICE office);
-        OFFICE UpdateOffice(OFFICE office);
-        void DeleteOffice(string id);
+        Task<OFFICE> CreateOffice(OFFICE office);
+        Task<OFFICE> UpdateOffice(OFFICE office);
+        Task DeleteOffice(string id);
     }
 }

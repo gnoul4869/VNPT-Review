@@ -30,12 +30,12 @@ namespace VNPT_Review.Repository
             return result.ToList();
         }
 
-        public OFFICE CreateOffice(OFFICE office)
+        public async Task<OFFICE> CreateOffice(OFFICE office)
         {
             var boolActive = 0;
             if(office.ACTIVE.ToString() == "True")
                 boolActive = 1;
-            db.Execute("CREATE_OFFICE",
+            await db.ExecuteAsync("CREATE_OFFICE",
             new 
             {
                 P_ID = office.ID,
@@ -47,12 +47,12 @@ namespace VNPT_Review.Repository
             return office;
         }
 
-        public OFFICE UpdateOffice(OFFICE office)
+        public async Task<OFFICE> UpdateOffice(OFFICE office)
         {
             var boolActive = 0;
             if(office.ACTIVE.ToString() == "True")
                 boolActive = 1;
-            db.Execute("UPDATE_OFFICE",
+            await db.ExecuteAsync("UPDATE_OFFICE",
             new 
             {
                 P_ID = office.ID,
@@ -64,9 +64,9 @@ namespace VNPT_Review.Repository
             return office;
         }
 
-        public void DeleteOffice(string id)
+        public async Task DeleteOffice(string id)
         {
-            db.Execute("DELETE_OFFICE", new { P_ID = id }, commandType: CommandType.StoredProcedure);
+           await db.ExecuteAsync("DELETE_OFFICE", new { P_ID = id }, commandType: CommandType.StoredProcedure);
         }
 
     }
