@@ -33,13 +33,13 @@ namespace VNPT_Review.Controllers
                 return NotFound();
             }
 
-            var office = await _repo.GetOffice(id);
-            if (office == null)
-            {
+            var model = new UOfficeReview();
+            model.office = await _repo.GetOffice(id);
+            if (model.office == null) 
                 return NotFound();
-            }
+            model.review = await _repo.GetAllReviewInOffice(id);
 
-            return View(office);
+            return View(model);
         }
 
         // GET: Offices/Create
@@ -124,6 +124,5 @@ namespace VNPT_Review.Controllers
             await _repo.DeleteOffice(id);
             return RedirectToAction(nameof(Index));
         }
-
     }
 }

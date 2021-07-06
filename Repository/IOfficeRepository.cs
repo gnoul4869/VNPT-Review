@@ -14,5 +14,8 @@ namespace VNPT_Review.Repository
         Task<OFFICE> CreateOffice(OFFICE office);
         Task<OFFICE> UpdateOffice(OFFICE office);
         Task DeleteOffice(string id);
+
+        // Reviews
+        Task<List<REVIEW>> GetAllReviewInOffice(string id);
     }
 }

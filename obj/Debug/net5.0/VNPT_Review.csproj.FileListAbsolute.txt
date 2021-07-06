@@ -151,11 +151,6 @@ C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\VNPT_Review.pdb
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\VNPT_Review.genruntimeconfig.cache
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\bin\Debug\net5.0\Oracle.EntityFrameworkCore.dll
-C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Review\Create.cshtml.g.cs
-C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Review\Delete.cshtml.g.cs
-C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Review\Details.cshtml.g.cs
-C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Review\Edit.cshtml.g.cs
-C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Review\Index.cshtml.g.cs
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\bin\Debug\net5.0\Dapper.dll
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Home\About.cshtml.g.cs
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Antiforgery.dll
@@ -448,3 +443,4 @@ C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Offices\Details.cshtml.g.cs
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Offices\Edit.cshtml.g.cs
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Offices\Index.cshtml.g.cs
+C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Offices\Reviews.cshtml.g.cs

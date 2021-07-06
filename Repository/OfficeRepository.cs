@@ -66,8 +66,13 @@ namespace VNPT_Review.Repository
 
         public async Task DeleteOffice(string id)
         {
-           await db.ExecuteAsync("DELETE_OFFICE", new { P_ID = id }, commandType: CommandType.StoredProcedure);
+            await db.ExecuteAsync("DELETE_OFFICE", new { P_ID = id }, commandType: CommandType.StoredProcedure);
         }
-
+        
+        public async Task<List<REVIEW>> GetAllReviewInOffice(string id)
+        {
+            var result = await db.QueryAsync<REVIEW>("GET_ALL_REVIEW_IN_OFFICE", new { P_ID = id }, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
     }
 }

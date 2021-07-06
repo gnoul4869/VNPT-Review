@@ -1,0 +1,36 @@
+@model UOfficeReview;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@Html.DisplayNameFor(model => model.office.NAME)</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+        @if (Model.review.Count() > 0)
+        {
+            @foreach (var item in Model.review)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RATING)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CONTENT)
+                    </td>
+                    <td>
+                        <a asp-action="EditReview" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-action="DeleteReview" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <p>Hiện tại chưa có đánh giá nào.</p>
+        }
