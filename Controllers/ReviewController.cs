@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
@@ -25,6 +26,21 @@ namespace VNPT_Review.Controllers
                 return RedirectToAction("Index", "OfficesController");
             }
             return RedirectToAction("Index", "OfficesController");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task Edit([Bind("ID,OFFICE_ID,RATING,CONTENT")] REVIEW review)
+        {
+            if(ModelState.IsValid)
+            {
+                await _repo.UpdateReview(review);      
+            }
+        }
+
+        public async Task Delete(string id)
+        {
+            await _repo.DeleteReview(id);
         }
     }
 }
