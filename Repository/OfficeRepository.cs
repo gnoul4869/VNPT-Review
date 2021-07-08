@@ -18,6 +18,12 @@ namespace VNPT_Review.Repository
             this.db = new OracleConnection(configuration.GetConnectionString("Oracle"));
         }
 
+        public async Task<List<OFFICE>> GetPaginatedOffice()
+        { 
+            var result = await db.QueryAsync<OFFICE>("GET_PAGINATEd_OFFICE", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
         public async Task<OFFICE> GetOffice(string id)
         {
             var result = await db.QueryAsync<OFFICE>("GET_OFFICE", new { P_ID = id }, commandType: CommandType.StoredProcedure);

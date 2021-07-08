@@ -22,7 +22,7 @@ namespace VNPT_Review.Controllers
         // GET: Office
         public async Task<IActionResult> Index()
         {
-            return View(await _repo.GetAllOffice());
+            return View(await _repo.GetPaginatedOffice());
         }
 
         // GET: Offices/Details/5
