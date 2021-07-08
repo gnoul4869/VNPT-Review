@@ -4,11 +4,7 @@ namespace VNPT_Review.Models
 {
     public class Pagination
     {
-        public int TotalRecords { get; set; }
-        public int RecordsPerPage { get; set; }
-        public int CurrentPage { get; set; }
-        public int TotalPages => (int)Math.Ceiling((decimal)TotalRecords / RecordsPerPage);
-        public string UrlParams { get; set; }
-        public int LinksPerPage { get; set; }
+        public int TotalCount { get; set; }
+        public int FilteredCount { get; set; }
     }
 }

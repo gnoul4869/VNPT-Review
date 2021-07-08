@@ -20,7 +20,7 @@ namespace VNPT_Review.Repository
 
         public async Task<List<OFFICE>> GetPaginatedOffice()
         { 
-            var result = await db.QueryAsync<OFFICE>("GET_PAGINATEd_OFFICE", commandType: CommandType.StoredProcedure);
+            var result = await db.QueryAsync<OFFICE>("GET_PAGINATED_OFFICE", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 

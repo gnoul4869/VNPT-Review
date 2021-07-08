@@ -22,7 +22,9 @@ namespace VNPT_Review.Controllers
         // GET: Office
         public async Task<IActionResult> Index()
         {
-            return View(await _repo.GetPaginatedOffice());
+            var model = new UOfficeReviewPagination();
+            model.offices = await _repo.GetPaginatedOffice();
+            return View(model);
         }
 
         // GET: Offices/Details/5
@@ -33,7 +35,7 @@ namespace VNPT_Review.Controllers
                 return NotFound();
             }
 
-            var model = new UOfficeReview();
+            var model = new UOfficeReviewPagination();
             model.office = await _repo.GetOffice(id);
             if (model.office == null) 
                 return NotFound();
