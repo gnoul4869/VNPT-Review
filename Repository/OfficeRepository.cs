@@ -18,9 +18,17 @@ namespace VNPT_Review.Repository
             this.db = new OracleConnection(configuration.GetConnectionString("Oracle"));
         }
 
-        public async Task<List<OFFICE>> GetPaginatedOffice()
+        public async Task<List<OFFICE>> GetPaginatedOffice(OfficeListRequest request)
         { 
-            var result = await db.QueryAsync<OFFICE>("GET_PAGINATED_OFFICE", commandType: CommandType.StoredProcedure);
+            var result = await db.QueryAsync<OFFICE>("GET_PAGINATED_OFFICE", 
+            new 
+            { 
+                P_SEARCH_VALUE = request.SearchValue,
+                P_PAGE_NO = request.PageNo,
+                P_PAGE_SIZE = request.PageSize,
+                P_SORT_COLUMN = request.SortColumn,
+                P_SORT_DIRECTION = request.SortDirection
+            }, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 

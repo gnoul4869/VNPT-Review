@@ -9,7 +9,7 @@ namespace VNPT_Review.Repository
 {
     public interface IOfficeRepository 
     {
-        Task<List<OFFICE>> GetPaginatedOffice();
+        Task<List<OFFICE>> GetPaginatedOffice(OfficeListRequest request);
         Task<OFFICE> GetOffice(string id);
         Task<List<OFFICE>> GetAllOffice();
         Task<OFFICE> CreateOffice(OFFICE office);
