@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace VNPT_Review.Models
 {
-    public class OFFICE
+    public partial class OFFICE
     {
         [Key]
         [Display(Name = "Mã phòng ban")]
