@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using VNPT_Review.Repository;
+using VNPT_Review.Services;
 
 namespace VNPT_Review
 {
@@ -28,6 +29,8 @@ namespace VNPT_Review
             services.AddControllersWithViews();
             
             services.AddScoped<IOfficeRepository, OfficeRepository>();
+
+            services.AddScoped<IOfficeService, OfficeService>();
 
             services.AddRazorPages().AddRazorRuntimeCompilation();
         }
