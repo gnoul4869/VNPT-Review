@@ -23,29 +23,7 @@ namespace VNPT_Review.Controllers
             _svc = svc;
         }
 
-        // GET: api/Offices
-        [HttpPost]
-        public async Task<DataTableResponse<OFFICE>> GetOffices()
-        {
-            var request = new DataTableRequest();
 
-            request.Draw = Convert.ToInt32(Request.Form["draw"].FirstOrDefault());
-            request.Start = Convert.ToInt32(Request.Form["start"].FirstOrDefault());
-            request.Length = Convert.ToInt32(Request.Form["length"].FirstOrDefault());
-            request.Search = new DataTableSearch()
-            {
-                Value = Request.Form["search[value"].FirstOrDefault()
-            };
-            request.Order = new DataTableOrder[] 
-            {
-                new DataTableOrder()
-                {
-                    Dir = Request.Form["order[0][dir]"].FirstOrDefault(),
-                    Column = Convert.ToInt32(Request.Form["order[0][column]"].FirstOrDefault())
-                }
-            };
-            return await _svc.GetPaginatedOffice(request);
-        }
 
         // GET: Offices
         public async Task<IActionResult> Index(OfficeListRequest request)

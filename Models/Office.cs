@@ -37,4 +37,10 @@ namespace VNPT_Review.Models
         [Display(Name = "Ngày cập nhật")]
         public DateTime UPDATED_AT { get; set; }
     }
+    
+    public partial class OFFICE
+    {
+        public int TotalCount { get; set; }
+        public int FilteredCount { get; set; }
+    }
 }

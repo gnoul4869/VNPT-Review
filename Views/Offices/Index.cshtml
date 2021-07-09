@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table id="offices" class="table table-striped table-bordered" style="width:100%">
     <thead>
         <tr>
             <th>
@@ -36,7 +36,7 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
+    @* <tbody>
         @if (Model.offices.Count() > 0)
         {
             @foreach (var item in Model.offices)
@@ -75,5 +75,32 @@
         {
             <p>Hiện tại chưa có dữ liệu nào.</p>
         }
-    </tbody>
+    </tbody> *@
 </table>
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#offices').DataTable({
+                processing: true,
+                serverSide: true,
+                searching: true,
+                ordering: true,
+                paging: true,
+                "ajax": {
+                    "url": "api/APIOffice",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                columns: [
+                    { "data": "ID", "name": "ID", "autoWidth": true },
+                    { "data": "NAME", "name": "NAME", "autoWidth": true },
+                    { "data": "FATHER_ID", "name": "FATHER", "autoWidth": true },
+                    { "data": "ACTIVE", "name": "ACTIVE", "autoWidth": true },
+                    { "data": "CREATED_AT", "name": "CREATED AT", "autoWidth": true},
+                    { "data": "UPDATED_AT", "name": "UPDATED AT", "autoWidth": true }
+                ]
+            });
+        });
+</script>
+}
