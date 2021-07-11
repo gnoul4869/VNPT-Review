@@ -1,4 +1,4 @@
-@model VNPT_Review.Models.OFFICE
+@model VNPT_Review.Models.Office
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,42 +6,42 @@
 
 <h1>Edit</h1>
 
-<h4>OFFICE</h4>
+<h4>Office</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ID" />
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="NAME" class="control-label"></label>
-                <input asp-for="NAME" class="form-control" />
-                <span asp-validation-for="NAME" class="text-danger"></span>
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NOTE" class="control-label"></label>
-                <input asp-for="NOTE" class="form-control" />
-                <span asp-validation-for="NOTE" class="text-danger"></span>
+                <label asp-for="Note" class="control-label"></label>
+                <input asp-for="Note" class="form-control" />
+                <span asp-validation-for="Note" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FATHER_ID" class="control-label"></label>
-                <input asp-for="FATHER_ID" class="form-control" />
-                <span asp-validation-for="FATHER_ID" class="text-danger"></span>
+                <label asp-for="FatherId" class="control-label"></label>
+                <input asp-for="FatherId" class="form-control" />
+                <span asp-validation-for="FatherId" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="ACTIVE" /> @Html.DisplayNameFor(model => model.ACTIVE)
+                    <input class="form-check-input" asp-for="Active" /> @Html.DisplayNameFor(model => model.Active)
                 </label>
             </div>
             @* <div class="form-group">
-                <label asp-for="CREATED_AT" class="control-label"></label>
-                <input asp-for="CREATED_AT" class="form-control" />
-                <span asp-validation-for="CREATED_AT" class="text-danger"></span>
+                <label asp-for="CreatedAt" class="control-label"></label>
+                <input asp-for="CreatedAt" class="form-control" />
+                <span asp-validation-for="CreatedAt" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UPDATED_AT" class="control-label"></label>
-                <input asp-for="UPDATED_AT" class="form-control" />
-                <span asp-validation-for="UPDATED_AT" class="text-danger"></span>
+                <label asp-for="UpdatedAt" class="control-label"></label>
+                <input asp-for="UpdatedAt" class="form-control" />
+                <span asp-validation-for="UpdatedAt" class="text-danger"></span>
             </div> *@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

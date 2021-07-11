@@ -1,5 +1,5 @@
--- OFFICE's DATA ----------------------------------------------------------
-INSERT INTO OFFICE VALUES(
+-- Office's Data ----------------------------------------------------------
+INSERT INTO Office VALUES(
     '01',
     'Viễn Thông Bạc Liêu',
     null,
@@ -8,7 +8,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '0100',
     'Phòng Nhân sự - Tổng hợp',
     null,
@@ -17,7 +17,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '0101',
     'Phòng Kế toán - Kế hoạch',
     null,
@@ -26,7 +26,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '0116',
     'Trung tâm Công nghệ thông tin',
     null,
@@ -35,7 +35,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '0106',
     'Phòng Kỹ thuật - Đầu tư',
     null,
@@ -44,7 +44,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '0115',
     'Trung Tâm Điều hành Thông tin',
     null,
@@ -53,7 +53,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '01151',
     'Tổ Khai thác',
     null,
@@ -62,7 +62,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '01152',
     'Tổ Kỹ thuật',
     null,
@@ -71,7 +71,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '02',
     'Trung Tâm Viễn Thông Bạc Liêu 1',
     null,
@@ -80,7 +80,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '0112',
     'Tổ Kỹ thuật Bạc Liêu',
     '(Bạc Liêu, Cầu Kè, Đô Thị Mới)',
@@ -89,7 +89,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '0222',
     'Tổ Kỹ thuật Trà Kha',
     '(Cầu Sập, Trà Kha)',
@@ -98,7 +98,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '1013',
     'Tổ Kỹ thuật Hiệp Thành',
     '(Hiệp Thành, Xiêm Cáng, Vĩnh Trạch)',
@@ -107,7 +107,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '1014',
     'Tổ Kỹ thuật Cái Dày',
     '(Cái Dầy, Châu Thới, Châu Hưng A)',
@@ -116,7 +116,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '1015',
     'Tổ Kỹ thuật Hưng Thành',
     '(Hưng Hội, Gia Hội)',
@@ -125,7 +125,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '10101',
     'Tổ Kỹ thuật Đô Thị Mới',
     '(Đô Thị Mới)',
@@ -134,7 +134,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '03',
     'Trung Tâm Viễn Thông Bạc Liêu 2',
     null,
@@ -143,7 +143,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '0310',
     'Tổ Tổng hợp',
     null,
@@ -152,7 +152,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '039',
     'Tổ Kỹ thuật Hoà Bình',
     '(Hoà Bình, Minh Diệu)',
@@ -161,7 +161,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '10112',
     'Tổ Kỹ thuật Cầu Số 2',
     '(Bàu Sàng, Vĩnh Mỹ A, Cầu Số 2)',
@@ -170,7 +170,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '10114',
     'Tổ Kỹ thuật Cái Cùng',
     '(Cái Cùng, Vĩnh Mới, Vĩnh Hậu)',
@@ -179,7 +179,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '04',
     'Trung Tâm Viễn Thông Bạc Liêu 3',
     null,
@@ -188,7 +188,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '0420',
     'Tổ Tổng hợp',
     null,
@@ -197,7 +197,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '10120',
     'Tổ Kỹ thuật Giá Rai',
     '(Giá Rai, Phong Tân, Phong Thạnh)',
@@ -206,7 +206,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '10121',
     'Tổ Kỹ thuật Hộ Phòng',
     '(Hộ Phòng, Cây Gừa)',
@@ -215,7 +215,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '10124',
     'Tổ Kỹ thuật Láng Trâm',
     '(Láng Trâm, Khúc Tréo, Ngã Năm, Định Thành, An Phúc)',
@@ -224,7 +224,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '10304',
     'Tổ Kỹ thuật Láng Tròn',
     '(Láng Tròn, Xóm Lung, Phong Thạnh Đông)',
@@ -233,7 +233,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '10305',
     'Tổ Kỹ thuật Kinh Tư',
     '(Kinh Tư, Cây Giang, Long Điền Đông, Mỹ Điền (Long Điền Đông A))',
@@ -242,7 +242,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '10306',
     'Tổ Kỹ thuật Gành Hào',
     '(Gành Hào)',
@@ -251,7 +251,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '05',
     'Trung Tâm Viễn Thông Bạc Liêu 4',
     null,
@@ -260,7 +260,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '0518',
     'Tổ Tổng hợp',
     null,
@@ -269,7 +269,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '10137',
     'Tổ Kỹ thuật Phước Long',
     '(Phước Long, Ninh Quới, Rọc Lá, Trưởng Toà)',
@@ -278,7 +278,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '10143',
     'Tổ Kỹ thuật Ngan Dừa',
     '(Ngan Dừa, Lộc Ninh, Ba Đình, Vĩnh Lộc (Cầu Đỏ), Ninh Hoà, Ninh Điền)',
@@ -287,7 +287,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
-INSERT INTO OFFICE VALUES(
+INSERT INTO Office VALUES(
     '10148',
     'Tổ Kỹ thuật Phó Sinh',
     '(Phó Sinh, Chủ Chí, Ninh Thạnh Lợi, Nhà Lầu 1, Xã Thoàn, Phong Thạnh Tây A)',
@@ -296,7 +296,7 @@ INSERT INTO OFFICE VALUES(
     DEFAULT,
     DEFAULT
 );
--- OFFICE's DATA ----------------------------------------------------------
+-- Review's Data ----------------------------------------------------------
 INSERT INTO REVIEW VALUES(
     REVIEW_SEQ.NEXTVAL,
     '01',

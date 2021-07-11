@@ -18,74 +18,74 @@ namespace VNPT_Review.Repository
             this.db = new OracleConnection(configuration.GetConnectionString("Oracle"));
         }
 
-        public async Task<List<OFFICE>> GetPaginatedOffice(OfficeListRequest request)
+        public async Task<List<Office>> GetPaginatedOffice(OfficeListRequest request)
         { 
-            var result = await db.QueryAsync<OFFICE>("GET_PAGINATED_OFFICE", 
+            var result = await db.QueryAsync<Office>("GET_PAGINATED_OFFICE", 
             new 
             { 
-                P_SEARCH_VALUE = request.SearchValue,
-                P_PAGE_NO = request.PageNo,
-                P_PAGE_SIZE = request.PageSize,
-                P_SORT_COLUMN = request.SortColumn,
-                P_SORT_DIRECTION = request.SortDirection
+                P_SearchValue = request.SearchValue,
+                P_PageNo = request.PageNo,
+                P_PageSize = request.PageSize,
+                P_SortColumn = request.SortColumn,
+                P_SortDirection = request.SortDirection
             }, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
-        public async Task<OFFICE> GetOffice(string id)
+        public async Task<Office> GetOffice(string id)
         {
-            var result = await db.QueryAsync<OFFICE>("GET_OFFICE", new { P_ID = id }, commandType: CommandType.StoredProcedure);
+            var result = await db.QueryAsync<Office>("GET_OFFICE", new { P_Id = id }, commandType: CommandType.StoredProcedure);
             return result.Single();
         }
 
-        public async Task<List<OFFICE>> GetAllOffice()
+        public async Task<List<Office>> GetAllOffice()
         { 
-            var result = await db.QueryAsync<OFFICE>("GET_ALL_OFFICE", commandType: CommandType.StoredProcedure);
+            var result = await db.QueryAsync<Office>("GET_ALL_OFFICE", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
-        public async Task<OFFICE> CreateOffice(OFFICE office)
+        public async Task<Office> CreateOffice(Office office)
         {
             var boolActive = 0;
-            if(office.ACTIVE.ToString() == "True")
+            if(office.Active.ToString() == "True")
                 boolActive = 1;
             await db.ExecuteAsync("CREATE_OFFICE",
             new 
             {
-                P_ID = office.ID,
-                P_NAME = office.NAME,
-                P_NOTE = office.NOTE,
-                P_FATHER_ID = office.FATHER_ID,
-                P_ACTIVE = boolActive
+                P_Id = office.Id,
+                P_Name = office.Name,
+                P_Note = office.Note,
+                P_FatherId = office.FatherId,
+                P_Active = boolActive
             }, commandType: CommandType.StoredProcedure);
             return office;
         }
 
-        public async Task<OFFICE> UpdateOffice(OFFICE office)
+        public async Task<Office> UpdateOffice(Office office)
         {
             var boolActive = 0;
-            if(office.ACTIVE.ToString() == "True")
+            if(office.Active.ToString() == "True")
                 boolActive = 1;
             await db.ExecuteAsync("UPDATE_OFFICE",
             new 
             {
-                P_ID = office.ID,
-                P_NAME = office.NAME,
-                P_NOTE = office.NOTE,
-                P_FATHER_ID = office.FATHER_ID,
-                P_ACTIVE = boolActive
+                P_Id = office.Id,
+                P_Name = office.Name,
+                P_Note = office.Note,
+                P_FatherId = office.FatherId,
+                P_Active = boolActive
             }, commandType: CommandType.StoredProcedure);
             return office;
         }
 
         public async Task DeleteOffice(string id)
         {
-            await db.ExecuteAsync("DELETE_OFFICE", new { P_ID = id }, commandType: CommandType.StoredProcedure);
+            await db.ExecuteAsync("DELETE_OFFICE", new { P_Id = id }, commandType: CommandType.StoredProcedure);
         }
         
-        public async Task<List<REVIEW>> GetAllReviewInOffice(string id)
+        public async Task<List<Review>> GetAllReviewInOffice(string id)
         {
-            var result = await db.QueryAsync<REVIEW>("GET_ALL_REVIEW_IN_OFFICE", new { P_ID = id }, commandType: CommandType.StoredProcedure);
+            var result = await db.QueryAsync<Review>("GET_ALL_REVIEW_IN_OFFICE", new { P_Id = id }, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
     }

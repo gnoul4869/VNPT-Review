@@ -13,7 +13,7 @@ namespace VNPT_Review.Services
             _repo = repo;
         }
         
-        public async Task<DataTableResponse<OFFICE>> GetPaginatedOffice(DataTableRequest request)
+        public async Task<DataTableResponse<Office>> GetPaginatedOffice(DataTableRequest request)
         {
             var req = new OfficeListRequest()
             {
@@ -26,7 +26,7 @@ namespace VNPT_Review.Services
 
             var offices = await _repo.GetPaginatedOffice(req);
 
-            return new DataTableResponse<OFFICE>()
+            return new DataTableResponse<Office>()
             {
                 Draw = request.Draw,
                 RecordsTotal = offices[0].TotalCount,

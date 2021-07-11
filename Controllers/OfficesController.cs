@@ -23,8 +23,6 @@ namespace VNPT_Review.Controllers
             _svc = svc;
         }
 
-
-
         // GET: Offices
         public async Task<IActionResult> Index(OfficeListRequest request)
         {
@@ -45,7 +43,7 @@ namespace VNPT_Review.Controllers
             model.office = await _repo.GetOffice(id);
             if (model.office == null) 
                 return NotFound();
-            model.review = await _repo.GetAllReviewInOffice(id);
+            model.reviews = await _repo.GetAllReviewInOffice(id);
 
             return View(model);
         }
@@ -61,7 +59,7 @@ namespace VNPT_Review.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,NAME,NOTE,FATHER_ID,ACTIVE,CREATED_AT,UPDATED_AT")] OFFICE office)
+        public async Task<IActionResult> Create([Bind("Id,Name,Note,FatherId,Active,CreatedAt,UpdatedAt")] Office office)
         {
             if (ModelState.IsValid)
             {
@@ -92,9 +90,9 @@ namespace VNPT_Review.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("ID,NAME,NOTE,FATHER_ID,ACTIVE,CREATED_AT,UPDATED_AT")] OFFICE office)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,Note,FatherId,Active,CreatedAt,UpdatedAt")] Office office)
         {
-            if (id != office.ID)
+            if (id != office.Id)
             {
                 return NotFound();
             }

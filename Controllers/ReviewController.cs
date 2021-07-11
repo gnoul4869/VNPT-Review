@@ -18,7 +18,7 @@ namespace VNPT_Review.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,OFFICE_ID,RATING,CONTENT")] REVIEW review)
+        public async Task<IActionResult> Create([Bind("Id,OfficeId,Rating,Content")] Review review)
         {
             if(ModelState.IsValid) 
             {
@@ -30,7 +30,7 @@ namespace VNPT_Review.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task Edit([Bind("ID,OFFICE_ID,RATING,CONTENT")] REVIEW review)
+        public async Task Edit([Bind("Id,OfficeId,Rating,Content")] Review review)
         {
             if(ModelState.IsValid)
             {

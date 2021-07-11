@@ -8,37 +8,37 @@ using System.ComponentModel.DataAnnotations;
 
 namespace VNPT_Review.Models
 {
-    public partial class OFFICE
+    public partial class Office
     {
         [Key]
         [Display(Name = "Mã phòng ban")]
         [StringLength(5)]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [Required]
         [Display(Name = "Tên phòng ban")]
         [StringLength(50)]
-        public string NAME { get; set; }
+        public string Name { get; set; }
 
         [Display(Name = "Ghi chú")]
         [StringLength(200)]
-        public string? NOTE { get; set; }
+        public string? Note { get; set; }
 
         [Display(Name = "Đơn vị cha")]
         [StringLength(5)]
-        public string FATHER_ID{ get; set; }
+        public string FatherId{ get; set; }
 
         [Display(Name = "Hoạt động")]
-        public bool ACTIVE { get; set; }
+        public bool Active { get; set; }
 
         [Display(Name = "Ngày tạo")]
-        public DateTime CREATED_AT { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [Display(Name = "Ngày cập nhật")]
-        public DateTime UPDATED_AT { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
     
-    public partial class OFFICE
+    public partial class Office
     {
         public int TotalCount { get; set; }
         public int FilteredCount { get; set; }

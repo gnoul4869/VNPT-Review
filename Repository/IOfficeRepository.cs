@@ -9,14 +9,14 @@ namespace VNPT_Review.Repository
 {
     public interface IOfficeRepository 
     {
-        Task<List<OFFICE>> GetPaginatedOffice(OfficeListRequest request);
-        Task<OFFICE> GetOffice(string id);
-        Task<List<OFFICE>> GetAllOffice();
-        Task<OFFICE> CreateOffice(OFFICE office);
-        Task<OFFICE> UpdateOffice(OFFICE office);
+        Task<List<Office>> GetPaginatedOffice(OfficeListRequest request);
+        Task<Office> GetOffice(string id);
+        Task<List<Office>> GetAllOffice();
+        Task<Office> CreateOffice(Office office);
+        Task<Office> UpdateOffice(Office office);
         Task DeleteOffice(string id);
 
         // Reviews
-        Task<List<REVIEW>> GetAllReviewInOffice(string id);
+        Task<List<Review>> GetAllReviewInOffice(string id);
     }
 }

@@ -17,9 +17,9 @@ namespace VNPT_Review.Controllers
             _svc = svc;
         }
 
-        // GET: api/Offices
+        // GET: APIOffices
         [HttpPost]
-        public async Task<DataTableResponse<OFFICE>> GetOffices()
+        public async Task<DataTableResponse<Office>> GetOffices()
         {
             var request = new DataTableRequest();
 
@@ -28,7 +28,7 @@ namespace VNPT_Review.Controllers
             request.Length = Convert.ToInt32(Request.Form["length"].FirstOrDefault());
             request.Search = new DataTableSearch()
             {
-                Value = Request.Form["search[value"].FirstOrDefault()
+                Value = Request.Form["search[value]"].FirstOrDefault()
             };
             request.Order = new DataTableOrder[] 
             {

@@ -4,9 +4,9 @@ namespace VNPT_Review.Models
 {
     public class UOfficeReview
     {
-        public OFFICE office { get; set; }
-        public IEnumerable<OFFICE> offices { get; set; }
-        public IEnumerable<REVIEW> review { get; set; }
+        public Office office { get; set; }
+        public IEnumerable<Office> offices { get; set; }
+        public IEnumerable<Review> reviews { get; set; }
 
     }
 }

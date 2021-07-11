@@ -5,6 +5,6 @@ namespace VNPT_Review.Services
 {
     public interface IOfficeService
     {
-        public Task<DataTableResponse<OFFICE>> GetPaginatedOffice(DataTableRequest request);
+        public Task<DataTableResponse<Office>> GetPaginatedOffice(DataTableRequest request);
     }
 }

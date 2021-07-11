@@ -5,9 +5,9 @@ namespace VNPT_Review.Repository
 {
     public interface IReviewRepository
     {
-        Task<REVIEW> GetReviewByOffice(string rid, string oid);
-        Task<REVIEW> CreateReview(REVIEW review);
-        Task<REVIEW> UpdateReview(REVIEW review);
+        Task<Review> GetReviewByOffice(string rid, string oid);
+        Task<Review> CreateReview(Review review);
+        Task<Review> UpdateReview(Review review);
         Task DeleteReview(string id);
     }
 }

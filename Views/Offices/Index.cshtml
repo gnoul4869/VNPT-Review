@@ -13,27 +13,26 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.office.ID)
+                @Html.DisplayNameFor(model => model.office.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.office.NAME)
+                @Html.DisplayNameFor(model => model.office.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.office.NOTE)
+                @Html.DisplayNameFor(model => model.office.Note)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.office.FATHER_ID)
+                @Html.DisplayNameFor(model => model.office.FatherId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.office.ACTIVE)
+                @Html.DisplayNameFor(model => model.office.Active)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.office.CREATED_AT)
+                @Html.DisplayNameFor(model => model.office.CreatedAt)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.office.UPDATED_AT)
+                @Html.DisplayNameFor(model => model.office.UpdatedAt)
             </th>
-            <th></th>
         </tr>
     </thead>
     @* <tbody>
@@ -43,25 +42,25 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ID)
+                        @Html.DisplayFor(modelItem => item.Id)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.NAME)
+                        @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.NOTE)
+                        @Html.DisplayFor(modelItem => item.Note)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.FATHER_ID)
+                        @Html.DisplayFor(modelItem => item.FatherId)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ACTIVE)
+                        @Html.DisplayFor(modelItem => item.Active)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.CREATED_AT)
+                        @Html.DisplayFor(modelItem => item.CreatedAt)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.UPDATED_AT)
+                        @Html.DisplayFor(modelItem => item.UpdatedAt)
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
@@ -75,7 +74,7 @@
         {
             <p>Hiện tại chưa có dữ liệu nào.</p>
         }
-    </tbody> *@
+    </tbody>  *@
 </table>
 @section Scripts
 {
@@ -93,12 +92,13 @@
                     "datatype": "json"
                 },
                 columns: [
-                    { "data": "ID", "name": "ID", "autoWidth": true },
-                    { "data": "NAME", "name": "NAME", "autoWidth": true },
-                    { "data": "FATHER_ID", "name": "FATHER", "autoWidth": true },
-                    { "data": "ACTIVE", "name": "ACTIVE", "autoWidth": true },
-                    { "data": "CREATED_AT", "name": "CREATED AT", "autoWidth": true},
-                    { "data": "UPDATED_AT", "name": "UPDATED AT", "autoWidth": true }
+                    { "data": "id", "name": "Mã phòng ban", "autoWidth": true },
+                    { "data": "name", "name": "Tên phòng ban", "autoWidth": true },
+                    { "data": "note", "name": "Ghi chú", "autoWidth": true },
+                    { "data": "fatherId", "name": "Đơn vị cha", "autoWidth": true },
+                    { "data": "active", "name": "Hoạt động", "autoWidth": true },
+                    { "data": "createdAt", "name": "Ngày tạo", "autoWidth": true},
+                    { "data": "updatedAt", "name": "Ngày cập nhật", "autoWidth": true }
                 ]
             });
         });

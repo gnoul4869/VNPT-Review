@@ -16,42 +16,42 @@ namespace VNPT_Review.Repository
         {
             this.db = new OracleConnection(configuration.GetConnectionString("Oracle"));
         }
-        public async Task<REVIEW> GetReviewByOffice(string rid, string oid)
+        public async Task<Review> GetReviewByOffice(string reviewid, string officeid)
         {
-            var result = await db.QueryAsync<REVIEW>("GET_REVIEW_BY_OFFICE", 
+            var result = await db.QueryAsync<Review>("GET_REVIEW_BY_OFFICE", 
             new 
             { 
-                P_RID = rid, 
-                P_OID = oid 
+                P_ReviewId = reviewid, 
+                P_OfficeId = officeid 
             }, commandType: CommandType.StoredProcedure);
             return result.Single();
         }
 
-        public async Task<REVIEW> CreateReview(REVIEW review)
+        public async Task<Review> CreateReview(Review review)
         {
-            await db.QueryAsync<REVIEW>("CREATE_REVIEW", 
+            await db.QueryAsync<Review>("CREATE_REVIEW", 
             new {
-                P_OFFICE_ID = review.OFFICE_ID,
-                P_RATING = review.RATING,
-                P_CONTENT = review.CONTENT
+                P_OfficeId = review.OfficeId,
+                P_RATING = review.Rating,
+                P_Content = review.Content
             }, commandType: CommandType.StoredProcedure);
             return review;
         }
 
-        public async Task<REVIEW> UpdateReview(REVIEW review)
+        public async Task<Review> UpdateReview(Review review)
         {
-            await db.QueryAsync<REVIEW>("UPDATE_REVIEW", 
+            await db.QueryAsync<Review>("UPDATE_REVIEW", 
             new {
-                P_ID = review.ID,
-                P_RATING = review.RATING,
-                P_CONTENT = review.CONTENT
+                P_Id = review.Id,
+                P_Rating = review.Rating,
+                P_Content = review.Content
             }, commandType: CommandType.StoredProcedure);
             return review;
         }
 
         public async Task DeleteReview(string id)
         {
-            await db.ExecuteAsync("DELETE_REVIEW", new { P_ID = id }, commandType: CommandType.StoredProcedure);
+            await db.ExecuteAsync("DELETE_REVIEW", new { P_Id = id }, commandType: CommandType.StoredProcedure);
         }
     }
 }
