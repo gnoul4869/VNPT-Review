@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using VNPT_Review.Models;
 using VNPT_Review.Repository;
@@ -17,7 +19,7 @@ namespace VNPT_Review.Services
         {
             var req = new OfficeListRequest()
             {
-                PageNo = request.Start,
+                ValueNo = request.Start,
                 PageSize = request.Length,
                 SortColumn = request.Order[0].Column,
                 SortDirection = request.Order[0].Dir,
@@ -25,12 +27,24 @@ namespace VNPT_Review.Services
             };
 
             var offices = await _repo.GetPaginatedOffice(req);
+            int TotalCount, FilteredCount;
+
+            if(offices.ToArray().Length == 0)
+            {
+                TotalCount = 0;
+                FilteredCount = 0;
+            }
+            else
+            {
+                TotalCount = offices[0].TotalCount;
+                FilteredCount = offices[0].FilteredCount;
+            }
 
             return new DataTableResponse<Office>()
             {
                 Draw = request.Draw,
-                RecordsTotal = offices[0].TotalCount,
-                RecordsFiltered = offices[0].FilteredCount,
+                RecordsTotal = TotalCount,
+                RecordsFiltered = FilteredCount,
                 Data = offices.ToArray(),
                 Error = ""
             };

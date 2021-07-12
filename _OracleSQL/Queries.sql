@@ -32,7 +32,7 @@ CREATE SEQUENCE REVIEW_SEQ
 CREATE OR REPLACE PROCEDURE GET_PAGINATED_OFFICE
 (
     P_SearchValue IN VARCHAR2 DEFAULT NULL,
-    P_PageNo IN INT DEFAULT 0,
+    P_ValueNo IN INT DEFAULT 0,
     P_PageSize IN INT DEFAULT 10,
     P_SortColumn IN INT DEFAULT 0,
     P_SortDirection IN VARCHAR2 DEFAULT 'ASC'
@@ -46,8 +46,8 @@ AS
 BEGIN
     SELECT COUNT(*) INTO V_TotalCount FROM Office;
 
-    V_FirstRecord := P_PageNo * P_PageSize + 1;
-    V_LastRecord := (P_PageNo + 1) * P_PageSize;
+    V_FirstRecord := P_ValueNo + 1;
+    V_LastRecord := P_ValueNo + P_PageSize;
     V_SearchValue := LTRIM(RTRIM(P_SearchValue));
 
     OPEN C1 FOR
@@ -69,7 +69,7 @@ BEGIN
                         THEN Office.Id
                     END DESC
             )
-            AS "RowNum",
+            AS RowNumber,
             COUNT(*) OVER() AS FilteredCount,
             V_TotalCount AS TotalCount,
             Office.Id,
@@ -82,7 +82,7 @@ BEGIN
         WHERE NVL(V_SearchValue, '') = ''
         OR Office.Name LIKE '%' || V_SearchValue || '%'
         )
-        SELECT * FROM CTE_RESULTS WHERE RowNum BETWEEN V_FirstRecord AND V_LastRecord;
+        SELECT * FROM CTE_RESULTS WHERE RowNumber BETWEEN V_FirstRecord AND V_LastRecord;
     DBMS_SQL.RETURN_RESULT(C1);
 END;
 -- 

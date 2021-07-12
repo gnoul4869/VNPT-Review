@@ -24,7 +24,7 @@ namespace VNPT_Review.Repository
             new 
             { 
                 P_SearchValue = request.SearchValue,
-                P_PageNo = request.PageNo,
+                P_ValueNo = request.ValueNo,
                 P_PageSize = request.PageSize,
                 P_SortColumn = request.SortColumn,
                 P_SortDirection = request.SortDirection

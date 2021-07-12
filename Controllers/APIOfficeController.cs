@@ -26,6 +26,7 @@ namespace VNPT_Review.Controllers
             request.Draw = Convert.ToInt32(Request.Form["draw"].FirstOrDefault());
             request.Start = Convert.ToInt32(Request.Form["start"].FirstOrDefault());
             request.Length = Convert.ToInt32(Request.Form["length"].FirstOrDefault());
+            
             request.Search = new DataTableSearch()
             {
                 Value = Request.Form["search[value]"].FirstOrDefault()
