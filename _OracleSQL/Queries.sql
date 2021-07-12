@@ -56,17 +56,47 @@ BEGIN
             SELECT ROW_NUMBER()
             OVER(
                 ORDER BY
-                    CASE WHEN (P_SortColumn = 0 AND P_SortDirection = 'ASC')
+                    CASE WHEN (P_SortColumn = 0 AND P_SortDirection = 'asc')
                         THEN Office.Id
                     END ASC,
-                    CASE WHEN (P_SortColumn = 0 AND P_SortDirection = 'DESC')
+                    CASE WHEN (P_SortColumn = 0 AND P_SortDirection = 'desc')
                         THEN Office.Id
                     END DESC,
-                    CASE WHEN (P_SortColumn = 1 AND P_SortDirection = 'ASC')
-                        THEN Office.Id
+                    CASE WHEN (P_SortColumn = 1 AND P_SortDirection = 'asc')
+                        THEN Office.Name
                     END ASC,
-                    CASE WHEN (P_SortColumn = 1 AND P_SortDirection = 'DESC')
-                        THEN Office.Id
+                    CASE WHEN (P_SortColumn = 1 AND P_SortDirection = 'desc')
+                        THEN Office.Name
+                    END DESC,
+                    CASE WHEN (P_SortColumn = 2 AND P_SortDirection = 'asc')
+                        THEN Office.Note
+                    END ASC,
+                    CASE WHEN (P_SortColumn = 2 AND P_SortDirection = 'desc')
+                        THEN Office.Note
+                    END DESC,
+                    CASE WHEN (P_SortColumn = 3 AND P_SortDirection = 'asc')
+                        THEN Office.FatherId
+                    END ASC,
+                    CASE WHEN (P_SortColumn = 3 AND P_SortDirection = 'desc')
+                        THEN Office.FatherId
+                    END DESC,
+                    CASE WHEN (P_SortColumn = 4 AND P_SortDirection = 'asc')
+                        THEN Office.Active
+                    END ASC,
+                    CASE WHEN (P_SortColumn = 4 AND P_SortDirection = 'desc')
+                        THEN Office.Active
+                    END DESC,
+                    CASE WHEN (P_SortColumn = 5 AND P_SortDirection = 'asc')
+                        THEN Office.CreatedAt
+                    END ASC,
+                    CASE WHEN (P_SortColumn = 5 AND P_SortDirection = 'desc')
+                        THEN Office.CreatedAt
+                    END DESC,
+                    CASE WHEN (P_SortColumn = 6 AND P_SortDirection = 'asc')
+                        THEN Office.UpdatedAt
+                    END ASC,
+                    CASE WHEN (P_SortColumn = 6 AND P_SortDirection = 'desc')
+                        THEN Office.UpdatedAt
                     END DESC
             )
             AS RowNumber,
