@@ -106,11 +106,12 @@ BEGIN
             Office.Name,
             Office.Note,
             Office.FatherId,
+            Office.Active,
             Office.CreatedAt,
             Office.UpdatedAt
         FROM Office
         WHERE NVL(V_SearchValue, '') = ''
-        OR Office.Name LIKE '%' || V_SearchValue || '%'
+        OR UPPER(Office.Name) LIKE UPPER('%' || V_SearchValue || '%')
         )
         SELECT * FROM CTE_RESULTS WHERE RowNumber BETWEEN V_FirstRecord AND V_LastRecord;
     DBMS_SQL.RETURN_RESULT(C1);
@@ -261,6 +262,5 @@ BEGIN
     DELETE FROM Review WHERE
         Review.Id = P_Id;
 END;
-
 
 
