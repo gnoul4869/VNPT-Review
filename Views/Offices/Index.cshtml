@@ -100,9 +100,17 @@
                     { "data": "createdAt", "name": "Ngày tạo", "autoWidth": true},
                     { "data": "updatedAt", "name": "Ngày cập nhật", "autoWidth": true }
                 ],
-                columnDefs: [{
-                    "targets": [2,4], "orderable": false
-                }],
+                columnDefs: [
+                    { "targets": [2,4], "orderable": false },
+                    { "targets": [4], "className": "text-center", "render": function(data, type, row) {
+                            return (row.active == 1) 
+                                ? 
+                                    "<i class='fas fa-circle' style='color:#83eb34'></i>" 
+                                : 
+                                    "<i class='fas fa-circle' style='color:#f03f24'></i>";
+                        }  
+                    }
+                ],
                 language: {
                     "emptyTable": "Không tìm thấy dữ liệu nào :("
                 }
