@@ -4,12 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Danh sách phòng ban</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Thêm</a>
 </p>
-<table id="offices" class="table table-striped table-bordered" style="width:100%">
+<table id="offices" class="hover" style="width:100%">
     <thead>
         <tr>
             <th>
@@ -27,6 +27,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.office.Active)
             </th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     @* <tbody>
@@ -51,15 +53,9 @@
                         @Html.DisplayFor(modelItem => item.Active)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.CreatedAt)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UpdatedAt)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     </td>
                 </tr>
             }
@@ -74,7 +70,7 @@
 {
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#offices').DataTable({
+            var table = $('#offices').DataTable({
                 processing: true,
                 serverSide: true,
                 searching: true,
@@ -90,12 +86,18 @@
                     { "data": "name", "name": "Tên phòng ban", "autoWidth": true },
                     { "data": "note", "name": "Ghi chú", "autoWidth": true },
                     { "data": "fatherId", "name": "Đơn vị cha", "autoWidth": true },
-                    { "data": "active", "name": "Hoạt động", "autoWidth": true }
-                    @* { "data": "createdAt", "name": "Ngày tạo", "autoWidth": true},
-                    { "data": "updatedAt", "name": "Ngày cập nhật", "autoWidth": true } *@
+                    { "data": "active", "name": "Hoạt động", "autoWidth": true },
+                    { "render": function(data, type, row) {
+                            return "<a href='Offices/Edit/" + row.id + "' class='btn btn-info'>Sửa</a>";
+                        }
+                    },
+                    { "render": function(data, type, row) {
+                            return "<a href='Offices/Delete/" + row.id + "' class='btn btn-danger'>Xoá</a>";
+                        } 
+                    }
                 ],
                 columnDefs: [
-                    { "targets": [2,4], "orderable": false },
+                    { "targets": [2,4,5], "orderable": false },
                     { "targets": [4], "className": "text-center", "render": function(data, type, row) {
                             return (row.active == 1) 
                                 ? 
@@ -109,6 +111,11 @@
                     "emptyTable": "Không tìm thấy dữ liệu nào :("
                 }
             });
+
+            $('#offices').on('click', 'tbody tr', function () {
+                var row = table.row($(this)).data();
+                window.location.href = "Offices/Details/" + row.id;
+            });
         });
-</script>
+    </script>
 }

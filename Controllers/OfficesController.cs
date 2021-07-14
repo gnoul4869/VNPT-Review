@@ -27,7 +27,7 @@ namespace VNPT_Review.Controllers
         public async Task<IActionResult> Index(OfficeListRequest request)
         {
             var model = new UOfficeReview();
-            model.offices = await _repo.GetPaginatedOffice(request);
+            model.offices = await _repo.GetAllOffice();
             return View(model);
         }
 
