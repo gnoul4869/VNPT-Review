@@ -27,12 +27,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.office.Active)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.office.CreatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.office.UpdatedAt)
-            </th>
         </tr>
     </thead>
     @* <tbody>
@@ -96,9 +90,9 @@
                     { "data": "name", "name": "Tên phòng ban", "autoWidth": true },
                     { "data": "note", "name": "Ghi chú", "autoWidth": true },
                     { "data": "fatherId", "name": "Đơn vị cha", "autoWidth": true },
-                    { "data": "active", "name": "Hoạt động", "autoWidth": true },
-                    { "data": "createdAt", "name": "Ngày tạo", "autoWidth": true},
-                    { "data": "updatedAt", "name": "Ngày cập nhật", "autoWidth": true }
+                    { "data": "active", "name": "Hoạt động", "autoWidth": true }
+                    @* { "data": "createdAt", "name": "Ngày tạo", "autoWidth": true},
+                    { "data": "updatedAt", "name": "Ngày cập nhật", "autoWidth": true } *@
                 ],
                 columnDefs: [
                     { "targets": [2,4], "orderable": false },

@@ -106,9 +106,7 @@ BEGIN
             Office.Name,
             Office.Note,
             Office.FatherId,
-            Office.Active,
-            Office.CreatedAt,
-            Office.UpdatedAt
+            Office.Active
         FROM Office
         WHERE NVL(V_SearchValue, '') = ''
         OR UPPER(Office.Name) LIKE UPPER('%' || V_SearchValue || '%')
