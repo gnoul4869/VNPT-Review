@@ -4,7 +4,13 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Danh sách phòng ban</h1>
+<div class="d-grid gap-2 d-md-block">
+  <button class="btn btn-primary" type="button">Xem kiểu danh sách</button>
+</div>
+
+<div class="text-center">
+    <h1>Danh sách phòng ban VNPT</h1>
+</div>
 
 <p>
     <a asp-action="Create" class="btn btn-primary">Thêm</a>
@@ -88,11 +94,11 @@
                     { "data": "fatherId", "name": "Đơn vị cha", "autoWidth": true },
                     { "data": "active", "name": "Hoạt động", "autoWidth": true },
                     { "render": function(data, type, row) {
-                            return "<a href='Offices/Edit/" + row.id + "' class='btn btn-info'>Sửa</a>";
+                            return "<div class='d-grid gap-2'><a href='Offices/Edit/" + row.id + "' class='btn btn-info'>Sửa</a></div>";
                         }
                     },
                     { "render": function(data, type, row) {
-                            return "<a href='Offices/Delete/" + row.id + "' class='btn btn-danger'>Xoá</a>";
+                            return "<div class='d-grid gap-2'><a href='Offices/Delete/" + row.id + "' class='btn btn-danger'>Xoá</a></div>";
                         } 
                     }
                 ],
