@@ -4,9 +4,8 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="d-grid gap-2 d-md-block">
-  <button class="btn btn-primary" type="button">Xem kiểu danh sách</button>
-</div>
+<input type="button" class="btn btn-primary" value="Danh sách" id="toggleButton">
+
 
 <div class="text-center">
     <h1>Danh sách phòng ban VNPT</h1>
@@ -118,9 +117,15 @@
                 }
             });
 
-            $('#offices').on('click', 'tbody tr', function () {
+            $('#offices').on('click', 'tbody tr', function() {
                 var row = table.row($(this)).data();
                 window.location.href = "Offices/Details/" + row.id;
+            });
+
+            $('#toggleButton').click(function(){
+                $('#offices').toggle();
+                $(this).val($(this).val() == 'Danh sách' ? 'Mặc định' :'Danh sách');
+                console.log()
             });
         });
     </script>
