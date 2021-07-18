@@ -4,12 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
-<input type="button" class="btn btn-primary" value="Danh sách" id="toggleButton">
-
-
 <div class="text-center">
     <h1>Danh sách phòng ban VNPT</h1>
 </div>
+
+<input type="button" class="btn btn-primary float-end" value="Hiển thị theo danh sách" id="toggleButton" onclick="this.blur()">
 
 <p>
     <a asp-action="Create" class="btn btn-primary">Thêm</a>
@@ -113,7 +112,19 @@
                     }
                 ],
                 language: {
-                    "emptyTable": "Không tìm thấy dữ liệu nào :("
+                    "emptyTable": "Không tìm thấy dữ liệu nào :(",
+                    "lengthMenu": "Hiện _MENU_ kết quả mỗi trang",
+                    "info": "Đang hiển thị trang <b>_PAGE_</b> trong tổng số <b>_PAGES_</b> trang của <b>_TOTAL_</b> kết quả",
+                    "infoFiltered": "(Liệt kê từ <b>_MAX_</b> kết quả)",
+                    "infoEmpty": "Không tìm thấy dữ liệu",
+                    "search": "Tìm kiếm:",
+                    "paginate": {
+                        "first": "Trang đầu",
+                        "last": "Trang cuối",
+                        "next": "Tiếp theo",
+                        "previous": "Trở về"
+                    },
+                    "processing": "Đang tải dữ liệu"
                 }
             });
 
@@ -122,9 +133,15 @@
                 window.location.href = "Offices/Details/" + row.id;
             });
 
+            var viewSwitch = 0;
+
+            if(viewSwitch == 0) {
+                $('#offices').parents('div.dataTables_wrapper').first().hide();
+            }
+
             $('#toggleButton').click(function(){
-                $('#offices').toggle();
-                $(this).val($(this).val() == 'Danh sách' ? 'Mặc định' :'Danh sách');
+                $('#offices').parents('div.dataTables_wrapper').first().toggle();
+                $(this).val($(this).val() == 'Hiển thị theo danh sách' ? 'Hiển thị theo bảng' : 'Hiển thị theo danh sách');
                 console.log()
             });
         });
