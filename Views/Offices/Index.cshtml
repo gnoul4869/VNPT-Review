@@ -13,6 +13,7 @@
 <p>
     <a asp-action="Create" class="btn btn-primary">Thêm</a>
 </p>
+
 <table id="offices" class="hover" style="width:100%">
     <thead>
         <tr>
@@ -35,41 +36,37 @@
             <th></th>
         </tr>
     </thead>
-    @* <tbody>
-        @if (Model.offices.Count() > 0)
-        {
-            @foreach (var item in Model.offices)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Note)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FatherId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Active)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                </tr>
-            }
-        }
-        else
-        {
-            <p>Hiện tại chưa có dữ liệu nào.</p>
-        }
-    </tbody>  *@
 </table>
+<div class="d-flex align-content-center flex-wrap">
+    @if (Model.offices.Count() > 0)
+    {
+        @foreach (var item in Model.offices)
+        {
+            <div class="col-sm-6 col-lg-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                        <p class="card-text">
+                            @Html.DisplayFor(modelItem => item.Id)
+                            @Html.DisplayFor(modelItem => item.Note)
+                            @Html.DisplayFor(modelItem => item.FatherId)
+                            @Html.DisplayFor(modelItem => item.Active)
+                        </p>
+                        <p class="card-text"><small class="text-muted">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                        </small></p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>Hiện tại chưa có dữ liệu nào.</p>
+    }
+</div>
 @section Scripts
 {
     <script type="text/javascript">
