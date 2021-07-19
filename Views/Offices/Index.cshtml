@@ -73,6 +73,9 @@
 @section Scripts
 {
     <script type="text/javascript">
+
+        $('#offices').hide();
+
         $(document).ready(function() {
             var table = $('#offices').DataTable({
                 processing: true,
@@ -133,15 +136,12 @@
                 window.location.href = "Offices/Details/" + row.id;
             });
 
-            var viewSwitch = 0;
-
-            if(viewSwitch == 0) {
-                $('#offices').parents('div.dataTables_wrapper').first().hide();
-            }
+            $('#offices').parents('div.dataTables_wrapper').first().hide();
 
             $('#toggleButton').click(function(){
+                $('#offices').toggle();
                 $('#offices').parents('div.dataTables_wrapper').first().toggle();
-                $(this).val($(this).val() == 'Hiển thị theo danh sách' ? 'Hiển thị theo bảng' : 'Hiển thị theo danh sách');
+                $(this).val($(this).val() == 'Hiển thị theo danh sách' ? 'Hiển thị theo thẻ' : 'Hiển thị theo danh sách');
             });
         });
     </script>

@@ -23,7 +23,7 @@ namespace VNPT_Review.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult Contact()
         {
             return View();
         }
