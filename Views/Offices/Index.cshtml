@@ -37,17 +37,17 @@
         </tr>
     </thead>
 </table>
-<div id="officeCard" class="d-flex justify-content-around flex-wrap card-group">
+<div id="officeCard" class="row">
     @if (Model.offices.Count() > 0)
     {
         @foreach (var item in Model.offices)
         {
-                <div class="col-sm-6 col-lg-3 m-1">
-                    <div class="card text-center border-secondary">
-                        <div class="card-header">
-                            <b>Mã phòng ban: </b>@Html.DisplayFor(modelItem => item.Id)
-                        </div>
-                        <div class="card-body">
+            <div class="col-md-4 p-4 d-flex">
+                <div class="card flex-fill text-center border-secondary">
+                    <div class="card-header">
+                        <b>Mã phòng ban: </b>@Html.DisplayFor(modelItem => item.Id)
+                    </div>
+                    <div class="card-body">
                         <a asp-action="Details" asp-route-id="@item.Id" class="stretched-link"></a>
                         <h5 class="card-title text-primary">@Html.DisplayFor(modelItem => item.Name)</h5>
                         <p class="card-text">
@@ -60,9 +60,8 @@
                             <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
                         </div>
                     </div>
-                    </div>
                 </div>
-            
+            </div>
         }
     }
     else
@@ -139,7 +138,7 @@
             $('#officeTable').parents('div.dataTables_wrapper').first().hide();
 
             $('#toggleButton').click(function(){
-                $('#officeCard').children().toggle();
+                $('#officeCard').toggle();
                 $('#officeTable').toggle();
                 $('#officeTable').parents('div.dataTables_wrapper').first().toggle();
                 $(this).val($(this).val() == 'Hiển thị theo danh sách' ? 'Hiển thị theo thẻ' : 'Hiển thị theo danh sách');
