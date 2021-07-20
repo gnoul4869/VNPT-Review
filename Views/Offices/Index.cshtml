@@ -14,7 +14,7 @@
     <a asp-action="Create" class="btn btn-primary">Thêm</a>
 </p>
 
-<table id="offices" class="hover" style="width:100%">
+<table id="officeTable" class="hover" style="width:100%">
     <thead>
         <tr>
             <th>
@@ -37,29 +37,30 @@
         </tr>
     </thead>
 </table>
-<div class="d-flex align-content-center flex-wrap">
+<div id="officeCard" class="d-flex justify-content-evenly flex-wrap">
     @if (Model.offices.Count() > 0)
     {
         @foreach (var item in Model.offices)
         {
-            <div class="col-sm-6 col-lg-4 mb-4">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
-                        <p class="card-text">
-                            @Html.DisplayFor(modelItem => item.Id)
-                            @Html.DisplayFor(modelItem => item.Note)
-                            @Html.DisplayFor(modelItem => item.FatherId)
-                            @Html.DisplayFor(modelItem => item.Active)
-                        </p>
-                        <p class="card-text"><small class="text-muted">
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-                        </small></p>
+                <div class="col-sm-6 col-lg-3 m-2">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="stretched-link"></a>
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                            <p class="card-text">
+                                @Html.DisplayFor(modelItem => item.Id)
+                                @Html.DisplayFor(modelItem => item.Note)
+                                @Html.DisplayFor(modelItem => item.FatherId)
+                                @Html.DisplayFor(modelItem => item.Active)
+                            </p>
+                            <div style="z-index:3; position:relative;">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            
         }
     }
     else
@@ -71,10 +72,10 @@
 {
     <script type="text/javascript">
 
-        $('#offices').hide();
+        $('#officeTable').hide();
 
         $(document).ready(function() {
-            var table = $('#offices').DataTable({
+            var table = $('#officeTable').DataTable({
                 processing: true,
                 serverSide: true,
                 searching: true,
@@ -128,16 +129,17 @@
                 }
             });
 
-            $('#offices').on('click', 'tbody tr', function() {
+            $('#officeTable').on('click', 'tbody tr', function() {
                 var row = table.row($(this)).data();
                 window.location.href = "Offices/Details/" + row.id;
             });
 
-            $('#offices').parents('div.dataTables_wrapper').first().hide();
+            $('#officeTable').parents('div.dataTables_wrapper').first().hide();
 
             $('#toggleButton').click(function(){
-                $('#offices').toggle();
-                $('#offices').parents('div.dataTables_wrapper').first().toggle();
+                $('#officeCard').children().toggle();
+                $('#officeTable').toggle();
+                $('#officeTable').parents('div.dataTables_wrapper').first().toggle();
                 $(this).val($(this).val() == 'Hiển thị theo danh sách' ? 'Hiển thị theo thẻ' : 'Hiển thị theo danh sách');
             });
         });
