@@ -37,27 +37,29 @@
         </tr>
     </thead>
 </table>
-<div id="officeCard" class="d-flex justify-content-evenly flex-wrap">
+<div id="officeCard" class="d-flex justify-content-around flex-wrap card-group">
     @if (Model.offices.Count() > 0)
     {
         @foreach (var item in Model.offices)
         {
-                <div class="col-sm-6 col-lg-3 m-2">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <a asp-action="Details" asp-route-id="@item.Id" class="stretched-link"></a>
-                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
-                            <p class="card-text">
-                                @Html.DisplayFor(modelItem => item.Id)
-                                @Html.DisplayFor(modelItem => item.Note)
-                                @Html.DisplayFor(modelItem => item.FatherId)
-                                @Html.DisplayFor(modelItem => item.Active)
-                            </p>
-                            <div style="z-index:3; position:relative;">
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
-                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-                            </div>
+                <div class="col-sm-6 col-lg-3 m-1">
+                    <div class="card text-center border-secondary">
+                        <div class="card-header">
+                            <b>Mã phòng ban: </b>@Html.DisplayFor(modelItem => item.Id)
                         </div>
+                        <div class="card-body">
+                        <a asp-action="Details" asp-route-id="@item.Id" class="stretched-link"></a>
+                        <h5 class="card-title text-primary">@Html.DisplayFor(modelItem => item.Name)</h5>
+                        <p class="card-text">
+                            @Html.DisplayFor(modelItem => item.Note)
+                            @Html.DisplayFor(modelItem => item.FatherId)
+                            @Html.DisplayFor(modelItem => item.Active)
+                        </p>
+                        <div style="z-index:3; position:relative;">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
                     </div>
                 </div>
             
@@ -93,11 +95,11 @@
                     { "data": "fatherId", "name": "Đơn vị cha", "autoWidth": true },
                     { "data": "active", "name": "Hoạt động", "autoWidth": true },
                     { "render": function(data, type, row) {
-                            return "<div class='d-grid gap-2'><a href='Offices/Edit/" + row.id + "' class='btn btn-info'>Sửa</a></div>";
+                            return "<a href='Offices/Edit/" + row.id + "' class='btn btn-info d-grid gap-2'>Sửa</a>";
                         }
                     },
                     { "render": function(data, type, row) {
-                            return "<div class='d-grid gap-2'><a href='Offices/Delete/" + row.id + "' class='btn btn-danger'>Xoá</a></div>";
+                            return "<a href='Offices/Delete/" + row.id + "' class='btn btn-danger d-grid gap-2'>Xoá</a>";
                         } 
                     }
                 ],
