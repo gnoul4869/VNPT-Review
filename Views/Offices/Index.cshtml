@@ -32,6 +32,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.office.Active)
             </th>
+            <th>Đánh giá</th>
             <th></th>
             <th></th>
         </tr>
@@ -51,10 +52,6 @@
                         <a asp-action="Details" asp-route-id="@item.Id" class="stretched-link"></a>
                         <h5 class="card-title text-primary">@Html.DisplayFor(modelItem => item.Name)</h5>
                         <p class="card-text">
-                            @Html.DisplayFor(modelItem => item.Note)
-                            @Html.DisplayFor(modelItem => item.FatherId)
-                            @Html.DisplayFor(modelItem => item.Active)
-                            @item.Rating
                             @{
                                 var max = 5;
                                 if(item.Rating == 0)
@@ -86,6 +83,18 @@
                                 }
                             }
                         </p>
+                        <p>Hoạt động:  
+                            @{
+                                if(item.Active == 1) 
+                                {
+                                    <i class='fas fa-circle' style='color:#83eb34'></i> 
+                                }
+                                else
+                                {
+                                    <i class='fas fa-circle' style='color:#f03f24'></i>;  
+                                }
+                            }
+                        </p>
                         <div style="z-index:3; position:relative;">
                             <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
                             <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
@@ -97,7 +106,7 @@
     }
     else
     {
-        <p>Hiện tại chưa có dữ liệu nào.</p>
+        <h5 class="text-center text-muted">Hiện tại chưa có dữ liệu nào.</h5>
     }
 </div>
 @section Scripts
@@ -124,6 +133,39 @@
                     { "data": "note", "name": "Ghi chú", "autoWidth": true },
                     { "data": "fatherId", "name": "Đơn vị cha", "autoWidth": true },
                     { "data": "active", "name": "Hoạt động", "autoWidth": true },
+                    { "render": function(data, type, row) {
+                            var string = "";
+                            var max = 5;
+                            if(row.rating== 0)
+                            {
+                                for(var i=0; i<max; i++)
+                                {
+                                    string +="<i class='far fa-star'></i>";
+                                }
+                            }
+                            else 
+                            {   
+                                var i;
+                                for(i=0; i<row.rating; i++)
+                                {
+                                    if(i >= row.rating - 1 && row.rating % 1 != 0)
+                                    {
+                                        string += "<i class='fas fa-star-half-alt'></i>";
+                                    }
+                                    else
+                                    {
+                                        string += "<i class='fas fa-star'></i>";
+                                    }
+                                }
+                                while(i <= max) 
+                                {
+                                    string += "<i class='far fa-star'></i>";
+                                    i++;
+                                }
+                            }
+                            return string;
+                        }
+                    },
                     { "render": function(data, type, row) {
                             return "<a href='Offices/Edit/" + row.id + "' class='btn btn-info d-grid gap-2'>Sửa</a>";
                         }

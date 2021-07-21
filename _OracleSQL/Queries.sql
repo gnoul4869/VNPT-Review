@@ -4,6 +4,7 @@ CREATE TABLE Office (
     Note VARCHAR2(200),
     FatherId CHARACTER(5),
     Active NUMBER(1),
+    Rating DECIMAL DEFAULT 0,
     CreatedAt DATE DEFAULT CURRENT_TIMESTAMP,
     UpdatedAt DATE DEFAULT CURRENT_TIMESTAMP,
     -- 
@@ -13,7 +14,7 @@ CREATE TABLE Office (
 CREATE TABLE Review (
     Id CHARACTER(64),
     OfficeId CHARACTER(5),
-    Rating FLOAT,
+    Rating DECIMAL,
     Content VARCHAR2(200),
     CreatedAt DATE DEFAULT CURRENT_TIMESTAMP,
     UpdatedAt DATE DEFAULT CURRENT_TIMESTAMP,
@@ -29,6 +30,22 @@ CREATE SEQUENCE REVIEW_SEQ
     INCREMENT BY 1
     NOCACHE;
 -- Office's PROCEDURES ------------------------------------------------------
+CREATE OR REPLACE PROCEDURE UPDATE_OFFICE_RATING
+(
+    P_Id IN CHARACTER
+)
+AS
+    V_Rate DECIMAL;
+    V_Sum DECIMAL;
+BEGIN
+    SELECT COUNT(*) INTO V_Sum FROM Review WHERE Review.OfficeId = P_Id;
+    SELECT Office.Rating INTO V_Rate FROM Office Where Office.Id = P_Id;
+
+    V_Rate := NVL(V_Rate / NULLIF(V_Sum,0),0);
+
+    UPDATE Office SET Office.Rating = V_Rate WHERE Office.Id = P_Id;
+END;
+-- 
 CREATE OR REPLACE PROCEDURE GET_PAGINATED_OFFICE
 (
     P_SearchValue IN VARCHAR2 DEFAULT NULL,
@@ -106,12 +123,23 @@ BEGIN
             Office.Name,
             Office.Note,
             Office.FatherId,
-            Office.Active
+            Office.Active,
+            Office.Rating
         FROM Office
         WHERE NVL(V_SearchValue, '') = ''
         OR UPPER(Office.Name) LIKE UPPER('%' || V_SearchValue || '%')
         )
-        SELECT * FROM CTE_RESULTS WHERE RowNumber BETWEEN V_FirstRecord AND V_LastRecord;
+        SELECT 
+            RowNumber,
+            FilteredCount,
+            TotalCount,
+            Id,
+            Name,
+            Note,
+            FatherId,
+            Active,
+            Rating
+        FROM CTE_RESULTS WHERE RowNumber BETWEEN V_FirstRecord AND V_LastRecord;
     DBMS_SQL.RETURN_RESULT(C1);
 END;
 -- 
@@ -120,7 +148,7 @@ AS
     C1 SYS_REFCURSOR;
 BEGIN
     OPEN C1 FOR
-        SELECT COUNT(*) FROM Office ORDER BY Office.Id;
+        SELECT COUNT(*) FROM Office;
     DBMS_SQL.RETURN_RESULT(C1);
 END;
 -- 
@@ -129,17 +157,33 @@ AS
     C1 SYS_REFCURSOR;
 BEGIN
     OPEN C1 FOR
-        SELECT * FROM Office ORDER BY Office.Id;
+        SELECT
+            Office.Id,
+            Office.Name,
+            Office.Note,
+            Office.FatherId,
+            Office.Active,
+            Office.Rating
+        FROM Office ORDER BY Office.Id;
     DBMS_SQL.RETURN_RESULT(C1);
 END;
 -- 
 CREATE OR REPLACE PROCEDURE GET_OFFICE
-    (P_Id IN CHARACTER)
+(
+    P_Id IN CHARACTER
+)
 AS
     C1 SYS_REFCURSOR;
 BEGIN
     OPEN C1 FOR 
-        SELECT * FROM Office WHERE Office.Id = P_Id;
+        SELECT 
+            Office.Id,
+            Office.Name,
+            Office.Note,
+            Office.FatherId,
+            Office.Active,
+            Office.Rating
+        FROM Office WHERE Office.Id = P_Id;
     DBMS_SQL.RETURN_RESULT(C1);
 END;
 -- 
@@ -160,6 +204,7 @@ BEGIN
         P_Note,
         P_FatherId,
         P_Active,
+        DEFAULT,
         DEFAULT,
         DEFAULT
     );
@@ -185,7 +230,9 @@ BEGIN
 END;
 -- 
 CREATE OR REPLACE PROCEDURE DELETE_OFFICE
-    (P_Id IN CHARACTER)
+(
+    P_Id IN CHARACTER
+)
 AS
 BEGIN
     DELETE FROM Office WHERE
@@ -193,7 +240,9 @@ BEGIN
 END;
 -- Review's PROCEDURE ------------------------------------------------------
 CREATE OR REPLACE PROCEDURE GET_ALL_REVIEW_IN_OFFICE
-    (P_Id IN CHARACTER)
+(
+    P_Id IN CHARACTER
+)
 AS
     C1 SYS_REFCURSOR;
 BEGIN
@@ -222,7 +271,7 @@ END;
 CREATE OR REPLACE PROCEDURE CREATE_REVIEW
 (
     P_OfficeId IN CHARACTER,
-    P_Rating IN FLOAT,
+    P_Rating IN DECIMAL,
     P_Content IN VARCHAR2
 )
 AS
@@ -241,7 +290,7 @@ END;
 CREATE OR REPLACE PROCEDURE UPDATE_REVIEW
 (
     P_Id IN CHARACTER,
-    P_Rating IN FLOAT,
+    P_Rating IN DECIMAL,
     P_Content IN VARCHAR2
 )
 AS
@@ -254,7 +303,9 @@ BEGIN
 END;
 -- 
 CREATE OR REPLACE PROCEDURE DELETE_REVIEW
-    (P_Id IN CHARACTER)
+(
+    P_Id IN CHARACTER
+)
 AS
 BEGIN
     DELETE FROM Review WHERE

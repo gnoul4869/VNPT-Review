@@ -6,6 +6,7 @@ INSERT INTO Office VALUES(
     '01',
     '1',
     DEFAULT,
+    DEFAULT,
     DEFAULT
 );
 INSERT INTO Office VALUES(
@@ -14,6 +15,7 @@ INSERT INTO Office VALUES(
     null,
     '01',
     '1',
+    DEFAULT,
     DEFAULT,
     DEFAULT
 );
@@ -24,6 +26,7 @@ INSERT INTO Office VALUES(
     '01',
     '1',
     DEFAULT,
+    DEFAULT,
     DEFAULT
 );
 INSERT INTO Office VALUES(
@@ -32,6 +35,7 @@ INSERT INTO Office VALUES(
     null,
     '01',
     '1',
+    DEFAULT,
     DEFAULT,
     DEFAULT
 );
@@ -42,6 +46,7 @@ INSERT INTO Office VALUES(
     '01',
     '1',
     DEFAULT,
+    DEFAULT,
     DEFAULT
 );
 INSERT INTO Office VALUES(
@@ -50,6 +55,7 @@ INSERT INTO Office VALUES(
     null,
     '01',
     '1',
+    DEFAULT,
     DEFAULT,
     DEFAULT
 );
@@ -60,6 +66,7 @@ INSERT INTO Office VALUES(
     '0115',
     '1',
     DEFAULT,
+    DEFAULT,
     DEFAULT
 );
 INSERT INTO Office VALUES(
@@ -68,6 +75,7 @@ INSERT INTO Office VALUES(
     null,
     '0115',
     '1',
+    DEFAULT,
     DEFAULT,
     DEFAULT
 );
@@ -78,6 +86,7 @@ INSERT INTO Office VALUES(
     '01',
     '1',
     DEFAULT,
+    DEFAULT,
     DEFAULT
 );
 INSERT INTO Office VALUES(
@@ -86,6 +95,7 @@ INSERT INTO Office VALUES(
     '(Bạc Liêu, Cầu Kè, Đô Thị Mới)',
     '02',
     '1',
+    DEFAULT,
     DEFAULT,
     DEFAULT
 );
@@ -96,6 +106,7 @@ INSERT INTO Office VALUES(
     '02',
     '1',
     DEFAULT,
+    DEFAULT,
     DEFAULT
 );
 INSERT INTO Office VALUES(
@@ -104,6 +115,7 @@ INSERT INTO Office VALUES(
     '(Hiệp Thành, Xiêm Cáng, Vĩnh Trạch)',
     '02',
     '1',
+    DEFAULT,
     DEFAULT,
     DEFAULT
 );
@@ -114,6 +126,7 @@ INSERT INTO Office VALUES(
     '02',
     '1',
     DEFAULT,
+    DEFAULT,
     DEFAULT
 );
 INSERT INTO Office VALUES(
@@ -122,6 +135,7 @@ INSERT INTO Office VALUES(
     '(Hưng Hội, Gia Hội)',
     '02',
     '1',
+    DEFAULT,
     DEFAULT,
     DEFAULT
 );
@@ -132,6 +146,7 @@ INSERT INTO Office VALUES(
     '02',
     '1',
     DEFAULT,
+    DEFAULT,
     DEFAULT
 );
 INSERT INTO Office VALUES(
@@ -140,6 +155,7 @@ INSERT INTO Office VALUES(
     null,
     '01',
     '1',
+    DEFAULT,
     DEFAULT,
     DEFAULT
 );
@@ -150,6 +166,7 @@ INSERT INTO Office VALUES(
     '03',
     '1',
     DEFAULT,
+    DEFAULT,
     DEFAULT
 );
 INSERT INTO Office VALUES(
@@ -158,6 +175,7 @@ INSERT INTO Office VALUES(
     '(Hoà Bình, Minh Diệu)',
     '03',
     '1',
+    DEFAULT,
     DEFAULT,
     DEFAULT
 );
@@ -168,6 +186,7 @@ INSERT INTO Office VALUES(
     '03',
     '1',
     DEFAULT,
+    DEFAULT,
     DEFAULT
 );
 INSERT INTO Office VALUES(
@@ -176,6 +195,7 @@ INSERT INTO Office VALUES(
     '(Cái Cùng, Vĩnh Mới, Vĩnh Hậu)',
     '03',
     '1',
+    DEFAULT,
     DEFAULT,
     DEFAULT
 );
@@ -186,6 +206,7 @@ INSERT INTO Office VALUES(
     '01',
     '1',
     DEFAULT,
+    DEFAULT,
     DEFAULT
 );
 INSERT INTO Office VALUES(
@@ -194,6 +215,7 @@ INSERT INTO Office VALUES(
     null,
     '04',
     '1',
+    DEFAULT,
     DEFAULT,
     DEFAULT
 );
@@ -204,6 +226,7 @@ INSERT INTO Office VALUES(
     '04',
     '1',
     DEFAULT,
+    DEFAULT,
     DEFAULT
 );
 INSERT INTO Office VALUES(
@@ -212,6 +235,7 @@ INSERT INTO Office VALUES(
     '(Hộ Phòng, Cây Gừa)',
     '04',
     '1',
+    DEFAULT,
     DEFAULT,
     DEFAULT
 );
@@ -222,6 +246,7 @@ INSERT INTO Office VALUES(
     '04',
     '1',
     DEFAULT,
+    DEFAULT,
     DEFAULT
 );
 INSERT INTO Office VALUES(
@@ -230,6 +255,7 @@ INSERT INTO Office VALUES(
     '(Láng Tròn, Xóm Lung, Phong Thạnh Đông)',
     '04',
     '1',
+    DEFAULT,
     DEFAULT,
     DEFAULT
 );
@@ -240,6 +266,7 @@ INSERT INTO Office VALUES(
     '04',
     '1',
     DEFAULT,
+    DEFAULT,
     DEFAULT
 );
 INSERT INTO Office VALUES(
@@ -248,6 +275,7 @@ INSERT INTO Office VALUES(
     '(Gành Hào)',
     '04',
     '1',
+    DEFAULT,
     DEFAULT,
     DEFAULT
 );
@@ -258,6 +286,7 @@ INSERT INTO Office VALUES(
     '01',
     '1',
     DEFAULT,
+    DEFAULT,
     DEFAULT
 );
 INSERT INTO Office VALUES(
@@ -266,6 +295,7 @@ INSERT INTO Office VALUES(
     null,
     '05',
     '1',
+    DEFAULT,
     DEFAULT,
     DEFAULT
 );
@@ -276,6 +306,7 @@ INSERT INTO Office VALUES(
     '05',
     '1',
     DEFAULT,
+    DEFAULT,
     DEFAULT
 );
 INSERT INTO Office VALUES(
@@ -285,6 +316,7 @@ INSERT INTO Office VALUES(
     '05',
     '1',
     DEFAULT,
+    DEFAULT,
     DEFAULT
 );
 INSERT INTO Office VALUES(
@@ -293,6 +325,7 @@ INSERT INTO Office VALUES(
     '(Phó Sinh, Chủ Chí, Ninh Thạnh Lợi, Nhà Lầu 1, Xã Thoàn, Phong Thạnh Tây A)',
     '05',
     '1',
+    DEFAULT,
     DEFAULT,
     DEFAULT
 );

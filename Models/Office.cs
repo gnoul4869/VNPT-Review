@@ -29,7 +29,9 @@ namespace VNPT_Review.Models
         public string FatherId{ get; set; }
 
         [Display(Name = "Hoạt động")]
-        public bool Active { get; set; }
+        public int Active { get; set; }
+
+        public decimal Rating { get; set; }
 
         [Display(Name = "Ngày tạo")]
         public DateTime CreatedAt { get; set; }
@@ -40,7 +42,6 @@ namespace VNPT_Review.Models
     
     public partial class Office
     {
-        public decimal Rating { get; set; }
         public int TotalCount { get; set; }
         public int FilteredCount { get; set; }
     }

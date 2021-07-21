@@ -21,7 +21,7 @@ namespace VNPT_Review.Models
 
         [Required]
         [Display(Name = "Mức đánh giá")]
-        public float Rating { get; set; }
+        public decimal Rating { get; set; }
 
         [Required]
         [Display(Name = "Nội dung đánh giá")]
