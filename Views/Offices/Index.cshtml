@@ -40,7 +40,7 @@
 <div id="officeCard" class="row">
     @if (Model.offices.Count() > 0)
     {
-        @foreach (var item in Model.offices)
+        @foreach(var item in Model.offices)
         {
             <div class="col-md-4 p-4 d-flex">
                 <div class="card flex-fill text-center border-secondary">
@@ -54,6 +54,37 @@
                             @Html.DisplayFor(modelItem => item.Note)
                             @Html.DisplayFor(modelItem => item.FatherId)
                             @Html.DisplayFor(modelItem => item.Active)
+                            @item.Rating
+                            @{
+                                var max = 5;
+                                if(item.Rating == 0)
+                                {
+                                    for(int i=0; i<max; i++)
+                                    {
+                                        <i class="far fa-star"></i>
+                                    }
+                                }
+                                else 
+                                {
+                                    int i;
+                                    for(i=0; i<item.Rating; i++)
+                                    {
+                                        if(i >= item.Rating - 1 && item.Rating % 1 != 0)
+                                        {
+                                            <i class="fas fa-star-half-alt"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-star"></i>
+                                        }
+                                    }
+                                    while(i <= max) 
+                                    {
+                                        <i class="far fa-star"></i>
+                                        i++;
+                                    }
+                                }
+                            }
                         </p>
                         <div style="z-index:3; position:relative;">
                             <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>

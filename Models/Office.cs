@@ -40,6 +40,7 @@ namespace VNPT_Review.Models
     
     public partial class Office
     {
+        public decimal Rating { get; set; }
         public int TotalCount { get; set; }
         public int FilteredCount { get; set; }
     }
