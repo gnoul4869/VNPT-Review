@@ -37,7 +37,7 @@
                 {
                     for(int i=0; i<max; i++)
                     {
-                        <i class="far fa-star"></i>
+                        <i class="fas fa-star" style="color:#ffffff; text-shadow: 0 0 2px #000000"></i>
                     }
                 }
                 else 
@@ -47,16 +47,16 @@
                     {
                         if(i >= Model.office.Rating - 1 && Model.office.Rating % 1 != 0)
                         {
-                            <i class="fas fa-star-half-alt"></i>
+                            <i class="fas fa-star-half" style="color:#fffc3d; text-shadow: 0 0 2px #000000"></i>
                         }
                         else
                         {
-                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star" style="color:#fffc3d; text-shadow: 0 0 2px #000000"></i>
                         }
                     }
-                    while(i <= max) 
+                    while(i < max) 
                     {
-                        <i class="far fa-star"></i>
+                        <i class="fas fa-star" style="color:#ffffff; text-shadow: 0 0 2px #000000"></i>
                         i++;
                     }
                 }

@@ -20,7 +20,7 @@ namespace VNPT_Review.Models
         public string OfficeId { get; set; }
 
         [Required]
-        [Display(Name = "Mức đánh giá")]
+        [Display(Name = "Đánh giá")]
         public decimal Rating { get; set; }
 
         [Required]

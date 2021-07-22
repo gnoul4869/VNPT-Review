@@ -35,14 +35,17 @@ CREATE OR REPLACE PROCEDURE UPDATE_OFFICE_RATING
     P_Id IN CHARACTER
 )
 AS
-    V_Rate DECIMAL;
-    V_Sum DECIMAL;
+    V_Rate DECIMAL DEFAULT 0;
+    V_Sum DECIMAL DEFAULT 0;
 BEGIN
-    SELECT COUNT(*) INTO V_Sum FROM Review WHERE Review.OfficeId = P_Id;
-    SELECT Office.Rating INTO V_Rate FROM Office Where Office.Id = P_Id;
+    FOR X IN (SELECT Rating FROM Review Where Review.OfficeId = P_Id)
+    LOOP
+        V_Rate := V_Rate + X.Rating;
+        V_Sum := V_Sum + 1;
+        dbms_output.put_line(X.Rating);
+    END LOOP;
 
     V_Rate := NVL(V_Rate / NULLIF(V_Sum,0),0);
-
     UPDATE Office SET Office.Rating = V_Rate WHERE Office.Id = P_Id;
 END;
 -- 
