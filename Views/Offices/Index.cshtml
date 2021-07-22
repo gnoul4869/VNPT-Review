@@ -96,8 +96,8 @@
                             }
                         </p>
                         <div style="z-index:3; position:relative;">
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Sửa</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Xoá</a>
                         </div>
                     </div>
                 </div>
@@ -167,7 +167,7 @@
                         }
                     },
                     { "render": function(data, type, row) {
-                            return "<a href='Offices/Edit/" + row.id + "' class='btn btn-info d-grid gap-2'>Sửa</a>";
+                            return "<a href='Offices/Edit/" + row.id + "' class='btn btn-secondary d-grid gap-2'>Sửa</a>";
                         }
                     },
                     { "render": function(data, type, row) {

@@ -71,20 +71,19 @@
     {
         @foreach (var item in Model.reviews)
         {
-            @Html.DisplayNameFor(model => item.Id)
-            @Html.DisplayFor(model => item.Id)
+            <div class="container">
+                @Html.DisplayNameFor(model => item.Id)
+                @Html.DisplayFor(model => item.Id)
 
-            @Html.DisplayNameFor(model => item.Rating)
-            @Html.DisplayFor(model => item.Rating)
+                @Html.DisplayNameFor(model => item.Rating)
+                @Html.DisplayFor(model => item.Rating)
 
-            @Html.DisplayNameFor(model => item.Id)
-            @Html.DisplayFor(model => item.Id)
+                @Html.DisplayNameFor(model => item.Content)
+                @Html.DisplayFor(model => item.Content)
 
-            @Html.DisplayNameFor(model => item.Content)
-            @Html.DisplayFor(model => item.Content)
-
-            <a asp-controller="Review" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-            <a asp-controller="Review" asp-action="Delete">Delete</a>
+                <a asp-controller="Review" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a asp-controller="Review" asp-action="Delete">Delete</a>
+            </div>
         }
     }
     else 
