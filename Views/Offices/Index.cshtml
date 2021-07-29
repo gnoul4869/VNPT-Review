@@ -217,5 +217,22 @@
                 $(this).val($(this).val() == 'Hiển thị theo danh sách' ? 'Hiển thị theo thẻ' : 'Hiển thị theo danh sách');
             });
         });
+
+        window.onscroll = function (ev) {
+            if($('#officeCard').is(':visible')) {
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'Offices',
+                        datatype: 'json',
+                        success: function(data) {
+                            
+                        }
+                    });
+                    console.log("ok");
+                }
+            }
+        };
+
     </script>
 }
