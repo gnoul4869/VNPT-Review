@@ -27,7 +27,7 @@ namespace VNPT_Review.Controllers
         public async Task<IActionResult> Index(OfficeListRequest request)
         {
             var model = new UOfficeReview();
-            model.offices = await _repo.GetAllOffice();
+            model.offices = await _repo.GetInfiniteOffice(9);
             foreach(var item in model.offices) 
             {
                 decimal rate = 0;

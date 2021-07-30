@@ -18,6 +18,12 @@ namespace VNPT_Review.Repository
             this.db = new OracleConnection(configuration.GetConnectionString("Oracle"));
         }
 
+        public async Task<List<Office>> GetInfiniteOffice(int value)
+        {
+            var result = await db.QueryAsync<Office>("GET_INFINITE_OFFICE", new { P_Value = value }, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        } 
+
         public async Task<List<Office>> GetPaginatedOffice(OfficeListRequest request)
         { 
             var result = await db.QueryAsync<Office>("GET_PAGINATED_OFFICE", 

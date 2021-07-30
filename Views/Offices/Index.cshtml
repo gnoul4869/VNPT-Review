@@ -39,75 +39,7 @@
     </thead>
 </table>
 <div id="officeCard" class="row">
-    @if (Model.offices.Count() > 0)
-    {
-        @foreach(var item in Model.offices)
-        {
-            <div class="col-md-4 p-4 d-flex">
-                <div class="card flex-fill text-center border-secondary">
-                    <div class="card-header">
-                        <b>Mã phòng ban: </b>@Html.DisplayFor(modelItem => item.Id)
-                    </div>
-                    <div class="card-body">
-                        <a asp-action="Details" asp-route-id="@item.Id" class="stretched-link"></a>
-                        <h5 class="card-title text-primary">@Html.DisplayFor(modelItem => item.Name)</h5>
-                        <p class="card-text">
-                            @{
-                                var max = 5;
-                                if(item.Rating == 0)
-                                {
-                                    for(int i=0; i<max; i++)
-                                    {
-                                        <i class="fas fa-star" style="color:#ffffff; text-shadow: 0 0 2px #000000"></i>
-                                    }
-                                }
-                                else 
-                                {
-                                    int i;
-                                    for(i=0; i<item.Rating; i++)
-                                    {
-                                        if(i >= item.Rating - 1 && item.Rating % 1 != 0)
-                                        {
-                                            <i class="fas fa-star-half" style="color:#fffc3d; text-shadow: 0 0 2px #000000"></i>
-                                        }
-                                        else
-                                        {
-                                            <i class="fas fa-star" style="color:#fffc3d; text-shadow: 0 0 2px #000000"></i>
-                                        }
-                                    }
-                                    while(i < max) 
-                                    {
-                                        <i class="fas fa-star" style="color:#ffffff; text-shadow: 0 0 2px #000000"></i>
-                                        i++;
-                                    }
-                                }
-                            }
-                        </p>
-                        <p>Hoạt động:  
-                            @{
-                                if(item.Active == 1) 
-                                {
-                                    <i class='fas fa-circle' style='color:#83eb34'></i> 
-                                }
-                                else
-                                {
-                                    <i class='fas fa-circle' style='color:#f03f24'></i>;  
-                                }
-                            }
-                        </p>
-                        <div style="z-index:3; position:relative;">
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Sửa</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Xoá</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        }
-    }
-    else
-    {
-        <h5 class="text-center text-muted">Hiện tại chưa có dữ liệu nào.</h5>
-    }
+    <partial name="_OfficeCard"/>
 </div>
 @section Scripts
 {
@@ -123,9 +55,8 @@
                 ordering: true,
                 paging: true,
                 "ajax": {
-                    "url": "api/APIOffice",
+                    "url": "api/APIOfficePaginated",
                     "type": "POST",
-                    "datatype": "json"
                 },
                 columns: [
                     { "data": "id", "name": "Mã phòng ban", "autoWidth": true },
@@ -218,18 +149,19 @@
             });
         });
 
-        window.onscroll = function (ev) {
+        window.onscroll = function(ev) {
             if($('#officeCard').is(':visible')) {
                 if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
                     $.ajax({
-                        type: 'POST',
-                        url: 'Offices',
-                        datatype: 'json',
+                        type: 'GET',
+                        url: 'api/APIOfficeInfinite',
                         success: function(data) {
-                            
+                            if(data != null) {
+                                $("#officeCard").html(data);
+                                console.log("ok");
+                            }
                         }
                     });
-                    console.log("ok");
                 }
             }
         };

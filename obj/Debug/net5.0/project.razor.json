@@ -15659,6 +15659,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Shared\\_OfficeCard.cshtml",
+      "TargetPath": "Views\\Shared\\_OfficeCard.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"

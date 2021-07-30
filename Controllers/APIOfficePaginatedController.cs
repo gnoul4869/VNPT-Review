@@ -9,15 +9,14 @@ namespace VNPT_Review.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class APIOfficeController : ControllerBase
+    public class APIOfficePaginatedController : ControllerBase
     {
         private readonly IOfficeService _svc;
-        public APIOfficeController(IOfficeService svc)
+        public APIOfficePaginatedController(IOfficeService svc)
         {
             _svc = svc;
         }
 
-        // GET: APIOffices
         [HttpPost]
         public async Task<DataTableResponse<Office>> GetOffices()
         {

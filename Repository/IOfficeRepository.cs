@@ -9,6 +9,7 @@ namespace VNPT_Review.Repository
 {
     public interface IOfficeRepository 
     {
+        Task<List<Office>> GetInfiniteOffice(int value);
         Task<List<Office>> GetPaginatedOffice(OfficeListRequest request);
         Task<Office> GetOffice(string id);
         Task<List<Office>> GetAllOffice();

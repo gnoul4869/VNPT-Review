@@ -444,3 +444,5 @@ C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Offices\Index.cshtml.g.cs
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Offices\Reviews.cshtml.g.cs
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Home\Contact.cshtml.g.cs
+C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Shared\_Test.cshtml.g.cs
+C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Shared\_OfficeCard.cshtml.g.cs

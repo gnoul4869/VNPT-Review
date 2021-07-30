@@ -49,6 +49,25 @@ BEGIN
     UPDATE Office SET Office.Rating = V_Rate WHERE Office.Id = P_Id;
 END;
 -- 
+CREATE OR REPLACE PROCEDURE GET_INFINITE_OFFICE
+(
+    P_Value IN INT DEFAULT 9
+)
+AS
+    C1 SYS_REFCURSOR;
+BEGIN
+    OPEN C1 FOR
+        SELECT
+            Office.Id,
+            Office.Name,
+            Office.Note,
+            Office.FatherId,
+            Office.Active,
+            Office.Rating
+        FROM Office ORDER BY Office.Id FETCH NEXT P_Value ROWS ONLY;
+    DBMS_SQL.RETURN_RESULT(C1);
+END;
+-- 
 CREATE OR REPLACE PROCEDURE GET_PAGINATED_OFFICE
 (
     P_SearchValue IN VARCHAR2 DEFAULT NULL,
