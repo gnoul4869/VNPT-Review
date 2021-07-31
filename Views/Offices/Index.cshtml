@@ -41,11 +41,17 @@
 <div id="officeCard" class="row">
     <partial name="_OfficeCard"/>
 </div>
+<div id="loader" class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
 @section Scripts
 {
     <script type="text/javascript">
 
         $('#officeTable').hide();
+        $('#loader').children().hide();
 
         $(document).ready(function() {
             var table = $('#officeTable').DataTable({
@@ -149,19 +155,33 @@
             });
         });
 
+        var values = 18;
+        var ongoing = false;
+
         window.onscroll = function(ev) {
             if($('#officeCard').is(':visible')) {
                 if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                    $.ajax({
-                        type: 'GET',
-                        url: 'api/APIOfficeInfinite',
-                        success: function(data) {
-                            if(data != null) {
-                                $("#officeCard").html(data);
-                                console.log("ok");
+                    if(ongoing == false) {
+                        $.ajax({
+                            type: 'GET',
+                            url: 'api/APIOfficeInfinite',
+                            data: { "value": values },
+                            beforeSend: function()  {
+                                ongoing = true;
+                                $('#loader').children().show();
+                            },          
+                            success: function(data) {
+                                if(data != null) {
+                                    $('#officeCard').html(data);
+                                    values += 9;
+                                    ongoing = false;
+                                }
+                            },
+                            complete: function() {
+                                $('#loader').children().hide();
                             }
-                        }
-                    });
+                        });
+                    }
                 }
             }
         };

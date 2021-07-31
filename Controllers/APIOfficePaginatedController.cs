@@ -18,7 +18,7 @@ namespace VNPT_Review.Controllers
         }
 
         [HttpPost]
-        public async Task<DataTableResponse<Office>> GetOffices()
+        public async Task<DataTableResponse<Office>> GetOffice()
         {
             var request = new DataTableRequest();
 

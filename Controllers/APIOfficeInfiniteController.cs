@@ -19,10 +19,14 @@ namespace VNPT_Review.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetOffices()
+        public async Task<IActionResult> GetOffice(int value)
         {
+            var max = await _repo.GetOfficeCount();
+            if(value >= max) 
+                return null;
+
             var model = new UOfficeReview();
-            model.offices = await _repo.GetAllOffice();
+            model.offices = await _repo.GetInfiniteOffice(value);
             foreach(var item in model.offices) 
             {
                 decimal rate = 0;

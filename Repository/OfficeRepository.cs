@@ -50,6 +50,11 @@ namespace VNPT_Review.Repository
             return result.ToList();
         }
 
+        public async Task<int> GetOfficeCount()
+        {
+            var result = await db.QueryAsync<int>("SELECT COUNT(*) FROM Office");
+            return result.FirstOrDefault();
+        }
         public async Task<Office> CreateOffice(Office office)
         {
             var boolActive = 0;

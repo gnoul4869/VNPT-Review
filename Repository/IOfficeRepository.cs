@@ -13,6 +13,7 @@ namespace VNPT_Review.Repository
         Task<List<Office>> GetPaginatedOffice(OfficeListRequest request);
         Task<Office> GetOffice(string id);
         Task<List<Office>> GetAllOffice();
+        Task<int> GetOfficeCount();
         Task<Office> CreateOffice(Office office);
         Task<Office> UpdateOffice(Office office);
         Task DeleteOffice(string id);
