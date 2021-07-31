@@ -12,6 +12,7 @@
                 <div class="card-body">
                     <a asp-controller="Offices" asp-action="Details" asp-route-id="@item.Id" class="stretched-link"></a>
                     <h5 class="card-title text-primary">@Html.DisplayFor(modelItem => item.Name)</h5>
+                    <p class="card-text fs-1">@item.Rating</p>
                     <p class="card-text">
                         @{
                             var max = 5;
