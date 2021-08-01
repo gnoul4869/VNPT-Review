@@ -1,29 +1,15 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Trang chủ";
 }
-<div class="row align-items-center g-lg-5 py-5">
-    <div class="col-lg-7 text-center text-lg-start">
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="~/images/vnpt.png" asp-append-version="true" class="d-block mx-lg-auto img-fluid" alt="VNPT" width="700" height="500" loading="eager">
+      </div>
+      <div class="col-lg-6">
         <h1 class="display-5 fw-bold lh-1 mb-3">VNPT Review</h1>
         <p class="col-lg-20 fs-5">Website đánh giá nội bộ phòng ban VNPT.</p>
+        </div>
+      </div>
     </div>
-    <div class="col-md-10 mx-auto col-lg-5">
-        <form class="p-4 p-md-5 border rounded-3 bg-light">
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Email</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Mật khẩu</label>
-            </div>
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" value="remember-me"> Ghi nhớ đăng nhập
-                </label>
-            </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Đăng nhập</button>
-            <hr class="my-4">
-            <div class="text-muted text-center fs-6">Chưa có tài khoản? Hãy đăng ký tài khoản tại <a asp-area="Identity" asp-page="/Account/Register">đây</a>.</div>
-        </form>
-    </div>
-</div>
+  </div>

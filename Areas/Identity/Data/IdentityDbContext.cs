@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace VNPT_Review.Areas.Identity.Data
 {
-    public class VNPT_ReviewIdentityDbContext : IdentityDbContext<IdentityUser>
+    public class IdentityDbContext : IdentityDbContext<IdentityUser>
     {
-        public VNPT_ReviewIdentityDbContext(DbContextOptions<VNPT_ReviewIdentityDbContext> options)
+        public IdentityDbContext(DbContextOptions<IdentityDbContext> options)
             : base(options)
         {
         }

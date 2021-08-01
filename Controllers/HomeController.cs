@@ -23,6 +23,7 @@ namespace VNPT_Review.Controllers
             return View();
         }
 
+        [Route("Contact")]
         public IActionResult Contact()
         {
             return View();

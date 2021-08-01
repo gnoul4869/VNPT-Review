@@ -15,12 +15,12 @@ namespace VNPT_Review.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<VNPT_ReviewIdentityDbContext>(options =>
+                services.AddDbContext<IdentityDbContext>(options =>
                     options.UseOracle(
                         context.Configuration.GetConnectionString("Oracle")));
 
                 services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<VNPT_ReviewIdentityDbContext>();
+                    .AddEntityFrameworkStores<IdentityDbContext>();
             });
         }
     }
