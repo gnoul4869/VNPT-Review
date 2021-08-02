@@ -38,7 +38,8 @@ namespace VNPT_Review.Controllers
             }
         }
 
-        public async Task Delete(string id)
+        [HttpPost]
+        public async Task Delete(string id, string officeId)
         {
             await _repo.DeleteReview(id);
         }

@@ -11,7 +11,7 @@ namespace VNPT_Review.Repository
 {
     public class ReviewRepository : IReviewRepository
     {
-        private DbConnection db;
+        private IDbConnection db;
         public ReviewRepository(IConfiguration configuration)
         {
             this.db = new OracleConnection(configuration.GetConnectionString("Oracle"));

@@ -4,68 +4,97 @@
     ViewData["Title"] = "Details";
 }
 
-<div>
-    <h1>@Html.DisplayFor(model => model.office.Name)</h1>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.office.Note)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.office.Note)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.office.FatherId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.office.FatherId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.office.Active)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.office.Active)
-        </dd>
-        <dt class = "col-sm-2">
-            Rating
-        </dt>
-        <dd class = "col-sm-10">
-            @Model.office.Rating
-            @{
-                var max = 5;
-                if(Model.office.Rating == 0)
-                {
-                    for(int i=0; i<max; i++)
-                    {
-                        <i class="fas fa-star" style="color:#ffffff; text-shadow: 0 0 2px #000000"></i>
-                    }
-                }
-                else 
-                {
-                    int i;
-                    for(i=0; i<Model.office.Rating; i++)
-                    {
-                        if(i >= Model.office.Rating - 1 && Model.office.Rating % 1 != 0)
+<div class="col-xl-8 m-auto order-xl-2 mb-5 mb-xl-0">
+    <div class="card-body pt-0 pt-md-4">
+        <div class="text-center">
+            <h1 class="pb-2">
+                @Html.DisplayFor(model => model.office.Name)
+            </h1>
+            <div class="h6 font-weight-300">
+                @Html.DisplayFor(model => model.office.Note)
+            </div>
+            <div class="h5 mt-3">
+                @Html.DisplayNameFor(model => model.office.FatherId): <small class="text-muted">#@Html.DisplayFor(model => model.office.FatherId)</small>
+                <span class="ms-4">
+                    @Html.DisplayNameFor(model => model.office.Active):
+                    @{
+                        if(Model.office.Active == 1) 
                         {
-                            <i class="fas fa-star-half" style="color:#fffc3d; text-shadow: 0 0 2px #000000"></i>
+                            <i class='fas fa-circle' style='color:#83eb34'></i> 
                         }
                         else
                         {
-                            <i class="fas fa-star" style="color:#fffc3d; text-shadow: 0 0 2px #000000"></i>
+                            <i class='fas fa-circle' style='color:#f03f24'></i>;  
                         }
                     }
-                    while(i < max) 
+                </span>
+            </div>
+            <div class="h1 font-weight-300">
+                @Model.office.Rating
+            </div>
+            <div class="fs-2">
+                @{
+                    var max = 5;
+                    if(Model.office.Rating == 0)
                     {
-                        <i class="fas fa-star" style="color:#ffffff; text-shadow: 0 0 2px #000000"></i>
-                        i++;
+                        for(int i=0; i<max; i++)
+                        {
+                            <i class="fas fa-star" style="color:#ffffff; text-shadow: 0 0 2px #000000"></i>
+                        }
+                    }
+                    else 
+                    {
+                        int i;
+                        for(i=0; i<Model.office.Rating; i++)
+                        {
+                            if(i >= Model.office.Rating - 1 && Model.office.Rating % 1 != 0)
+                            {
+                                <i class="fas fa-star-half" style="color:#fffc3d; text-shadow: 0 0 2px #000000"></i>
+                            }
+                            else
+                            {
+                                <i class="fas fa-star" style="color:#fffc3d; text-shadow: 0 0 2px #000000"></i>
+                            }
+                        }
+                        while(i < max) 
+                        {
+                            <i class="fas fa-star" style="color:#ffffff; text-shadow: 0 0 2px #000000"></i>
+                            i++;
+                        }
                     }
                 }
-            }
-        </dd>
-    </dl>
-    <a asp-action="Edit" asp-route-id="@Model.office.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a asp-controller="Offices" asp-action="Edit" asp-route-id="@Model.office.Id" class="btn btn-secondary">Sửa</a>
+            <a asp-controller="Offices" asp-action="Delete" asp-route-id="@Model.office.Id" class="btn btn-danger">Xoá</a>
+        </div>
+        <hr class="my-4">
+    </div>
 </div>
 <div id="reviewSection">
     <partial name="_ReviewSectionPartial"/>
 </div>
+@section Scripts
+{
+    <script>
+
+        $(document).ready(function() {
+
+            $('.del').click(function(data) {
+                var id = $(this).data('id');
+                var officeId = $(this).data('office');
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("Delete", "Review")',
+                    data: { 'id': id, 'officeId': officeId  },
+                    success: function() {
+                        location.reload();
+                    }
+                });
+            }); 
+
+        });
+
+    </script>
+}

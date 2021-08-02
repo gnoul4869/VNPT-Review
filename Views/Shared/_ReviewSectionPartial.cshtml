@@ -4,14 +4,14 @@
 {
     @foreach (var item in Model.reviews)
     {
-        <div class="container">
+        <div class="container m-1">
             <small class="text-muted">#@Html.DisplayFor(model => item.Id)</small>
             
             <div class="card p-2">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="user d-flex flex-row align-items-center"> 
                         <img src="~/images/guest.png" width="30" class="user-img rounded-circle mr-2"> 
-                        <small class="font-weight-bold text-primary m-1">
+                        <small class="font-weight-bold text-primary ms-2">
                             NAMES HERE
                         </small> 
                     </div> 
@@ -51,12 +51,11 @@
                 <small class="d-flex mt-2 ms-5 font-weight-bold">
                     @Html.DisplayFor(model => item.Content)
                 </small>
-                <div class="action d-flex justify-content-between mt-2 align-items-center">
-                    <div class="reply px-4"> 
-                        <small><a asp-controller="Review" asp-action="Edit" asp-route-id="@item.Id">Edit</a></small> 
-                        <small><a asp-controller="Review" asp-action="Delete">Delete</a></small> 
-                    </div>
+                <div class="action d-flex mt-2 align-items-center ms-auto">
                     <small>2 days ago</small>
+                </div>
+                <div class="ms-auto"> 
+                    <small class="del text-danger me-3" style="cursor:pointer" data-id="@item.Id" data-office="@Model.office.Id">Xoá</small> 
                 </div>
             </div>
         </div>
@@ -64,5 +63,5 @@
 }
 else 
 {
-    <p>Hiện tại chưa có đánh giá nào.</p>
+    <h5 class="text-center text-muted">Hiện tại chưa có đánh giá nào.</h5>
 }

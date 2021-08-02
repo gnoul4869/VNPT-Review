@@ -48,7 +48,7 @@
 </div>
 @section Scripts
 {
-    <script type="text/javascript">
+    <script>
 
         $('#officeTable').hide();
         $('#loader').children().hide();
@@ -160,12 +160,12 @@
 
         window.onscroll = function(ev) {
             if($('#officeCard').is(':visible')) {
-                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
                     if(ongoing == false) {
                         $.ajax({
                             type: 'GET',
                             url: 'api/APIOfficeInfinite',
-                            data: { "value": values },
+                            data: { 'value': values },
                             beforeSend: function()  {
                                 ongoing = true;
                                 $('#loader').children().show();

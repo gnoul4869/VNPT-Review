@@ -27,6 +27,8 @@ namespace VNPT_Review
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddScoped<IReviewRepository, ReviewRepository>();
             
             services.AddScoped<IOfficeRepository, OfficeRepository>();
 

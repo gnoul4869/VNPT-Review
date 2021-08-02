@@ -271,7 +271,8 @@ BEGIN
     OPEN C1 FOR 
         SELECT DISTINCT Review.Id, Review.OfficeId, Review.Rating, 
             Review.Content, Review.CreatedAt, Review.UpdatedAt
-                FROM Review INNER JOIN Office ON Review.OfficeId = P_Id;
+                FROM Review INNER JOIN Office ON Review.OfficeId = P_Id 
+                    ORDER BY Review.CreatedAt DESC;
     DBMS_SQL.RETURN_RESULT(C1);
 END;
 -- 
