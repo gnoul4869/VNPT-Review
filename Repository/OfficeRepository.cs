@@ -99,5 +99,17 @@ namespace VNPT_Review.Repository
             var result = await db.QueryAsync<Review>("GET_ALL_REVIEW_IN_OFFICE", new { P_Id = id }, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
+
+        public async Task<List<Review>> GetInfiniteReviewInOffice(string id, int value)
+        {
+            var result = await db.QueryAsync<Review>("GET_INFINITE_REVIEW_IN_OFFICE", new { P_Id = id, P_Value = value }, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+        public async Task<int> GetReviewCountInOffice(string id)
+        {
+            var result = await db.QueryAsync<int>("SELECT COUNT(*) FROM Review WHERE Review.OfficeId = :Id", new { Id = id });
+            return result.FirstOrDefault();
+        } 
     }
 }

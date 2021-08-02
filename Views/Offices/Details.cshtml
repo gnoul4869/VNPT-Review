@@ -75,9 +75,16 @@
 <div id="reviewSection">
     <partial name="_ReviewSectionPartial"/>
 </div>
+<div id="loader" class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
 @section Scripts
 {
     <script>
+
+        $('#loader').children().hide();
 
         $(document).ready(function() {
 
@@ -95,6 +102,35 @@
             }); 
 
         });
+
+        var value = 8;
+        var ongoing = false;
+
+        window.onscroll = function(ev) {
+            if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                if(ongoing == false) {
+                    $.ajax({
+                        type: 'GET',
+                        url: '@Url.Action("InfiniteReviewInOffice", "Offices")',
+                        data: { 'id': '@Model.office.Id', 'value': value },
+                        beforeSend: function()  {
+                            ongoing = true;
+                            $('#loader').children().show();
+                        },          
+                        success: function(data) {
+                            if(data != null) {
+                                $('#reviewSection').html(data);
+                                value += 4;
+                                ongoing = false;
+                            }
+                        },
+                        complete: function() {
+                            $('#loader').children().hide();
+                        }
+                    });
+                }
+            }
+        };
 
     </script>
 }

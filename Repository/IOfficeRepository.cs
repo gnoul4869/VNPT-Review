@@ -20,5 +20,7 @@ namespace VNPT_Review.Repository
 
         // Reviews
         Task<List<Review>> GetAllReviewInOffice(string id);
+        Task<List<Review>> GetInfiniteReviewInOffice(string id, int value);
+        Task<int> GetReviewCountInOffice(string id);
     }
 }

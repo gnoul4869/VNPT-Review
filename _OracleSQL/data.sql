@@ -333,16 +333,16 @@ INSERT INTO Office VALUES(
 INSERT INTO REVIEW VALUES(
     REVIEW_SEQ.NEXTVAL,
     '01',
-    '5',
-    'Test string',
+    '1',
+    'TLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a pellentesque purus. Vivamus vehicula orci tristique sapien sagittis, ac euismod arcu consequat. Vivamus ut cursus erat.',
     DEFAULT,
     DEFAULT
 );
 INSERT INTO REVIEW VALUES(
     REVIEW_SEQ.NEXTVAL,
     '01',
-    '1',
-    'Test string 2',
+    '2',
+    'TLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a pellentesque purus. Vivamus vehicula orci tristique sapien sagittis, ac euismod arcu consequat. Vivamus ut cursus erat.',
     DEFAULT,
     DEFAULT
 );
@@ -350,14 +350,6 @@ INSERT INTO REVIEW VALUES(
     REVIEW_SEQ.NEXTVAL,
     '01',
     '3',
-    'Test string 3',
-    DEFAULT,
-    DEFAULT
-);
-INSERT INTO REVIEW VALUES(
-    REVIEW_SEQ.NEXTVAL,
-    '01',
-    '1',
     'TLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a pellentesque purus. Vivamus vehicula orci tristique sapien sagittis, ac euismod arcu consequat. Vivamus ut cursus erat.',
     DEFAULT,
     DEFAULT
@@ -373,63 +365,7 @@ INSERT INTO REVIEW VALUES(
 INSERT INTO REVIEW VALUES(
     REVIEW_SEQ.NEXTVAL,
     '01',
-    '4',
-    'TLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a pellentesque purus. Vivamus vehicula orci tristique sapien sagittis, ac euismod arcu consequat. Vivamus ut cursus erat.',
-    DEFAULT,
-    DEFAULT
-);
-INSERT INTO REVIEW VALUES(
-    REVIEW_SEQ.NEXTVAL,
-    '01',
-    '4',
-    'TLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a pellentesque purus. Vivamus vehicula orci tristique sapien sagittis, ac euismod arcu consequat. Vivamus ut cursus erat.',
-    DEFAULT,
-    DEFAULT
-);
-INSERT INTO REVIEW VALUES(
-    REVIEW_SEQ.NEXTVAL,
-    '01',
-    '4',
-    'TLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a pellentesque purus. Vivamus vehicula orci tristique sapien sagittis, ac euismod arcu consequat. Vivamus ut cursus erat.',
-    DEFAULT,
-    DEFAULT
-);
-INSERT INTO REVIEW VALUES(
-    REVIEW_SEQ.NEXTVAL,
-    '01',
-    '4',
-    'TLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a pellentesque purus. Vivamus vehicula orci tristique sapien sagittis, ac euismod arcu consequat. Vivamus ut cursus erat.',
-    DEFAULT,
-    DEFAULT
-);
-INSERT INTO REVIEW VALUES(
-    REVIEW_SEQ.NEXTVAL,
-    '01',
-    '4',
-    'TLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a pellentesque purus. Vivamus vehicula orci tristique sapien sagittis, ac euismod arcu consequat. Vivamus ut cursus erat.',
-    DEFAULT,
-    DEFAULT
-);
-INSERT INTO REVIEW VALUES(
-    REVIEW_SEQ.NEXTVAL,
-    '01',
-    '4',
-    'TLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a pellentesque purus. Vivamus vehicula orci tristique sapien sagittis, ac euismod arcu consequat. Vivamus ut cursus erat.',
-    DEFAULT,
-    DEFAULT
-);
-INSERT INTO REVIEW VALUES(
-    REVIEW_SEQ.NEXTVAL,
-    '01',
-    '4',
-    'TLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a pellentesque purus. Vivamus vehicula orci tristique sapien sagittis, ac euismod arcu consequat. Vivamus ut cursus erat.',
-    DEFAULT,
-    DEFAULT
-);
-INSERT INTO REVIEW VALUES(
-    REVIEW_SEQ.NEXTVAL,
-    '01',
-    '4',
+    '5',
     'TLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a pellentesque purus. Vivamus vehicula orci tristique sapien sagittis, ac euismod arcu consequat. Vivamus ut cursus erat.',
     DEFAULT,
     DEFAULT

@@ -261,6 +261,23 @@ BEGIN
         Office.Id = P_Id;
 END;
 -- Review's PROCEDURE ------------------------------------------------------
+CREATE OR REPLACE PROCEDURE GET_INFINITE_REVIEW_IN_OFFICE
+(
+    P_Id IN CHARACTER,
+    P_Value IN INT DEFAULT 4
+)
+AS
+    C1 SYS_REFCURSOR;
+BEGIN
+    OPEN C1 FOR
+        SELECT DISTINCT Review.Id, Review.OfficeId, Review.Rating, 
+            Review.Content, Review.CreatedAt, Review.UpdatedAt
+                FROM Review INNER JOIN Office ON Review.OfficeId = P_Id 
+                    ORDER BY Review.CreatedAt DESC 
+                        FETCH NEXT P_Value ROWS ONLY;
+    DBMS_SQL.RETURN_RESULT(C1);
+END;
+-- 
 CREATE OR REPLACE PROCEDURE GET_ALL_REVIEW_IN_OFFICE
 (
     P_Id IN CHARACTER

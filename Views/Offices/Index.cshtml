@@ -155,7 +155,7 @@
             });
         });
 
-        var values = 18;
+        var value = 18;
         var ongoing = false;
 
         window.onscroll = function(ev) {
@@ -164,8 +164,8 @@
                     if(ongoing == false) {
                         $.ajax({
                             type: 'GET',
-                            url: '@Url.Action("GetInfiniteOffice", "Offices")',
-                            data: { 'value': values },
+                            url: '@Url.Action("InfiniteOffice", "Offices")',
+                            data: { 'value': value },
                             beforeSend: function()  {
                                 ongoing = true;
                                 $('#loader').children().show();
@@ -173,7 +173,7 @@
                             success: function(data) {
                                 if(data != null) {
                                     $('#officeCard').html(data);
-                                    values += 9;
+                                    value += 9;
                                     ongoing = false;
                                 }
                             },

@@ -56,16 +56,16 @@ namespace VNPT_Review.Controllers
         // GET: Offices/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return NotFound();
             }
 
             var model = new UOfficeReview();
             model.office = await _repo.GetOffice(id);
-            if (model.office == null) 
+            if(model.office == null) 
                 return NotFound();
-            model.reviews = await _repo.GetAllReviewInOffice(id);
+            model.reviews = await _repo.GetInfiniteReviewInOffice(id, 4);
 
             return View(model);
         }
@@ -83,7 +83,7 @@ namespace VNPT_Review.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Note,FatherId,Active,CreatedAt,UpdatedAt")] Office office)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 await _repo.CreateOffice(office);
                 return RedirectToAction(nameof(Index));
@@ -94,13 +94,13 @@ namespace VNPT_Review.Controllers
         // GET: Offices/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return NotFound();
             }
 
             var office = await _repo.GetOffice(id);
-            if (office == null)
+            if(office == null)
             {
                 return NotFound();
             }
@@ -114,12 +114,12 @@ namespace VNPT_Review.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Id,Name,Note,FatherId,Active,CreatedAt,UpdatedAt")] Office office)
         {
-            if (id != office.Id)
+            if(id != office.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 await _repo.UpdateOffice(office);
                 return RedirectToAction(nameof(Index));
@@ -130,13 +130,13 @@ namespace VNPT_Review.Controllers
         // GET: Offices/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null)
+            if(id == null)
             {
                 return NotFound();
             }
 
             var office = await _repo.GetOffice(id);
-            if (office == null)
+            if(office == null)
             {
                 return NotFound();
             }
@@ -154,10 +154,10 @@ namespace VNPT_Review.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetInfiniteOffice(int value)
+        public async Task<IActionResult> InfiniteOffice(int value)
         {
             var max = await _repo.GetOfficeCount();
-            if(value >= max) 
+            if(value >= max && (value - 9) > max) 
                 return null;
 
             var model = new UOfficeReview();
@@ -185,6 +185,26 @@ namespace VNPT_Review.Controllers
                 
             }
             return PartialView("_OfficeCardPartial", model);
+        }
+
+        public async Task<IActionResult> InfiniteReviewInOffice(string id, int value)
+        {
+            var max = await _repo.GetReviewCountInOffice(id);
+            if(value >= max && (value - 4) > max) 
+                 return null;
+
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var model = new UOfficeReview();
+            model.office = await _repo.GetOffice(id);
+            if(model.office == null) 
+                return NotFound();
+            model.reviews = await _repo.GetInfiniteReviewInOffice(id, value);
+
+            return PartialView("_ReviewSectionPartial", model);
         }
     }
 }
