@@ -164,7 +164,7 @@
                     if(ongoing == false) {
                         $.ajax({
                             type: 'GET',
-                            url: 'api/APIOfficeInfinite',
+                            url: '@Url.Action("GetInfiniteOffice", "Offices")',
                             data: { 'value': values },
                             beforeSend: function()  {
                                 ongoing = true;

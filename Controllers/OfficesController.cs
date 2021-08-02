@@ -152,5 +152,39 @@ namespace VNPT_Review.Controllers
             await _repo.DeleteOffice(id);
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetInfiniteOffice(int value)
+        {
+            var max = await _repo.GetOfficeCount();
+            if(value >= max) 
+                return null;
+
+            var model = new UOfficeReview();
+            model.offices = await _repo.GetInfiniteOffice(value);
+            foreach(var item in model.offices) 
+            {
+                decimal rate = 0;
+                decimal sum = 0;
+                model.reviews = await _repo.GetAllReviewInOffice(item.Id);
+                
+                foreach(var item2 in model.reviews)
+                {
+                    rate += (decimal)item.Rating;
+                    sum++;
+                }
+
+                try 
+                {
+                    item.Rating = rate / sum;
+                }
+                catch(Exception)
+                {   
+                    item.Rating = 0;
+                }
+                
+            }
+            return PartialView("_OfficeCardPartial", model);
+        }
     }
 }
