@@ -1,0 +1,68 @@
+@model VNPT_Review.Models.UOfficeReview
+
+@if(Model.reviews.Count() > 0)
+{
+    @foreach (var item in Model.reviews)
+    {
+        <div class="container">
+            <small class="text-muted">#@Html.DisplayFor(model => item.Id)</small>
+            
+            <div class="card p-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center"> 
+                        <img src="~/images/guest.png" width="30" class="user-img rounded-circle mr-2"> 
+                        <small class="font-weight-bold text-primary m-1">
+                            NAMES HERE
+                        </small> 
+                    </div> 
+                    <div class="icons align-items-center"> 
+                        @{
+                            var max = 5;
+                            if(item.Rating == 0)
+                            {
+                                for(int i=0; i<max; i++)
+                                {
+                                    <i class="fas fa-star" style="color:#ffffff; text-shadow: 0 0 2px #000000"></i>
+                                }
+                            }
+                            else 
+                            {
+                                int i;
+                                for(i=0; i<item.Rating; i++)
+                                {
+                                    if(i >= item.Rating - 1 && item.Rating % 1 != 0)
+                                    {
+                                        <i class="fas fa-star-half" style="color:#fffc3d; text-shadow: 0 0 2px #000000"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fas fa-star" style="color:#fffc3d; text-shadow: 0 0 2px #000000"></i>
+                                    }
+                                }
+                                while(i < max) 
+                                {
+                                    <i class="fas fa-star" style="color:#ffffff; text-shadow: 0 0 2px #000000"></i>
+                                    i++;
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+                <small class="d-flex mt-2 ms-5 font-weight-bold">
+                    @Html.DisplayFor(model => item.Content)
+                </small>
+                <div class="action d-flex justify-content-between mt-2 align-items-center">
+                    <div class="reply px-4"> 
+                        <small><a asp-controller="Review" asp-action="Edit" asp-route-id="@item.Id">Edit</a></small> 
+                        <small><a asp-controller="Review" asp-action="Delete">Delete</a></small> 
+                    </div>
+                    <small>2 days ago</small>
+                </div>
+            </div>
+        </div>
+    }
+}
+else 
+{
+    <p>Hiện tại chưa có đánh giá nào.</p>
+}

@@ -49,7 +49,7 @@ namespace VNPT_Review.Controllers
                 }
                 
             }
-            return PartialView("_OfficeCard", model);
+            return PartialView("_OfficeCardPartial", model);
         }
     }
 }

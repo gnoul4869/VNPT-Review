@@ -15789,6 +15789,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Shared\\_ReviewSectionPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_ReviewSectionPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Areas\\Identity\\Pages\\Account\\ConfirmEmail.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\ConfirmEmail.cshtml",
       "FileKind": "mvc"
@@ -15809,8 +15814,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Shared\\_OfficeCard.cshtml",
-      "TargetPath": "Views\\Shared\\_OfficeCard.cshtml",
+      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Shared\\_OfficeCardPartial.cshtml",
+      "TargetPath": "Views\\Shared\\_OfficeCardPartial.cshtml",
       "FileKind": "mvc"
     },
     {

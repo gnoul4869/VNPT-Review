@@ -66,28 +66,6 @@
     <a asp-action="Edit" asp-route-id="@Model.office.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
-<div>
-    @if(Model.reviews.Count() > 0)
-    {
-        @foreach (var item in Model.reviews)
-        {
-            <div class="container">
-                @Html.DisplayNameFor(model => item.Id)
-                @Html.DisplayFor(model => item.Id)
-
-                @Html.DisplayNameFor(model => item.Rating)
-                @Html.DisplayFor(model => item.Rating)
-
-                @Html.DisplayNameFor(model => item.Content)
-                @Html.DisplayFor(model => item.Content)
-
-                <a asp-controller="Review" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                <a asp-controller="Review" asp-action="Delete">Delete</a>
-            </div>
-        }
-    }
-    else 
-    {
-        <p>Hiện tại chưa có đánh giá nào.</p>
-    }
+<div id="reviewSection">
+    <partial name="_ReviewSectionPartial"/>
 </div>
