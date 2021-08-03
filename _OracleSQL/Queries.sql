@@ -204,7 +204,9 @@ BEGIN
             Office.Note,
             Office.FatherId,
             Office.Active,
-            Office.Rating
+            Office.Rating,
+            Office.CreatedAt,
+            Office.UpdatedAt
         FROM Office WHERE Office.Id = P_Id;
     DBMS_SQL.RETURN_RESULT(C1);
 END;

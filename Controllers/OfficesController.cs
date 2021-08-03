@@ -81,7 +81,7 @@ namespace VNPT_Review.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Note,FatherId,Active,CreatedAt,UpdatedAt")] Office office)
+        public async Task<IActionResult> Create([Bind("Id,Name,Note,FatherId,ActiveBool")] Office office)
         {
             if(ModelState.IsValid)
             {
@@ -112,7 +112,7 @@ namespace VNPT_Review.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,Note,FatherId,Active,CreatedAt,UpdatedAt")] Office office)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,Note,FatherId,ActiveBool")] Office office)
         {
             if(id != office.Id)
             {

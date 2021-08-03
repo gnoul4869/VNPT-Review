@@ -26,10 +26,22 @@ namespace VNPT_Review.Models
 
         [Display(Name = "Đơn vị cha")]
         [StringLength(5)]
-        public string FatherId{ get; set; }
+        public string FatherId { get; set; }
 
         [Display(Name = "Hoạt động")]
         public int Active { get; set; }
+
+        public bool ActiveBool 
+        {
+            get
+            {
+                return Active == 1 ? true : false;
+            }
+            set
+            {
+                Active = value ? 1 : 0;
+            }
+        }
 
         public decimal Rating { get; set; }
 
