@@ -70,6 +70,19 @@
             <a asp-controller="Offices" asp-action="Delete" asp-route-id="@Model.office.Id" class="btn btn-danger">Xoá</a>
         </div>
         <hr class="my-4">
+        <div class="container d-flex flex-column">
+            <div class="d-flex flex-start w-100">
+              <img class="rounded-circle shadow-1-strong me-3" src="~/images/guest.png" alt="avatar" width="40" height="40"/>
+              <div class="form-outline w-100">
+                <textarea class="form-control" rows="4"></textarea>
+                <label class="form-label" for="textAreaExample">Hãy nhập đánh giá của bạn...</label>
+              </div>
+            </div>
+            <div class="mt-2 pt-1 ms-auto">
+              <button type="button" class="btn btn-primary btn-sm">Đăng</button>
+              <button type="button" class="btn btn-outline-primary btn-sm">Huỷ</button>
+            </div>
+        </div>
     </div>
 </div>
 <div id="reviewSection">
