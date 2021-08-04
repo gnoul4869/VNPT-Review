@@ -132,6 +132,7 @@ namespace VNPT_Review.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Route("InfiniteOffice")]
         [HttpGet]
         public async Task<IActionResult> InfiniteOffice(int value)
         {
@@ -145,6 +146,7 @@ namespace VNPT_Review.Controllers
             return PartialView("_OfficeCardPartial", model);
         }
 
+        [Route("InfiniteReviewInOffice")]
         public async Task<IActionResult> InfiniteReviewInOffice(string id, int value)
         {
             var max = await _repo.GetReviewCountInOffice(id);
