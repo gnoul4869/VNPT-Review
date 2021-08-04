@@ -33,7 +33,7 @@ namespace VNPT_Review.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Số điện thoại")]
             public string PhoneNumber { get; set; }
         }
 
@@ -88,7 +88,7 @@ namespace VNPT_Review.Areas.Identity.Pages.Account.Manage
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Thông tin cá nhân của bạn đã được cập nhật";
             return RedirectToPage();
         }
     }

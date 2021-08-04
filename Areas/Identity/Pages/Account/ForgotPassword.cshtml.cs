@@ -58,8 +58,8 @@ namespace VNPT_Review.Areas.Identity.Pages.Account
 
                 await _emailSender.SendEmailAsync(
                     Input.Email,
-                    "Reset Password",
-                    $"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    "Đặt lại mật khẩu",
+                    $"Hãy đặt lại mật khẩu của bạn bằng cách nhấp vào <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>đây</a>.");
 
                 return RedirectToPage("./ForgotPasswordConfirmation");
             }

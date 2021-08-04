@@ -45,7 +45,7 @@ namespace VNPT_Review.Areas.Identity.Pages.Account.Manage
         {
             [Required]
             [EmailAddress]
-            [Display(Name = "New email")]
+            [Display(Name = "Email mới")]
             public string NewEmail { get; set; }
         }
 
@@ -101,14 +101,14 @@ namespace VNPT_Review.Areas.Identity.Pages.Account.Manage
                     protocol: Request.Scheme);
                 await _emailSender.SendEmailAsync(
                     Input.NewEmail,
-                    "Confirm your email",
-                    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    "Xác nhận email của bạn",
+                    $"Hãy xác nhận email của bạn bằng cách nhấp vào <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>đây</a>.");
 
-                StatusMessage = "Confirmation link to change email sent. Please check your email.";
+                StatusMessage = "Link xác nhận đã được gửi vào email của bạn. Hãy kiểm tra và xác nhận email.";
                 return RedirectToPage();
             }
 
-            StatusMessage = "Your email is unchanged.";
+            StatusMessage = "Đổi email thất bại.";
             return RedirectToPage();
         }
 
@@ -137,10 +137,10 @@ namespace VNPT_Review.Areas.Identity.Pages.Account.Manage
                 protocol: Request.Scheme);
             await _emailSender.SendEmailAsync(
                 email,
-                "Confirm your email",
-                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                "Xác nhận email của bạn",
+                $"Hãy xác nhận email của bạn bằng cách nhấp vào <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>đây</a>.");
 
-            StatusMessage = "Verification email sent. Please check your email.";
+            StatusMessage = "Email xác nhận đã được gửi. Hãy kiểm tra email của bạn.";
             return RedirectToPage();
         }
     }
