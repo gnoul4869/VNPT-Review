@@ -10,7 +10,7 @@
                     <b>Mã phòng ban: </b>@Html.DisplayFor(modelItem => item.Id)
                 </div>
                 <div class="card-body">
-                    <a asp-controller="Offices" asp-action="Details" asp-route-id="@item.Id" class="stretched-link"></a>
+                    <a asp-controller="Office" asp-action="Details" asp-route-id="@item.Id" class="stretched-link"></a>
                     <h5 class="card-title text-primary">@Html.DisplayFor(modelItem => item.Name)</h5>
                     <p class="card-text h2 font-weight-300">@item.Rating</p>
                     <p class="card-text fs-3">
@@ -58,8 +58,8 @@
                         }
                     </p>
                     <div style="z-index:3; position:relative;">
-                        <a asp-controller="Offices" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Sửa</a>
-                        <a asp-controller="Offices" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Xoá</a>
+                        <a asp-controller="Office" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Sửa</a>
+                        <a asp-controller="Office" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Xoá</a>
                     </div>
                 </div>
             </div>

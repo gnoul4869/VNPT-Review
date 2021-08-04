@@ -66,8 +66,8 @@
             </div>
         </div>
         <div class="text-center mt-4">
-            <a asp-controller="Offices" asp-action="Edit" asp-route-id="@Model.office.Id" class="btn btn-secondary">Sửa</a>
-            <a asp-controller="Offices" asp-action="Delete" asp-route-id="@Model.office.Id" class="btn btn-danger">Xoá</a>
+            <a asp-controller="Office" asp-action="Edit" asp-route-id="@Model.office.Id" class="btn btn-secondary">Sửa</a>
+            <a asp-controller="Office" asp-action="Delete" asp-route-id="@Model.office.Id" class="btn btn-danger">Xoá</a>
         </div>
         <hr class="my-4">
         <div class="container d-flex flex-column">
@@ -126,7 +126,7 @@
                 if(ongoing == false) {
                     $.ajax({
                         type: 'GET',
-                        url: '@Url.Action("InfiniteReviewInOffice", "Offices")',
+                        url: '@Url.Action("InfiniteReviewInOffice", "Office")',
                         data: { 'id': '@Model.office.Id', 'value': value },
                         beforeSend: function()  {
                             ongoing = true;

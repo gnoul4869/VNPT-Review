@@ -432,12 +432,6 @@ C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\bin\Debug\net5
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\VNPT_Review.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Offices\Create.cshtml.g.cs
-C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Offices\Delete.cshtml.g.cs
-C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Offices\Details.cshtml.g.cs
-C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Offices\Edit.cshtml.g.cs
-C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Offices\Index.cshtml.g.cs
-C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Offices\Reviews.cshtml.g.cs
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Home\Contact.cshtml.g.cs
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\bin\Debug\net5.0\VNPT_Review.StaticWebAssets.xml
@@ -491,3 +485,9 @@ C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Shared\_OfficeCardPartial.cshtml.g.cs
 C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Shared\_ReviewSectionPartial.cshtml.g.cs
+C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Office\Create.cshtml.g.cs
+C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Office\Delete.cshtml.g.cs
+C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Office\Details.cshtml.g.cs
+C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Office\Edit.cshtml.g.cs
+C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Office\Index.cshtml.g.cs
+C:\Users\gnoul\Synced Folder\Google Drive\Web\_webapp\VNPT_Review\obj\Debug\net5.0\Razor\Views\Office\Reviews.cshtml.g.cs

@@ -11,19 +11,19 @@ using VNPT_Review.Services;
 
 namespace VNPT_Review.Controllers
 {
-    public class OfficesController : Controller
+    public class OfficeController : Controller
     {
         private readonly IOfficeRepository _repo;
         
         private readonly IOfficeService _svc;
 
-        public OfficesController(IOfficeRepository repo, IOfficeService svc)
+        public OfficeController(IOfficeRepository repo, IOfficeService svc)
         {
             _repo = repo;
             _svc = svc;
         }
 
-        // GET: Offices
+        [Route("/OfficeList")]
         public async Task<IActionResult> Index(OfficeListRequest request)
         {
             var model = new UOfficeReview();
@@ -32,7 +32,7 @@ namespace VNPT_Review.Controllers
             return View(model);
         }
 
-        // GET: Offices/Details/5
+        [Route("/Office/{id}")]
         public async Task<IActionResult> Details(string id)
         {
             if(id == null)

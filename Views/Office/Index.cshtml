@@ -5,7 +5,7 @@
 }
 
 <div class="text-center">
-    <h1>Danh sách phòng ban VNPT</h1>
+    <h1 class="text-primary">Danh sách phòng ban VNPT</h1>
 </div>
 
 <input type="button" class="btn btn-primary float-end" value="Hiển thị theo danh sách" id="toggleButton" onclick="this.blur()">
@@ -104,11 +104,11 @@
                         }
                     },
                     { "render": function(data, type, row) {
-                            return "<a href='Offices/Edit/" + row.id + "' class='btn btn-secondary d-grid gap-2'>Sửa</a>";
+                            return "<a href='Office/Edit/" + row.id + "' class='btn btn-secondary d-grid gap-2'>Sửa</a>";
                         }
                     },
                     { "render": function(data, type, row) {
-                            return "<a href='Offices/Delete/" + row.id + "' class='btn btn-danger d-grid gap-2'>Xoá</a>";
+                            return "<a href='Office/Delete/" + row.id + "' class='btn btn-danger d-grid gap-2'>Xoá</a>";
                         } 
                     }
                 ],
@@ -142,7 +142,7 @@
 
             $('#officeTable').on('click', 'tbody tr', function() {
                 var row = table.row($(this)).data();
-                window.location.href = "Offices/Details/" + row.id;
+                window.location.href = "/Office/" + row.id;
             });
 
             $('#officeTable').parents('div.dataTables_wrapper').first().hide();
@@ -164,7 +164,7 @@
                     if(ongoing == false) {
                         $.ajax({
                             type: 'GET',
-                            url: '@Url.Action("InfiniteOffice", "Offices")',
+                            url: '@Url.Action("InfiniteOffice", "Office")',
                             data: { 'value': value },
                             beforeSend: function()  {
                                 ongoing = true;
