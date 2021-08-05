@@ -65,10 +65,13 @@
                 }
             </div>
         </div>
-        <div class="text-center mt-4">
-            <a asp-controller="Office" asp-action="Edit" asp-route-id="@Model.office.Id" class="btn btn-secondary">Sửa</a>
-            <a asp-controller="Office" asp-action="Delete" asp-route-id="@Model.office.Id" class="btn btn-danger">Xoá</a>
-        </div>
+        @if(User.IsInRole("Admin"))
+        {
+            <div class="text-center mt-4">
+                <a asp-controller="Office" asp-action="Edit" asp-route-id="@Model.office.Id" class="btn btn-secondary">Sửa</a>
+                <a asp-controller="Office" asp-action="Delete" asp-route-id="@Model.office.Id" class="btn btn-danger">Xoá</a>
+            </div>
+        }
         <hr class="my-4">
         <div class="container d-flex flex-column">
             <div class="d-flex flex-start w-100">

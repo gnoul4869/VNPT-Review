@@ -8,11 +8,13 @@
     <h1 class="text-primary">Danh sách phòng ban VNPT</h1>
 </div>
 
-<input type="button" class="btn btn-primary float-end" value="Hiển thị theo danh sách" id="toggleButton" onclick="this.blur()">
-
-<p>
-    <a asp-action="Create" class="btn btn-primary">Thêm</a>
-</p>
+<div class="d-flex py-2">
+    @if(User.IsInRole("Admin"))
+    {
+        <a asp-action="Create" class="btn btn-primary">Thêm</a>
+    }
+    <input type="button" class="btn btn-primary ms-auto" value="Hiển thị theo danh sách" id="toggleButton" onclick="this.blur()">
+</div>
 
 <table id="officeTable" class="hover" style="width:100%">
     <thead>
@@ -144,6 +146,12 @@
                 var row = table.row($(this)).data();
                 window.location.href = "/Office/" + row.id;
             });
+
+            if('@User.IsInRole("Admin")' == 'False')
+            {
+                table.column(6).visible(false);
+                table.column(7).visible(false);
+            }
 
             $('#officeTable').parents('div.dataTables_wrapper').first().hide();
 

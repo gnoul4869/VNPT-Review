@@ -57,7 +57,6 @@ namespace VNPT_Review.Repository
         }
         public async Task<Office> CreateOffice(Office office)
         {
-            
             await db.ExecuteAsync("CREATE_OFFICE",
             new 
             {
@@ -72,9 +71,6 @@ namespace VNPT_Review.Repository
 
         public async Task<Office> UpdateOffice(Office office)
         {
-            var boolActive = 0;
-            if(office.Active.ToString() == "True")
-                boolActive = 1;
             await db.ExecuteAsync("UPDATE_OFFICE",
             new 
             {
@@ -82,7 +78,7 @@ namespace VNPT_Review.Repository
                 P_Name = office.Name,
                 P_Note = office.Note,
                 P_FatherId = office.FatherId,
-                P_Active = boolActive
+                P_Active = office.Active
             }, commandType: CommandType.StoredProcedure);
             return office;
         }

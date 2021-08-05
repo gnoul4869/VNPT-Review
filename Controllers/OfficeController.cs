@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -49,15 +50,17 @@ namespace VNPT_Review.Controllers
             return View(model);
         }
 
-        // GET: Offices/Create
+        [Authorize]
+        [Route("/Office/Create")]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Offices/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
+        [Route("/Office/Create")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Note,FatherId,ActiveBool")] Office office)
@@ -70,7 +73,7 @@ namespace VNPT_Review.Controllers
             return View(office);
         }
 
-        // GET: Offices/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(string id)
         {
             if(id == null)
@@ -86,9 +89,9 @@ namespace VNPT_Review.Controllers
             return View(office);
         }
 
-        // POST: Offices/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Id,Name,Note,FatherId,ActiveBool")] Office office)
@@ -106,7 +109,7 @@ namespace VNPT_Review.Controllers
             return View(office);
         }
 
-        // GET: Offices/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(string id)
         {
             if(id == null)
@@ -123,7 +126,7 @@ namespace VNPT_Review.Controllers
             return View(office);
         }
 
-        // POST: Offices/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)

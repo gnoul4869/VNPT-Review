@@ -11,11 +11,12 @@ namespace VNPT_Review.Models
     public partial class Office
     {
         [Key]
+        [Required(ErrorMessage = "{0} không được để trống.")]
         [Display(Name = "Mã phòng ban")]
         [StringLength(5)]
         public string Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "{0} không được để trống.")]
         [Display(Name = "Tên phòng ban")]
         [StringLength(50)]
         public string Name { get; set; }

@@ -54,9 +54,12 @@
                 <div class="action d-flex mt-2 align-items-center ms-auto">
                     <small class="time" title="@item.CreatedAt"></small>
                 </div>
-                <div class="ms-auto"> 
-                    <small class="del text-danger me-3" style="cursor:pointer" data-id="@item.Id" data-office="@Model.office.Id">Xoá</small> 
-                </div>
+                @if(User.IsInRole("Admin"))
+                {
+                    <div class="ms-auto"> 
+                        <small class="del text-danger me-3" style="cursor:pointer" data-id="@item.Id" data-office="@Model.office.Id">Xoá</small> 
+                    </div>
+                }
             </div>
         </div>
     }

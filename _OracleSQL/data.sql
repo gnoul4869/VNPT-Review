@@ -1,3 +1,14 @@
+-- Admin & User ------------------------------------------------------------
+INSERT INTO "AspNetRoles" VALUES(
+    '01',
+    'Admin',
+    'ADMIN',
+    '1bfa31f5-fc3b-46d7-9b73-61229aae58a9'
+);
+INSERT INTO "AspNetUserRoles" VALUES(
+    '1ab1c6ec-51ee-47e9-8bde-dc1945e5c965',
+    '01'
+);
 -- Office's Data ----------------------------------------------------------
 INSERT INTO Office VALUES(
     '01',

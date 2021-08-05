@@ -57,10 +57,13 @@
                             }
                         }
                     </p>
-                    <div style="z-index:3; position:relative;">
-                        <a asp-controller="Office" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Sửa</a>
-                        <a asp-controller="Office" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Xoá</a>
-                    </div>
+                    @if(User.IsInRole("Admin"))
+                    {
+                        <div style="z-index:3; position:relative;">
+                            <a asp-controller="Office" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Sửa</a>
+                            <a asp-controller="Office" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Xoá</a>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
