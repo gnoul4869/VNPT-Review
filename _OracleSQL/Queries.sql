@@ -15,13 +15,16 @@ CREATE TABLE Review (
     Id CHARACTER(64),
     OfficeId CHARACTER(5),
     Rating DECIMAL(2,1),
+    UserId NVARCHAR2(450),
     Content VARCHAR2(200),
     CreatedAt DATE DEFAULT CURRENT_TIMESTAMP,
     UpdatedAt DATE DEFAULT CURRENT_TIMESTAMP,
     --
     PRIMARY KEY (Id),
     CONSTRAINT FK_ID
-        FOREIGN KEY (OfficeId) REFERENCES Office (Id) ON DELETE CASCADE
+        FOREIGN KEY (OfficeId) REFERENCES Office (Id) ON DELETE CASCADE,
+    CONSTRAINT FK_USERNAME
+        FOREIGN KEY (UserId) REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
 );
 -- SEQUENCES ----------------------------------------------------------------
 CREATE SEQUENCE REVIEW_SEQ 
@@ -263,6 +266,18 @@ BEGIN
         Office.Id = P_Id;
 END;
 -- Review's PROCEDURE ------------------------------------------------------
+CREATE OR REPLACE PROCEDURE GET_REVIEW_COUNT_IN_OFFICE
+(
+    P_OfficeId IN CHARACTER
+)
+AS
+    C1 SYS_REFCURSOR;
+BEGIN
+    OPEN C1 FOR
+        SELECT COUNT(*) FROM Review WHERE Review.OfficeId = P_OfficeId;
+    DBMS_SQL.RETURN_RESULT(C1);
+END;
+-- 
 CREATE OR REPLACE PROCEDURE GET_INFINITE_REVIEW_IN_OFFICE
 (
     P_Id IN CHARACTER,
@@ -312,6 +327,7 @@ END;
 -- 
 CREATE OR REPLACE PROCEDURE CREATE_REVIEW
 (
+    P_UserId IN NVARCHAR2,
     P_OfficeId IN CHARACTER,
     P_Rating IN DECIMAL,
     P_Content IN VARCHAR2
@@ -321,6 +337,7 @@ BEGIN
     INSERT INTO Review VALUES
     (
         REVIEW_SEQ.NEXTVAL,
+        P_UserId,
         P_OfficeId,
         P_Rating,
         P_Content,
