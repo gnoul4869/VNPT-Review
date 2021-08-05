@@ -1,4 +1,21 @@
 -- Admin & User ------------------------------------------------------------
+INSERT INTO "AspNetUsers" VALUES(
+    '1ab1c6ec-51ee-47e9-8bde-dc1945e5c965',
+    'ttluong4869@gmail.com',
+    'TTLUONG4869@GMAIL.COM',
+    'ttluong4869@gmail.com',
+    'TTLUONG4869@GMAIL.COM',
+    '1',
+    'AQAAAAEAACcQAAAAEMO2nbrIYFKLqPwIrgqmM8IikLrWHz', --Password: Eye$hield21
+    'J4L7XYQJVFQY3VJS5UE3EOBZ2CHRG4LG',
+    'cf749eb4-a87a-47d6-ba44-b5c934ffcabb',
+    '0913245842',
+    '0',
+    '0',
+    '',
+    '1',
+    '0'
+);
 INSERT INTO "AspNetRoles" VALUES(
     '01',
     'Admin',
