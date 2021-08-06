@@ -1,5 +1,6 @@
 @model VNPT_Review.Models.UOfficeReview
-
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
 
 @{
     ViewData["Title"] = Model.office.Name;
@@ -74,24 +75,31 @@
             </div>
         }
         <hr class="my-4">
-        <div class="container d-flex flex-column">
-            <form asp-controller="Review" asp-action="Create" method="post" id="reviewBox">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="d-flex flex-start w-100">
-                    <img class="rounded-circle shadow-1-strong me-3" src="~/images/guest.png" alt="avatar" width="40" height="40"/>
-                    <div class="form-outline w-100">
-                        <textarea asp-for="review.Content" class="form-control" rows="4" form="reviewBox"></textarea>
-                        <input type="hidden" asp-for="review.OfficeId" value="@Model.office.Id"/>
-                        <input type="hidden" name="returnUrl" value="@Context.Request.Path"/>
-                        <label class="form-label">Hãy nhập đánh giá của bạn...</label>
+        @if(SignInManager.IsSignedIn(User))
+        {
+            <div class="container d-flex flex-column">
+                <form asp-controller="Review" asp-action="Create" method="post" id="reviewBox">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="d-flex flex-start w-100">
+                        <img class="rounded-circle shadow-1-strong me-3" src="~/images/guest.png" alt="avatar" width="40" height="40"/>
+                        <div class="form-outline w-100">
+                            <textarea asp-for="review.Content" class="form-control" rows="4" form="reviewBox"></textarea>
+                            <input type="hidden" asp-for="review.OfficeId" value="@Model.office.Id"/>
+                            <input type="hidden" name="returnUrl" value="@Context.Request.Path"/>
+                            <label class="form-label">Hãy nhập đánh giá của bạn...</label>
+                        </div>
                     </div>
-                </div>
-                <div class="d-flex">
-                    <input type="submit" class="btn btn-primary btn-sm ms-auto mx-1" value="Đăng" onclick="this.blur()"/>
-                    <button type="button" class="btn btn-outline-primary btn-sm" onclick="this.blur()">Huỷ</button>
-                </div>
-            </form>
-        </div>
+                    <div class="d-flex">
+                        <input type="submit" class="btn btn-primary btn-sm ms-auto mx-1" value="Đăng" onclick="this.blur()"/>
+                        <button type="button" class="btn btn-outline-primary btn-sm" onclick="this.blur()">Huỷ</button>
+                    </div>
+                </form>
+            </div>
+        }
+        else
+        {
+            <h4 class="text-center text-muted">Hãy đăng nhập tài khoản để bắt đầu đánh giá.</h4>
+        }
     </div>
 </div>
 <div id="reviewSection">

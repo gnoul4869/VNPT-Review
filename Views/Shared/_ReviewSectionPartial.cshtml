@@ -56,9 +56,11 @@
                 </div>
                 @if(User.IsInRole("Admin"))
                 {
-                    <div class="ms-auto"> 
-                        <small class="del text-danger me-3" style="cursor:pointer" data-id="@item.Id" data-office="@Model.office.Id">Xoá</small> 
-                    </div>
+                    <form asp-controller="Review" asp-action="Delete" class="ms-auto" method="post">
+                        <input type="hidden" name="id" value="@item.Id"/>
+                        <input type="hidden" name="officeId" value="@item.OfficeId"/>
+                        <input type="submit" class="text-danger my-1" style="border:0px #000 solid;background-color:transparent;" value="Xoá" data-id="@item.Id" data-office="@Model.office.Id"/> 
+                    </form>
                 }
             </div>
         </div>
@@ -66,5 +68,5 @@
 }
 else 
 {
-    <h5 class="text-center text-muted">Hiện tại chưa có đánh giá nào.</h5>
+    <h5 class="text-center text-muted py-5">Hiện tại chưa có đánh giá nào.</h5>
 }

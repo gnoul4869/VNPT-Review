@@ -29,12 +29,8 @@ namespace VNPT_Review.Controllers
             {
                 await _repo.CreateReview(review);
                 await _repo.UpdateOfficeRating(review.OfficeId);
-                if(!string.IsNullOrEmpty(returnUrl))
-                    return Redirect(returnUrl);
-                else
-                    return RedirectToAction("Index", "Office");
             }
-            return RedirectToAction("Index", "Home");
+            return Redirect(returnUrl);
         }
 
         [HttpPost]
@@ -48,9 +44,12 @@ namespace VNPT_Review.Controllers
         }
 
         [HttpPost]
-        public async Task Delete(string id, string officeId)
+        public async Task<IActionResult> Delete(string id, string officeId)
         {
             await _repo.DeleteReview(id);
+            await _repo.UpdateOfficeRating(officeId);
+            var url = string.Format("/Office/{0}", officeId);
+            return Redirect(url);
         }
 
     }
