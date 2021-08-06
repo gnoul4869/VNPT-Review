@@ -76,9 +76,6 @@ body {
 }
 /* Star Rating
 -------------------------------------------------- */
-.star-rating form {
-  display: none;
-}
 .star-rating input {
   display: none;
 }

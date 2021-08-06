@@ -33,15 +33,15 @@ namespace VNPT_Review.Controllers
             return Redirect(returnUrl);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task Edit([Bind("OfficeId,Content,Rating")] Review review)
-        {
-            if(ModelState.IsValid)
-            {
-                await _repo.UpdateReview(review);      
-            }
-        }
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+        // public async Task Edit([Bind("OfficeId,Content,Rating")] Review review)
+        // {
+        //     if(ModelState.IsValid)
+        //     {
+        //         await _repo.UpdateReview(review);      
+        //     }
+        // }
 
         [HttpPost]
         public async Task<IActionResult> Delete(string id, string officeId)

@@ -24,7 +24,8 @@ namespace VNPT_Review.Models
         [StringLength(5)]
         public string OfficeId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Hãy chọn mức đánh giá (Tối đa 5 sao).")]
+        [Range(1,5, ErrorMessage = "Hãy chọn mức đánh giá (Tối đa 5 sao).")]
         [Display(Name = "Đánh giá")]
         public decimal Rating { get; set; }
 

@@ -85,7 +85,6 @@
             {
                 <div class="container">
                     <form asp-controller="Review" asp-action="Create" method="post" id="reviewBox">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="d-flex flex-start w-100">
                             <img class="rounded-circle shadow-1-strong me-3 my-5" src="~/images/guest.png" alt="avatar" width="40" height="40"/>
                             <div class="form-outline w-100">
@@ -96,16 +95,20 @@
                             </div>
                         </div>
                         <div class="star-rating d-flex flex-row-reverse">
-                            <input type="radio" asp-for="review.Rating" id="rating-5" value="5">
+                            <input type="radio" asp-for="review.Rating" id="rating-5" value="5"/>
                             <label for="rating-5" class="fas fa-star"></label>
-                            <input type="radio" asp-for="review.Rating" id="rating-4" value="4">
+                            <input type="radio" asp-for="review.Rating" id="rating-4" value="4"/>
                             <label for="rating-4" class="fas fa-star"></label>
-                            <input type="radio" asp-for="review.Rating" id="rating-3" value="3">
+                            <input type="radio" asp-for="review.Rating" id="rating-3" value="3"/>
                             <label for="rating-3" class="fas fa-star"></label>
-                            <input type="radio" asp-for="review.Rating" id="rating-2" value="2">
+                            <input type="radio" asp-for="review.Rating" id="rating-2" value="2"/>
                             <label for="rating-2" class="fas fa-star"></label>
-                            <input type="radio" asp-for="review.Rating" id="rating-1" value="1">
+                            <input type="radio" asp-for="review.Rating" id="rating-1" value="1"/>
                             <label for="rating-1" class="fas fa-star"></label>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <span asp-validation-for="review.Content" class="text-danger d-flex justify-content-center"></span>
+                            <span asp-validation-for="review.Rating" class="text-danger d-flex justify-content-center"></span>
                         </div>
                         <div class="d-flex">
                             <input type="submit" class="btn btn-primary btn-sm ms-auto mx-1" value="Đăng" onclick="this.blur()"/>
@@ -129,8 +132,10 @@
         <span class="sr-only">Loading...</span>
     </div>
 </div>
+
 @section Scripts
 {
+
     <script>
 
         $('#loader').children().hide();
@@ -185,4 +190,11 @@
         };
 
     </script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script> 
+        $.validator.setDefaults({ ignore: null }); 
+    </script>
+
 }
