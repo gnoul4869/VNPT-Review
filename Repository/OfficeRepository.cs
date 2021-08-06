@@ -106,5 +106,11 @@ namespace VNPT_Review.Repository
             return result.FirstOrDefault();
         }
 
+        public async Task<int> ExistUserReviewInOffice(string userId, string officeId)
+        {
+            var result = await db.QueryAsync<int>("EXIST_USER_REVIEW_IN_OFFICE", new { P_UserId = userId, P_OfficeId = officeId }, commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+        }
+
     }
 }

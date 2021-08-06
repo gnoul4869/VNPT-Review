@@ -77,24 +77,43 @@
         <hr class="my-4">
         @if(SignInManager.IsSignedIn(User))
         {
-            <div class="container d-flex flex-column">
-                <form asp-controller="Review" asp-action="Create" method="post" id="reviewBox">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="d-flex flex-start w-100">
-                        <img class="rounded-circle shadow-1-strong me-3" src="~/images/guest.png" alt="avatar" width="40" height="40"/>
-                        <div class="form-outline w-100">
-                            <textarea asp-for="review.Content" class="form-control" rows="4" form="reviewBox"></textarea>
-                            <input type="hidden" asp-for="review.OfficeId" value="@Model.office.Id"/>
-                            <input type="hidden" name="returnUrl" value="@Context.Request.Path"/>
-                            <label class="form-label">Hãy nhập đánh giá của bạn...</label>
+            @if(Model.office.ExistUserReview > 0)
+            {
+                <h4 class="text-center text-muted">Bạn đã đánh giá phòng ban này rồi.</h4>
+            }
+            else
+            {
+                <div class="container">
+                    <form asp-controller="Review" asp-action="Create" method="post" id="reviewBox">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="d-flex flex-start w-100">
+                            <img class="rounded-circle shadow-1-strong me-3 my-5" src="~/images/guest.png" alt="avatar" width="40" height="40"/>
+                            <div class="form-outline w-100">
+                                <label class="form-label" for="textarea">Hãy nhập đánh giá của bạn...</label>
+                                <textarea asp-for="review.Content" class="form-control" rows="4" form="reviewBox" id="textarea"></textarea>
+                                <input type="hidden" asp-for="review.OfficeId" value="@Model.office.Id"/>
+                                <input type="hidden" name="returnUrl" value="@Context.Request.Path"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="d-flex">
-                        <input type="submit" class="btn btn-primary btn-sm ms-auto mx-1" value="Đăng" onclick="this.blur()"/>
-                        <button type="button" class="btn btn-outline-primary btn-sm" onclick="this.blur()">Huỷ</button>
-                    </div>
-                </form>
-            </div>
+                        <div class="star-rating d-flex flex-row-reverse">
+                            <input type="radio" asp-for="review.Rating" id="rating-5" value="5">
+                            <label for="rating-5" class="fas fa-star"></label>
+                            <input type="radio" asp-for="review.Rating" id="rating-4" value="4">
+                            <label for="rating-4" class="fas fa-star"></label>
+                            <input type="radio" asp-for="review.Rating" id="rating-3" value="3">
+                            <label for="rating-3" class="fas fa-star"></label>
+                            <input type="radio" asp-for="review.Rating" id="rating-2" value="2">
+                            <label for="rating-2" class="fas fa-star"></label>
+                            <input type="radio" asp-for="review.Rating" id="rating-1" value="1">
+                            <label for="rating-1" class="fas fa-star"></label>
+                        </div>
+                        <div class="d-flex">
+                            <input type="submit" class="btn btn-primary btn-sm ms-auto mx-1" value="Đăng" onclick="this.blur()"/>
+                            <button type="button" class="btn btn-outline-primary btn-sm" onclick="this.blur()">Huỷ</button>
+                        </div>
+                    </form>
+                </div>
+            }
         }
         else
         {

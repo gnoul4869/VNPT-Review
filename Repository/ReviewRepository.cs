@@ -33,7 +33,7 @@ namespace VNPT_Review.Repository
             new {
                 P_UserId = review.UserId,
                 P_OfficeId = review.OfficeId,
-                P_RATING = 5,
+                P_RATING = review.Rating,
                 P_Content = review.Content
             }, commandType: CommandType.StoredProcedure);
             return review;

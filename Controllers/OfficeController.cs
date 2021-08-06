@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -18,10 +19,13 @@ namespace VNPT_Review.Controllers
         
         private readonly IOfficeService _svc;
 
-        public OfficeController(IOfficeRepository repo, IOfficeService svc)
+        private readonly UserManager<IdentityUser> _userManager;
+
+        public OfficeController(IOfficeRepository repo, IOfficeService svc, UserManager<IdentityUser> userManager)
         {
-            _repo = repo;
+            _repo = repo; 
             _svc = svc;
+            _userManager = userManager;
         }
 
         [Route("/OfficeList")]
@@ -43,6 +47,10 @@ namespace VNPT_Review.Controllers
 
             var model = new UOfficeReview();
             model.office = await _repo.GetOffice(id);
+
+            var userId = _userManager.GetUserId(User);
+            model.office.ExistUserReview = await _repo.ExistUserReviewInOffice(userId, id);
+
             if(model.office == null) 
                 return NotFound();
             model.reviews = await _repo.GetInfiniteReviewInOffice(id, 4);

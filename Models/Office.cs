@@ -55,6 +55,7 @@ namespace VNPT_Review.Models
     
     public partial class Office
     {
+        public int ExistUserReview { get; set; }
         public int TotalCount { get; set; }
         public int FilteredCount { get; set; }
     }

@@ -41,4 +41,5 @@ namespace VNPT_Review.Models
 
         public virtual Office Office { get; set; }
     }
+
 }

@@ -31,5 +31,7 @@ namespace VNPT_Review.Repository
 
         Task<int> GetReviewCountInOffice(string id);
 
+        Task<int> ExistUserReviewInOffice(string userId, string officeId);
+
     }
 }

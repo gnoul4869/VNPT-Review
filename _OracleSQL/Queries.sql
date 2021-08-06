@@ -266,6 +266,19 @@ BEGIN
         Office.Id = P_Id;
 END;
 -- Review's PROCEDURE ------------------------------------------------------
+CREATE OR REPLACE PROCEDURE EXIST_USER_REVIEW_IN_OFFICE
+(
+    P_UserId IN NVARCHAR2,
+    P_OfficeId IN CHARACTER
+)
+AS
+    C1 SYS_REFCURSOR;
+BEGIN
+    OPEN C1 FOR
+        SELECT COUNT(1) FROM Review WHERE Review.UserId = P_UserId AND Review.OfficeId = P_OfficeId;
+    DBMS_SQL.RETURN_RESULT(C1);
+END;
+-- 
 CREATE OR REPLACE PROCEDURE GET_REVIEW_COUNT_IN_OFFICE
 (
     P_OfficeId IN CHARACTER
