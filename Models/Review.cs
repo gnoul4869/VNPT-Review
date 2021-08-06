@@ -14,6 +14,11 @@ namespace VNPT_Review.Models
         [StringLength(64)]
         public string Id { get; set; }
 
+        [StringLength(256)]
+        public string UserId { get; set; }
+
+        public string UserName { get; set; }
+
         [ForeignKey("OFFICE")]
         [Display(Name = "Mã phòng ban")]
         [StringLength(5)]
@@ -23,7 +28,7 @@ namespace VNPT_Review.Models
         [Display(Name = "Đánh giá")]
         public decimal Rating { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Hãy nhập nội dung đánh giá của bạn.")]
         [Display(Name = "Nội dung đánh giá")]
         [StringLength(200)]
         public string Content { get; set; }

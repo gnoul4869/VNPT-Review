@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
 using VNPT_Review.Models;
 using VNPT_Review.Repository;
+using Microsoft.AspNetCore.Identity;
 
 namespace VNPT_Review.Controllers 
 {
@@ -11,26 +12,34 @@ namespace VNPT_Review.Controllers
     {
         private readonly IReviewRepository _repo;
 
-        public ReviewController(IReviewRepository repo)
+        private readonly UserManager<IdentityUser> _userManager;
+
+        public ReviewController(IReviewRepository repo, UserManager<IdentityUser> userManager)
         {
             _repo = repo;
+            _userManager = userManager;
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,OfficeId,Rating,Content")] Review review)
+        public async Task<IActionResult> Create([Bind("OfficeId,Content")] Review review, string returnUrl)
         {
+            review.UserId = _userManager.GetUserId(User);
             if(ModelState.IsValid) 
             {
                 await _repo.CreateReview(review);
-                return RedirectToAction("Index", "OfficesController");
+                await _repo.UpdateOfficeRating(review.OfficeId);
+                if(!string.IsNullOrEmpty(returnUrl))
+                    return Redirect(returnUrl);
+                else
+                    return RedirectToAction("Index", "Office");
             }
-            return RedirectToAction("Index", "OfficesController");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task Edit([Bind("Id,OfficeId,Rating,Content")] Review review)
+        public async Task Edit([Bind("OfficeId,Content")] Review review)
         {
             if(ModelState.IsValid)
             {

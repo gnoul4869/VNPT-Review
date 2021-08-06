@@ -104,6 +104,7 @@ namespace VNPT_Review.Repository
         {
             var result = await db.QueryAsync<int>("GET_REVIEW_COUNT_IN_OFFICE", new { P_OfficeId = id }, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
-        } 
+        }
+
     }
 }

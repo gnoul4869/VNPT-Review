@@ -13,9 +13,9 @@ CREATE TABLE Office (
 -- 
 CREATE TABLE Review (
     Id CHARACTER(64),
+    UserId NVARCHAR2(450),
     OfficeId CHARACTER(5),
     Rating DECIMAL(2,1),
-    UserId NVARCHAR2(450),
     Content VARCHAR2(200),
     CreatedAt DATE DEFAULT CURRENT_TIMESTAMP,
     UpdatedAt DATE DEFAULT CURRENT_TIMESTAMP,
@@ -287,11 +287,12 @@ AS
     C1 SYS_REFCURSOR;
 BEGIN
     OPEN C1 FOR
-        SELECT DISTINCT Review.Id, Review.OfficeId, Review.Rating, 
+        SELECT DISTINCT Review.Id, "AspNetUsers"."UserName", Review.OfficeId, Review.Rating, 
             Review.Content, Review.CreatedAt, Review.UpdatedAt
-                FROM Review INNER JOIN Office ON Review.OfficeId = P_Id 
-                    ORDER BY Review.CreatedAt DESC 
-                        FETCH NEXT P_Value ROWS ONLY;
+                FROM Review INNER JOIN "AspNetUsers" ON Review.UserId = "AspNetUsers"."Id" 
+                    INNER JOIN Office ON Review.OfficeId = P_Id
+                        ORDER BY Review.CreatedAt DESC 
+                            FETCH NEXT P_Value ROWS ONLY;
     DBMS_SQL.RETURN_RESULT(C1);
 END;
 -- 
@@ -303,10 +304,11 @@ AS
     C1 SYS_REFCURSOR;
 BEGIN
     OPEN C1 FOR 
-        SELECT DISTINCT Review.Id, Review.OfficeId, Review.Rating, 
+        SELECT DISTINCT Review.Id, "AspNetUsers"."UserName", Review.OfficeId, Review.Rating, 
             Review.Content, Review.CreatedAt, Review.UpdatedAt
-                FROM Review INNER JOIN Office ON Review.OfficeId = P_Id 
-                    ORDER BY Review.CreatedAt DESC;
+                FROM Review INNER JOIN "AspNetUsers" ON Review.UserId = "AspNetUsers"."Id" 
+                    INNER JOIN Office ON Review.OfficeId = P_Id
+                        ORDER BY Review.CreatedAt DESC;
     DBMS_SQL.RETURN_RESULT(C1);
 END;
 -- 
@@ -319,9 +321,10 @@ AS
     C1 SYS_REFCURSOR;
 BEGIN
     OPEN C1 FOR
-        SELECT DISTINCT Review.Id, Review.OfficeId, Review.Rating, 
+        SELECT DISTINCT Review.Id, "AspNetUsers"."UserName", Review.OfficeId, Review.Rating, 
             Review.Content, Review.CreatedAt, Review.UpdatedAt
-                FROM Review INNER JOIN Office ON Review.OfficeId = P_OfficeId AND Review.Id = P_ReviewId;
+                FROM Review INNER JOIN "AspNetUsers" ON Review.UserId = "AspNetUsers"."Id" 
+                    INNER JOIN Office ON Review.OfficeId = P_OfficeId AND Review.Id = P_ReviewId;
     DBMS_SQL.RETURN_RESULT(C1);
 END;
 -- 

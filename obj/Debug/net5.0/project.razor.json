@@ -15669,11 +15669,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Offices\\Create.cshtml",
-      "TargetPath": "Views\\Offices\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Areas\\Identity\\Pages\\Account\\Manage\\TwoFactorAuthentication.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\TwoFactorAuthentication.cshtml",
       "FileKind": "mvc"
@@ -15684,13 +15679,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Areas\\Identity\\Pages\\Account\\Manage\\GenerateRecoveryCodes.cshtml",
-      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\GenerateRecoveryCodes.cshtml",
+      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Office\\Delete.cshtml",
+      "TargetPath": "Views\\Office\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Offices\\Delete.cshtml",
-      "TargetPath": "Views\\Offices\\Delete.cshtml",
+      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Areas\\Identity\\Pages\\Account\\Manage\\GenerateRecoveryCodes.cshtml",
+      "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\GenerateRecoveryCodes.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15704,8 +15699,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Offices\\Edit.cshtml",
-      "TargetPath": "Views\\Offices\\Edit.cshtml",
+      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Office\\Reviews.cshtml",
+      "TargetPath": "Views\\Office\\Reviews.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15724,8 +15719,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Office\\Details.cshtml",
+      "TargetPath": "Views\\Office\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Office\\Edit.cshtml",
+      "TargetPath": "Views\\Office\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Office\\Index.cshtml",
+      "TargetPath": "Views\\Office\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15759,6 +15769,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Office\\Create.cshtml",
+      "TargetPath": "Views\\Office\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Areas\\Identity\\Pages\\Account\\Manage\\DownloadPersonalData.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\DownloadPersonalData.cshtml",
       "FileKind": "mvc"
@@ -15771,11 +15786,6 @@
     {
       "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Offices\\Index.cshtml",
-      "TargetPath": "Views\\Offices\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15839,11 +15849,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Offices\\Details.cshtml",
-      "TargetPath": "Views\\Offices\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Areas\\Identity\\Pages\\Account\\Manage\\ShowRecoveryCodes.cshtml",
       "TargetPath": "Areas\\Identity\\Pages\\Account\\Manage\\ShowRecoveryCodes.cshtml",
       "FileKind": "mvc"
@@ -15866,11 +15871,6 @@
     {
       "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\gnoul\\Synced Folder\\Google Drive\\Web\\_webapp\\VNPT_Review\\Views\\Offices\\Reviews.cshtml",
-      "TargetPath": "Views\\Offices\\Reviews.cshtml",
       "FileKind": "mvc"
     },
     {

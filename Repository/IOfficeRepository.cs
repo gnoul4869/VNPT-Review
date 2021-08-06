@@ -10,17 +10,26 @@ namespace VNPT_Review.Repository
     public interface IOfficeRepository 
     {
         Task<List<Office>> GetInfiniteOffice(int value);
+
         Task<List<Office>> GetPaginatedOffice(OfficeListRequest request);
+
         Task<Office> GetOffice(string id);
+
         Task<List<Office>> GetAllOffice();
+
         Task<int> GetOfficeCount();
+
         Task<Office> CreateOffice(Office office);
+
         Task<Office> UpdateOffice(Office office);
+
         Task DeleteOffice(string id);
 
-        // Reviews
         Task<List<Review>> GetAllReviewInOffice(string id);
+
         Task<List<Review>> GetInfiniteReviewInOffice(string id, int value);
+
         Task<int> GetReviewCountInOffice(string id);
+
     }
 }
