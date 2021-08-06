@@ -25,6 +25,7 @@ namespace VNPT_Review.Models
         [StringLength(200)]
         public string? Note { get; set; }
 
+        [Required(ErrorMessage = "Đơn vị cha không được để trống.")]
         [Display(Name = "Đơn vị cha")]
         [StringLength(5)]
         public string FatherId { get; set; }
