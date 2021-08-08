@@ -31,7 +31,7 @@ namespace VNPT_Review.Areas.Identity
                 
                 services.ConfigureApplicationCookie(options =>
                 {
-                    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                    options.AccessDeniedPath = "/AccessDenied";
                     options.Cookie.Name = "VNPT_REVIEW";
                     options.Cookie.HttpOnly = true;
                     options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
