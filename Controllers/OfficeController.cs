@@ -28,7 +28,7 @@ namespace VNPT_Review.Controllers
             _userManager = userManager;
         }
 
-        [Route("/OfficeList")]
+        [Route("/officelist")]
         public async Task<IActionResult> Index(OfficeListRequest request)
         {
             var model = new UOfficeReview();
@@ -37,7 +37,7 @@ namespace VNPT_Review.Controllers
             return View(model);
         }
 
-        [Route("/Office/{id}")]
+        [Route("/office/{id}")]
         public async Task<IActionResult> Details(string id)
         {
             if(id == null)
@@ -59,7 +59,7 @@ namespace VNPT_Review.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [Route("/Office/Create")]
+        [Route("/office/create")]
         public IActionResult Create()
         {
             return View();
@@ -68,7 +68,7 @@ namespace VNPT_Review.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [Authorize(Roles = "Admin")]
-        [Route("/Office/Create")]
+        [Route("/office/create")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Note,FatherId,ActiveBool")] Office office)
@@ -82,6 +82,7 @@ namespace VNPT_Review.Controllers
         }
 
         [Authorize(Roles = "Admin")]
+        [Route("/office/edit/{id}")]
         public async Task<IActionResult> Edit(string id)
         {
             if(id == null)
@@ -100,6 +101,7 @@ namespace VNPT_Review.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [Authorize(Roles = "Admin")]
+        [Route("/office/edit/{id}")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Id,Name,Note,FatherId,ActiveBool")] Office office)

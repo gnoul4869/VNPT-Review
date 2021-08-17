@@ -31,11 +31,11 @@ namespace VNPT_Review.Areas.Identity
                 
                 services.ConfigureApplicationCookie(options =>
                 {
-                    options.AccessDeniedPath = "/AccessDenied";
+                    options.AccessDeniedPath = "/accessdenied";
                     options.Cookie.Name = "VNPT_REVIEW";
                     options.Cookie.HttpOnly = true;
                     options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-                    options.LoginPath = "/Login";
+                    options.LoginPath = "/login";
                     // ReturnUrlParameter requires 
                     //using Microsoft.AspNetCore.Authentication.Cookies;
                     options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;

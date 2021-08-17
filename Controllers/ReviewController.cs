@@ -48,7 +48,7 @@ namespace VNPT_Review.Controllers
         {
             await _repo.DeleteReview(id);
             await _repo.UpdateOfficeRating(officeId);
-            var url = string.Format("/Office/{0}", officeId);
+            var url = string.Format("/office/{0}", officeId);
             return Redirect(url);
         }
 
