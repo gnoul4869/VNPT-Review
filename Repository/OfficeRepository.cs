@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Extensions.Configuration;
-using Oracle.ManagedDataAccess.Client;
+using Npgsql;
 using VNPT_Review.Models;
 
 namespace VNPT_Review.Repository
@@ -15,7 +15,7 @@ namespace VNPT_Review.Repository
         private IDbConnection db;
         public OfficeRepository(IConfiguration configuration)
         {
-            this.db = new OracleConnection(configuration.GetConnectionString("Oracle"));
+            this.db = new NpgsqlConnection(configuration.GetConnectionString("PostgreSQL"));
         }
 
         public async Task<List<Office>> GetInfiniteOffice(int value)

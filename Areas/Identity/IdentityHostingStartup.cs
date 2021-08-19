@@ -17,8 +17,8 @@ namespace VNPT_Review.Areas.Identity
         {
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<IdentityDbContext>(options =>
-                    options.UseOracle(
-                        context.Configuration.GetConnectionString("Oracle")));
+                    options.UseNpgsql(
+                        context.Configuration.GetConnectionString("PostgreSQL")));
 
                 // services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 //     .AddEntityFrameworkStores<IdentityDbContext>();
