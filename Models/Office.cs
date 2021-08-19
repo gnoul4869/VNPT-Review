@@ -31,19 +31,7 @@ namespace VNPT_Review.Models
         public string FatherId { get; set; }
 
         [Display(Name = "Hoạt động")]
-        public int Active { get; set; }
-
-        public bool ActiveBool 
-        {
-            get
-            {
-                return Active == 1 ? true : false;
-            }
-            set
-            {
-                Active = value ? 1 : 0;
-            }
-        }
+        public bool Active { get; set; }
 
         public decimal Rating { get; set; }
 
