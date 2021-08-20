@@ -20,7 +20,7 @@ namespace VNPT_Review.Repository
 
         public async Task<List<Office>> GetInfiniteOffice(int value)
         {
-            var result = await db.QueryAsync<Office>("GET_INFINITE_OFFICE", new { P_Value = value }, commandType: CommandType.StoredProcedure);
+            var result = await db.QueryAsync<Office>("SELECT * FROM GET_INFINITE_OFFICE(@P_Value)", new { P_Value = value });
             return result.ToList();
         } 
 

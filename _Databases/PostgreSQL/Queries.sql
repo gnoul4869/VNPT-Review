@@ -55,17 +55,24 @@ $$
     END;
 $$
 -- 
-CREATE OR REPLACE PROCEDURE GET_INFINITE_OFFICE
+CREATE OR REPLACE FUNCTION GET_INFINITE_OFFICE
 (
-    P_Value IN INT DEFAULT 9
+    P_Value INT DEFAULT 9
+)
+RETURNS TABLE
+(
+    Id CHAR, 
+    Name VARCHAR, 
+    Note VARCHAR, 
+    FatherId CHAR, 
+    Active BOOLEAN, 
+    Rating DECIMAL
 )
 LANGUAGE PLPGSQL
 AS
 $$
-    DECLARE
-    C1 SYS_REFCURSOR;
 BEGIN
-    OPEN C1 FOR
+    RETURN QUERY
         SELECT
             Office.Id,
             Office.Name,
@@ -74,16 +81,16 @@ BEGIN
             Office.Active,
             Office.Rating
         FROM Office ORDER BY Office.Id FETCH NEXT P_Value ROWS ONLY;
-    DBMS_SQL.RETURN_RESULT(C1);
 END;
+$$
 -- 
-CREATE OR REPLACE PROCEDURE GET_PAGINATED_OFFICE
+CREATE OR REPLACE FUNCTION GET_PAGINATED_OFFICE
 (
-    P_SearchValue IN VARCHAR DEFAULT NULL,
-    P_ValueNo IN INT DEFAULT 0,
-    P_PageSize IN INT DEFAULT 10,
-    P_SortColumn IN INT DEFAULT 0,
-    P_SortDirection IN VARCHAR DEFAULT 'ASC'
+    P_SearchValue VARCHAR DEFAULT NULL,
+    P_ValueNo INT DEFAULT 0,
+    P_PageSize INT DEFAULT 10,
+    P_SortColumn INT DEFAULT 0,
+    P_SortDirection VARCHAR DEFAULT 'ASC'
 )
 AS
     C1 SYS_REFCURSOR;
