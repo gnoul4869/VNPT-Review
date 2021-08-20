@@ -13,7 +13,7 @@ CREATE TABLE Office (
 -- 
 CREATE TABLE Review (
     Id CHAR(64),
-    UserId NVARCHAR(450),
+    UserId VARCHAR(450),
     OfficeId CHAR(5),
     Rating DECIMAL(2,1),
     Content VARCHAR(200),
@@ -27,36 +27,42 @@ CREATE TABLE Review (
         FOREIGN KEY (UserId) REFERENCES "AspNetUsers" ("Id") ON DELETE CASCADE
 );
 -- SEQUENCES ----------------------------------------------------------------
-CREATE SEQUENCE REVIEW_SEQ 
+CREATE SEQUENCE REVIEW_SEQ
     MINVALUE 1
     START WITH 1
-    INCREMENT BY 1
-    NOCACHE;
+    INCREMENT BY 1;
 -- Office's PROCEDURES ------------------------------------------------------
 CREATE OR REPLACE PROCEDURE UPDATE_OFFICE_RATING
 (
-    P_Id IN CHAR
+    P_Id CHAR
 )
+LANGUAGE PLPGSQL
 AS
-    V_Rate DECIMAL(16,1) DEFAULT 0;
-    V_Sum DECIMAL(16,1) DEFAULT 0;
-BEGIN
-    FOR X IN (SELECT Rating FROM Review Where Review.OfficeId = P_Id)
-    LOOP
-        V_Rate := V_Rate + X.Rating;
-        V_Sum := V_Sum + 1;
-        dbms_output.put_line(X.Rating);
-    END LOOP;
+$$
+    DECLARE
+        X RECORD;
+        V_Rate DECIMAL(16,1) DEFAULT 0;
+        V_Sum DECIMAL(16,1) DEFAULT 0;
+    BEGIN
+        FOR X IN (SELECT Rating FROM Review Where Review.OfficeId = P_Id)
+        LOOP
+            V_Rate := V_Rate + X.Rating;
+            V_Sum := V_Sum + 1;
+        END LOOP;
 
-    V_Rate := NVL(V_Rate / NULLIF(V_Sum,0),0);
-    UPDATE Office SET Office.Rating = V_Rate WHERE Office.Id = P_Id;
-END;
+        V_Rate := NVL(V_Rate / NULLIF(V_Sum,0),0);
+        UPDATE Office SET Office.Rating = V_Rate WHERE Office.Id = P_Id;
+    END;
+$$
 -- 
 CREATE OR REPLACE PROCEDURE GET_INFINITE_OFFICE
 (
     P_Value IN INT DEFAULT 9
 )
+LANGUAGE PLPGSQL
 AS
+$$
+    DECLARE
     C1 SYS_REFCURSOR;
 BEGIN
     OPEN C1 FOR
@@ -268,7 +274,7 @@ END;
 -- Review's PROCEDURE ------------------------------------------------------
 CREATE OR REPLACE PROCEDURE EXIST_USER_REVIEW_IN_OFFICE
 (
-    P_UserId IN NVARCHAR,
+    P_UserId IN VARCHAR,
     P_OfficeId IN CHAR
 )
 AS
@@ -343,7 +349,7 @@ END;
 -- 
 CREATE OR REPLACE PROCEDURE CREATE_REVIEW
 (
-    P_UserId IN NVARCHAR,
+    P_UserId IN VARCHAR,
     P_OfficeId IN CHAR,
     P_Rating IN DECIMAL,
     P_Content IN VARCHAR

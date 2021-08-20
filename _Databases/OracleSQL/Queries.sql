@@ -45,7 +45,6 @@ BEGIN
     LOOP
         V_Rate := V_Rate + X.Rating;
         V_Sum := V_Sum + 1;
-        dbms_output.put_line(X.Rating);
     END LOOP;
 
     V_Rate := NVL(V_Rate / NULLIF(V_Sum,0),0);

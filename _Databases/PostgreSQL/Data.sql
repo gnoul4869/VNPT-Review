@@ -12,7 +12,7 @@ INSERT INTO "AspNetUsers" VALUES(
     '0913245842',
     '0',
     '0',
-    '',
+    NULL,
     '1',
     '0'
 );
