@@ -26,7 +26,7 @@ namespace VNPT_Review.Repository
 
         public async Task<List<Office>> GetPaginatedOffice(OfficeListRequest request)
         { 
-            var result = await db.QueryAsync<Office>("GET_PAGINATED_OFFICE", 
+            var result = await db.QueryAsync<Office>("SELECT * FROM GET_PAGINATED_OFFICE(@P_SearchValue, @P_ValueNo, @P_PageSize, @P_SortColumn, @P_SortDirection)", 
             new 
             { 
                 P_SearchValue = request.SearchValue,
@@ -34,7 +34,7 @@ namespace VNPT_Review.Repository
                 P_PageSize = request.PageSize,
                 P_SortColumn = request.SortColumn,
                 P_SortDirection = request.SortDirection
-            }, commandType: CommandType.StoredProcedure);
+            });
             return result.ToList();
         }
 
