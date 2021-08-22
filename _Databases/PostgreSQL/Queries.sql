@@ -291,13 +291,16 @@ LANGUAGE PLPGSQL;
 -- 
 CREATE OR REPLACE PROCEDURE DELETE_OFFICE
 (
-    P_Id IN CHAR
+    P_Id CHAR
 )
 AS
-BEGIN
-    DELETE FROM Office WHERE
-        Office.Id = P_Id;
-END;
+$$
+    BEGIN
+        DELETE FROM Office WHERE
+            Office.Id = P_Id;
+    END
+$$
+LANGUAGE PLPGSQL;
 -- Review's PROCEDURE ------------------------------------------------------
 CREATE OR REPLACE PROCEDURE EXIST_USER_REVIEW_IN_OFFICE
 (
