@@ -363,21 +363,32 @@ $$
 $$
 LANGUAGE PLPGSQL;
 -- 
-CREATE OR REPLACE PROCEDURE GET_ALL_REVIEW_IN_OFFICE
+CREATE OR REPLACE FUNCTION GET_ALL_REVIEW_IN_OFFICE
 (
-    P_Id IN CHAR
+    P_Id CHAR
+)
+RETURNS TABLE
+(
+    Id CHAR,
+    UserName VARCHAR,
+    OfficeId CHAR,
+    Rating DECIMAL,
+    Content VARCHAR,
+    CreatedAt TIMESTAMP,
+    UpdatedAt TIMESTAMP
 )
 AS
-    C1 SYS_REFCURSOR;
-BEGIN
-    OPEN C1 FOR 
-        SELECT DISTINCT Review.Id, "AspNetUsers"."UserName", Review.OfficeId, Review.Rating, 
-            Review.Content, Review.CreatedAt, Review.UpdatedAt
-                FROM Review INNER JOIN "AspNetUsers" ON Review.UserId = "AspNetUsers"."Id" 
-                    INNER JOIN Office ON Review.OfficeId = P_Id
-                        ORDER BY Review.CreatedAt DESC;
-    DBMS_SQL.RETURN_RESULT(C1);
-END;
+$$
+    BEGIN
+        RETURN QUERY
+            SELECT DISTINCT Review.Id, "AspNetUsers"."UserName", Review.OfficeId, Review.Rating, 
+                Review.Content, Review.CreatedAt, Review.UpdatedAt
+                    FROM Review INNER JOIN "AspNetUsers" ON Review.UserId = "AspNetUsers"."Id" 
+                        INNER JOIN Office ON Review.OfficeId = P_Id
+                            ORDER BY Review.CreatedAt DESC;
+    END
+$$
+LANGUAGE PLPGSQL;
 -- 
 CREATE OR REPLACE PROCEDURE GET_REVIEW_IN_OFFICE
 (
