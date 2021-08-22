@@ -1,3 +1,5 @@
+SET TIMEZONE='Asia/Bangkok'
+-- 
 CREATE TABLE Office (
     Id CHAR(5),
     Name VARCHAR(50),
@@ -5,8 +7,8 @@ CREATE TABLE Office (
     FatherId CHAR(5),
     Active BOOLEAN,
     Rating DECIMAL(2,1) DEFAULT 0,
-    CreatedAt DATE DEFAULT CURRENT_TIMESTAMP,
-    UpdatedAt DATE DEFAULT CURRENT_TIMESTAMP,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     -- 
     PRIMARY KEY (Id)
 );
@@ -17,8 +19,8 @@ CREATE TABLE Review (
     OfficeId CHAR(5),
     Rating DECIMAL(2,1),
     Content VARCHAR(200),
-    CreatedAt DATE DEFAULT CURRENT_TIMESTAMP,
-    UpdatedAt DATE DEFAULT CURRENT_TIMESTAMP,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     --
     PRIMARY KEY (Id),
     CONSTRAINT FK_ID
@@ -206,26 +208,38 @@ $$
 $$
 LANGUAGE PLPGSQL;
 -- 
-CREATE OR REPLACE PROCEDURE GET_OFFICE
+CREATE OR REPLACE FUNCTION GET_OFFICE
 (
-    P_Id IN CHAR
+    P_Id CHAR
+)
+RETURNS TABLE
+(
+    Id CHAR,
+    Name VARCHAR,
+    Note VARCHAR,
+    FatherId CHAR,
+    Active BOOLEAN,
+    Rating DECIMAL,
+    CreatedAt TIMESTAMP,
+    UpdatedAt TIMESTAMP
 )
 AS
-    C1 SYS_REFCURSOR;
-BEGIN
-    OPEN C1 FOR 
-        SELECT 
-            Office.Id,
-            Office.Name,
-            Office.Note,
-            Office.FatherId,
-            Office.Active,
-            Office.Rating,
-            Office.CreatedAt,
-            Office.UpdatedAt
-        FROM Office WHERE Office.Id = P_Id;
-    DBMS_SQL.RETURN_RESULT(C1);
-END;
+$$
+    BEGIN
+        RETURN QUERY
+            SELECT 
+                Office.Id,
+                Office.Name,
+                Office.Note,
+                Office.FatherId,
+                Office.Active,
+                Office.Rating,
+                Office.CreatedAt,
+                Office.UpdatedAt
+            FROM Office WHERE Office.Id = P_Id;
+    END
+$$
+LANGUAGE PLPGSQL;
 -- 
 CREATE OR REPLACE PROCEDURE CREATE_OFFICE
 (
