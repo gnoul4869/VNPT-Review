@@ -147,7 +147,6 @@ LANGUAGE PLPGSQL;
 -- 
 CREATE OR REPLACE FUNCTION GET_OFFICE_COUNT()
 RETURNS BIGINT
-LANGUAGE PLPGSQL
 AS
 $$
     DECLARE
@@ -301,19 +300,23 @@ $$
     END
 $$
 LANGUAGE PLPGSQL;
--- Review's PROCEDURE ------------------------------------------------------
-CREATE OR REPLACE PROCEDURE EXIST_USER_REVIEW_IN_OFFICE
+-- Review's FUNCTION --------------------------------------------------------
+CREATE OR REPLACE FUNCTION EXIST_USER_REVIEW_IN_OFFICE
 (
-    P_UserId IN VARCHAR,
-    P_OfficeId IN CHAR
+    P_UserId VARCHAR,
+    P_OfficeId CHAR
 )
+RETURNS INT
 AS
-    C1 SYS_REFCURSOR;
-BEGIN
-    OPEN C1 FOR
-        SELECT COUNT(1) FROM Review WHERE Review.UserId = P_UserId AND Review.OfficeId = P_OfficeId;
-    DBMS_SQL.RETURN_RESULT(C1);
-END;
+$$
+    DECLARE
+        Exist INT;
+    BEGIN
+        Exist := (SELECT COUNT(1) FROM Review WHERE Review.UserId = P_UserId AND Review.OfficeId = P_OfficeId);
+        RETURN Exist;
+    END
+$$
+LANGUAGE PLPGSQL;
 -- 
 CREATE OR REPLACE PROCEDURE GET_REVIEW_COUNT_IN_OFFICE
 (
