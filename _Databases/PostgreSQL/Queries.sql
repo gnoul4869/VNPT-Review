@@ -269,22 +269,25 @@ LANGUAGE PLPGSQL;
 -- 
 CREATE OR REPLACE PROCEDURE UPDATE_OFFICE
 (
-    P_Id IN CHAR,
-    P_Name IN VARCHAR,
-    P_Note IN VARCHAR,
-    P_FatherId IN CHAR,
-    P_Active IN BOOLEAN
+    P_Id CHAR,
+    P_Name VARCHAR,
+    P_Note VARCHAR,
+    P_FatherId CHAR,
+    P_Active BOOLEAN
 )
 AS
-BEGIN
-    UPDATE Office SET
-        Office.Name = P_Name,
-        Office.Note = P_Note,
-        Office.FatherId = P_FatherId,
-        Office.Active = P_Active,
-        Office.UpdatedAt = DEFAULT
-    WHERE Office.Id = P_Id; 
-END;
+$$
+    BEGIN
+        UPDATE Office SET
+            Office.Name = P_Name,
+            Office.Note = P_Note,
+            Office.FatherId = P_FatherId,
+            Office.Active = P_Active,
+            Office.UpdatedAt = DEFAULT
+        WHERE Office.Id = P_Id; 
+    END
+$$
+LANGUAGE PLPGSQL;
 -- 
 CREATE OR REPLACE PROCEDURE DELETE_OFFICE
 (
