@@ -36,7 +36,6 @@ CREATE OR REPLACE PROCEDURE UPDATE_OFFICE_RATING
 (
     P_Id CHAR
 )
-LANGUAGE PLPGSQL
 AS
 $$
     DECLARE
@@ -53,7 +52,8 @@ $$
         V_Rate := NVL(V_Rate / NULLIF(V_Sum,0),0);
         UPDATE Office SET Office.Rating = V_Rate WHERE Office.Id = P_Id;
     END
-$$;
+$$
+LANGUAGE PLPGSQL;
 -- 
 CREATE OR REPLACE FUNCTION GET_PAGINATED_OFFICE
 (
@@ -75,7 +75,6 @@ RETURNS TABLE
     Active BOOLEAN,
     Rating DECIMAL
 )
-LANGUAGE PLPGSQL
 AS
 $$
     DECLARE
@@ -164,36 +163,48 @@ $$
                 CTE_RESULTS.Rating
             FROM CTE_RESULTS WHERE CTE_RESULTS.RowNumber BETWEEN V_FirstRecord AND V_LastRecord;
     END
-$$;
+$$
+LANGUAGE PLPGSQL;
 -- 
-CREATE OR REPLACE FUNCTION GET_OFFICE_COUNT
+CREATE OR REPLACE FUNCTION GET_OFFICE_COUNT()
 RETURNS BIGINT
 LANGUAGE PLPGSQL
 AS
 $$
-    RETURN QUERY
-        BEGIN
-            OPEN C1 FOR
-                SELECT COUNT(*) FROM Office;
-            DBMS_SQL.RETURN_RESULT(C1);
-        END
-$$;
+    DECLARE
+        Count BIGINT;
+    BEGIN
+        Count := (SELECT COUNT(*) FROM Office);
+        RETURN Count;
+    END
+$$
+LANGUAGE PLPGSQL;
 -- 
-CREATE OR REPLACE PROCEDURE GET_ALL_OFFICE
+CREATE OR REPLACE FUNCTION GET_ALL_OFFICE()
+RETURNS TABLE
+(
+    Id CHAR,
+    Name VARCHAR,
+    Note VARCHAR,
+    FatherId CHAR,
+    Active BOOLEAN,
+    Rating DECIMAL
+)
 AS
-    C1 SYS_REFCURSOR;
-BEGIN
-    OPEN C1 FOR
-        SELECT
-            Office.Id,
-            Office.Name,
-            Office.Note,
-            Office.FatherId,
-            Office.Active,
-            Office.Rating
-        FROM Office ORDER BY Office.Id;
-    DBMS_SQL.RETURN_RESULT(C1);
-END;
+$$
+    BEGIN
+        RETURN QUERY
+            SELECT
+                Office.Id,
+                Office.Name,
+                Office.Note,
+                Office.FatherId,
+                Office.Active,
+                Office.Rating
+            FROM Office ORDER BY Office.Id;
+    END
+$$
+LANGUAGE PLPGSQL;
 -- 
 CREATE OR REPLACE PROCEDURE GET_OFFICE
 (
