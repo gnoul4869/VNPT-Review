@@ -52,7 +52,7 @@ namespace VNPT_Review.Repository
 
         public async Task<int> GetOfficeCount()
         {
-            var result = await db.QueryAsync<int>("GET_OFFICE_COUNT", commandType: CommandType.StoredProcedure);
+            var result = await db.QueryAsync<int>("SELECT * FROM GET_OFFICE_COUNT()");
             return result.FirstOrDefault();
         }
         public async Task<Office> CreateOffice(Office office)

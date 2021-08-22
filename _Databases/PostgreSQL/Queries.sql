@@ -52,8 +52,8 @@ $$
 
         V_Rate := NVL(V_Rate / NULLIF(V_Sum,0),0);
         UPDATE Office SET Office.Rating = V_Rate WHERE Office.Id = P_Id;
-    END;
-$$
+    END
+$$;
 -- 
 CREATE OR REPLACE FUNCTION GET_PAGINATED_OFFICE
 (
@@ -163,17 +163,21 @@ $$
                 CTE_RESULTS.Active,
                 CTE_RESULTS.Rating
             FROM CTE_RESULTS WHERE CTE_RESULTS.RowNumber BETWEEN V_FirstRecord AND V_LastRecord;
-    END;
-$$
+    END
+$$;
 -- 
-CREATE OR REPLACE PROCEDURE GET_OFFICE_COUNT
+CREATE OR REPLACE FUNCTION GET_OFFICE_COUNT
+RETURNS BIGINT
+LANGUAGE PLPGSQL
 AS
-    C1 SYS_REFCURSOR;
-BEGIN
-    OPEN C1 FOR
-        SELECT COUNT(*) FROM Office;
-    DBMS_SQL.RETURN_RESULT(C1);
-END;
+$$
+    RETURN QUERY
+        BEGIN
+            OPEN C1 FOR
+                SELECT COUNT(*) FROM Office;
+            DBMS_SQL.RETURN_RESULT(C1);
+        END
+$$;
 -- 
 CREATE OR REPLACE PROCEDURE GET_ALL_OFFICE
 AS
