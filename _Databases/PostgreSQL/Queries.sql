@@ -32,7 +32,8 @@ CREATE TABLE Review (
 CREATE SEQUENCE REVIEW_SEQ
     MINVALUE 1
     START WITH 1
-    INCREMENT BY 1;
+    INCREMENT BY 1
+    OWNED BY Review.Id;
 -- Office's FUNCTIONS -------------------------------------------------------
 CREATE OR REPLACE FUNCTION GET_PAGINATED_OFFICE
 (
@@ -234,7 +235,7 @@ $$
             V_Sum := V_Sum + 1;
         END LOOP;
 
-        V_Rate := NVL(V_Rate / NULLIF(V_Sum,0),0);
+        V_Rate := COALESCE(V_Rate / NULLIF(V_Sum,0),0);
         UPDATE Office SET Rating = V_Rate WHERE Id = P_Id;
     END
 $$
@@ -429,7 +430,7 @@ $$
     BEGIN
         INSERT INTO Review VALUES
         (
-            REVIEW_SEQ.NEXTVAL,
+            NEXTVAL('REVIEW_SEQ'),
             P_UserId,
             P_OfficeId,
             P_Rating,
