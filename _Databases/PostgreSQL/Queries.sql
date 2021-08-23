@@ -443,18 +443,21 @@ LANGUAGE PLPGSQL;
 --
 CREATE OR REPLACE PROCEDURE UPDATE_REVIEW
 (
-    P_Id IN CHAR,
-    P_Rating IN DECIMAL,
-    P_Content IN VARCHAR
+    P_Id CHAR,
+    P_Rating DECIMAL,
+    P_Content VARCHAR
 )
 AS
-BEGIN
-    UPDATE Review SET
-        Review.Rating = P_Rating,
-        Review.Content = P_Content,
-        Review.UpdatedAt = DEFAULT
-    WHERE Review.Id = P_Id; 
-END;
+$$
+    BEGIN
+        UPDATE Review SET
+            Review.Rating = P_Rating,
+            Review.Content = P_Content,
+            Review.UpdatedAt = DEFAULT
+        WHERE Review.Id = P_Id; 
+    END
+$$
+LANGUAGE PLPGSQL;
 -- 
 CREATE OR REPLACE PROCEDURE DELETE_REVIEW
 (
