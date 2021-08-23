@@ -4,7 +4,9 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Npgsql;
 using VNPT_Review.Models;
 
@@ -13,9 +15,12 @@ namespace VNPT_Review.Repository
     public class OfficeRepository : IOfficeRepository
     {
         private IDbConnection db;
-        public OfficeRepository(IConfiguration configuration)
+        public OfficeRepository(IConfiguration configuration, IWebHostEnvironment env)
         {
-            this.db = new NpgsqlConnection(configuration.GetConnectionString("PostgreSQL"));
+            if(env.IsDevelopment())
+                this.db = new NpgsqlConnection(configuration.GetConnectionString("PostgreSQL"));
+            else 
+                this.db = new NpgsqlConnection(Environment.GetEnvironmentVariable("POSTGRESQL")); //Production
         }
 
         public async Task<List<Office>> GetInfiniteOffice(int value)

@@ -1,9 +1,12 @@
+using System;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Npgsql;
 using VNPT_Review.Models;
 
@@ -12,10 +15,14 @@ namespace VNPT_Review.Repository
     public class ReviewRepository : IReviewRepository
     {
         private IDbConnection db;
-        public ReviewRepository(IConfiguration configuration)
+        public ReviewRepository(IConfiguration configuration, IWebHostEnvironment env)
         {
-            this.db = new NpgsqlConnection(configuration.GetConnectionString("PostgreSQL"));
+            if(env.IsDevelopment())
+                this.db = new NpgsqlConnection(configuration.GetConnectionString("PostgreSQL"));
+            else 
+                this.db = new NpgsqlConnection(Environment.GetEnvironmentVariable("POSTGRESQL")); //Production
         }
+        
         public async Task<Review> GetReviewByOffice(string reviewid, string officeid)
         {
             var result = await db.QueryAsync<Review>("SELECT * FROM GET_REVIEW_BY_OFFICE(@P_ReviewId, @P_OfficeId)", 
