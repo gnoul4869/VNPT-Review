@@ -461,12 +461,15 @@ LANGUAGE PLPGSQL;
 -- 
 CREATE OR REPLACE PROCEDURE DELETE_REVIEW
 (
-    P_Id IN CHAR
+    P_Id CHAR
 )
 AS
-BEGIN
-    DELETE FROM Review WHERE
-        Review.Id = P_Id;
-END;
+$$
+    BEGIN
+        DELETE FROM Review WHERE
+            Review.Id = P_Id;
+    END
+$$
+LANGUAGE PLPGSQL;
 
 
