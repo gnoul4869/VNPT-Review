@@ -416,28 +416,31 @@ $$
     END
 $$
 LANGUAGE PLPGSQL;
--- 
+-- Review's PROCEDURE --------------------------------------------------------
 CREATE OR REPLACE PROCEDURE CREATE_REVIEW
 (
-    P_UserId IN VARCHAR,
-    P_OfficeId IN CHAR,
-    P_Rating IN DECIMAL,
-    P_Content IN VARCHAR
+    P_UserId VARCHAR,
+    P_OfficeId CHAR,
+    P_Rating DECIMAL,
+    P_Content VARCHAR
 )
 AS
-BEGIN
-    INSERT INTO Review VALUES
-    (
-        REVIEW_SEQ.NEXTVAL,
-        P_UserId,
-        P_OfficeId,
-        P_Rating,
-        P_Content,
-        DEFAULT,
-        DEFAULT
-    );
-END;
--- 
+$$
+    BEGIN
+        INSERT INTO Review VALUES
+        (
+            REVIEW_SEQ.NEXTVAL,
+            P_UserId,
+            P_OfficeId,
+            P_Rating,
+            P_Content,
+            DEFAULT,
+            DEFAULT
+        );
+    END
+$$
+LANGUAGE PLPGSQL;
+--
 CREATE OR REPLACE PROCEDURE UPDATE_REVIEW
 (
     P_Id IN CHAR,
