@@ -20,9 +20,9 @@ namespace VNPT_Review.Repository
             if(env.IsDevelopment())
                 this.db = new NpgsqlConnection(configuration.GetConnectionString("PostgreSQL"));
             else 
-                this.db = new NpgsqlConnection(Environment.GetEnvironmentVariable("POSTGRESQL")); //Production
+                this.db = new NpgsqlConnection(Environment.GetEnvironmentVariable("DATABASE_URL")); //Production
         }
-        
+
         public async Task<Review> GetReviewByOffice(string reviewid, string officeid)
         {
             var result = await db.QueryAsync<Review>("SELECT * FROM GET_REVIEW_BY_OFFICE(@P_ReviewId, @P_OfficeId)", 

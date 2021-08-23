@@ -20,7 +20,7 @@ namespace VNPT_Review.Repository
             if(env.IsDevelopment())
                 this.db = new NpgsqlConnection(configuration.GetConnectionString("PostgreSQL"));
             else 
-                this.db = new NpgsqlConnection(Environment.GetEnvironmentVariable("POSTGRESQL")); //Production
+                this.db = new NpgsqlConnection(Environment.GetEnvironmentVariable("DATABASE_URL")); //Production
         }
 
         public async Task<List<Office>> GetInfiniteOffice(int value)
