@@ -18,46 +18,46 @@ namespace VNPT_Review.Repository
         }
         public async Task<Review> GetReviewByOffice(string reviewid, string officeid)
         {
-            var result = await db.QueryAsync<Review>("GET_REVIEW_BY_OFFICE", 
+            var result = await db.QueryAsync<Review>("SELECT * FROM GET_REVIEW_BY_OFFICE(@P_ReviewId, @P_OfficeId)", 
             new 
             { 
                 P_ReviewId = reviewid, 
                 P_OfficeId = officeid 
-            }, commandType: CommandType.StoredProcedure);
+            });
             return result.Single();
         }
 
         public async Task<Review> CreateReview(Review review)
         {
-            await db.QueryAsync<Review>("CREATE_REVIEW", 
+            await db.QueryAsync<Review>("CALL CREATE_REVIEW(@P_UserId, @P_OfficeId, @P_Rating, @P_Content)", 
             new {
                 P_UserId = review.UserId,
                 P_OfficeId = review.OfficeId,
                 P_RATING = review.Rating,
                 P_Content = review.Content
-            }, commandType: CommandType.StoredProcedure);
+            });
             return review;
         }
 
         public async Task<Review> UpdateReview(Review review)
         {
-            await db.QueryAsync<Review>("UPDATE_REVIEW", 
+            await db.QueryAsync<Review>("CALL UPDATE_REVIEW(@P_Id, @P_Rating, @P_Content)", 
             new {
                 P_Id = review.Id,
                 P_Rating = review.Rating,
                 P_Content = review.Content
-            }, commandType: CommandType.StoredProcedure);
+            });
             return review;
         }
 
         public async Task DeleteReview(string id)
         {
-            await db.ExecuteAsync("DELETE_REVIEW", new { P_Id = id }, commandType: CommandType.StoredProcedure);
+            await db.ExecuteAsync("CALL DELETE_REVIEW(@P_Id)", new { P_Id = id });
         }
 
         public async Task UpdateOfficeRating(string id)
         {
-            await db.ExecuteAsync("UPDATE_OFFICE_RATING", new { P_Id = id }, commandType: CommandType.StoredProcedure);
+            await db.ExecuteAsync("CALL UPDATE_OFFICE_RATING(@P_Id)", new { P_Id = id });
         }
     }
 }

@@ -235,7 +235,7 @@ $$
         END LOOP;
 
         V_Rate := NVL(V_Rate / NULLIF(V_Sum,0),0);
-        UPDATE Office SET Office.Rating = V_Rate WHERE Office.Id = P_Id;
+        UPDATE Office SET Rating = V_Rate WHERE Id = P_Id;
     END
 $$
 LANGUAGE PLPGSQL;
@@ -278,12 +278,12 @@ AS
 $$
     BEGIN
         UPDATE Office SET
-            Office.Name = P_Name,
-            Office.Note = P_Note,
-            Office.FatherId = P_FatherId,
-            Office.Active = P_Active,
-            Office.UpdatedAt = DEFAULT
-        WHERE Office.Id = P_Id; 
+            Name = P_Name,
+            Note = P_Note,
+            FatherId = P_FatherId,
+            Active = P_Active,
+            UpdatedAt = DEFAULT
+        WHERE Id = P_Id; 
     END
 $$
 LANGUAGE PLPGSQL;
@@ -296,7 +296,7 @@ AS
 $$
     BEGIN
         DELETE FROM Office WHERE
-            Office.Id = P_Id;
+            Id = P_Id;
     END
 $$
 LANGUAGE PLPGSQL;
@@ -451,10 +451,10 @@ AS
 $$
     BEGIN
         UPDATE Review SET
-            Review.Rating = P_Rating,
-            Review.Content = P_Content,
-            Review.UpdatedAt = DEFAULT
-        WHERE Review.Id = P_Id; 
+            Rating = P_Rating,
+            Content = P_Content,
+            UpdatedAt = DEFAULT
+        WHERE Id = P_Id; 
     END
 $$
 LANGUAGE PLPGSQL;
@@ -467,7 +467,7 @@ AS
 $$
     BEGIN
         DELETE FROM Review WHERE
-            Review.Id = P_Id;
+            Id = P_Id;
     END
 $$
 LANGUAGE PLPGSQL;

@@ -1,12 +1,12 @@
 -- Admin & User ------------------------------------------------------------
 INSERT INTO "AspNetUsers" VALUES(
-    '1ab1c6ec-51ee-47e9-8bde-dc1945e5c965',
+    'eb54bd7c-5b3b-45e9-bd1a-04d3491dcd14',
     'ttluong4869@gmail.com',
     'TTLUONG4869@GMAIL.COM',
     'ttluong4869@gmail.com',
     'TTLUONG4869@GMAIL.COM',
     '1',
-    'AQAAAAEAACcQAAAAEMO2nbrIYFKLqPwIrgqmM8IikLrWHz', --Password: Eye$hield21
+    'AQAAAAEAACcQAAAAEBEhhAdis/VGKph8rRdRS1rwislFKaxs+YkrHezNtbweHDBwOgvkV1axuAASK7qMwg==', --Password: Eye$hield21
     'J4L7XYQJVFQY3VJS5UE3EOBZ2CHRG4LG',
     'cf749eb4-a87a-47d6-ba44-b5c934ffcabb',
     '0913245842',
@@ -23,7 +23,7 @@ INSERT INTO "AspNetRoles" VALUES(
     '1bfa31f5-fc3b-46d7-9b73-61229aae58a9'
 );
 INSERT INTO "AspNetUserRoles" VALUES(
-    '1ab1c6ec-51ee-47e9-8bde-dc1945e5c965',
+    'eb54bd7c-5b3b-45e9-bd1a-04d3491dcd14',
     '01'
 );
 -- Office's Data ----------------------------------------------------------

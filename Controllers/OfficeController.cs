@@ -71,7 +71,7 @@ namespace VNPT_Review.Controllers
         [Route("/office/create")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Note,FatherId,ActiveBool")] Office office)
+        public async Task<IActionResult> Create([Bind("Id,Name,Note,FatherId,Active")] Office office)
         {
             if(ModelState.IsValid)
             {
@@ -104,7 +104,7 @@ namespace VNPT_Review.Controllers
         [Route("/office/edit/{id}")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,Note,FatherId,ActiveBool")] Office office)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,Note,FatherId,Active")] Office office)
         {
             if(id != office.Id)
             {
