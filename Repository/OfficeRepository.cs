@@ -29,7 +29,7 @@ namespace VNPT_Review.Repository
                 var pgPort = Environment.GetEnvironmentVariable("PORT");
                 var pgDatabase = Environment.GetEnvironmentVariable("DATABASE");
 
-                var connStr = $"User Id={pgUser}; Password={pgPassword}; Host={pgHost}; Port={pgPort}; Database={pgDatabase}; sslmode=Prefer; Trust Server Certificate=true";
+                var connStr = $"User Id={pgUser}; Password={pgPassword}; Host={pgHost}; Port={pgPort}; Database={pgDatabase}; sslmode=require; Trust Server Certificate=true";
                 this.db = new NpgsqlConnection(connStr);
             } 
         }
