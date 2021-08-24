@@ -13,12 +13,29 @@ namespace VNPT_Review.Areas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup
     {
+
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<IdentityDbContext>(options =>
-                    options.UseNpgsql(
-                        context.Configuration.GetConnectionString("PostgreSQL")));
+                {
+                    bool isDevelopment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
+                    if(isDevelopment)
+                    {
+                        options.UseNpgsql(context.Configuration.GetConnectionString("PostgreSQL"));
+                    }
+                    else
+                    {
+                        var pgUser = Environment.GetEnvironmentVariable("USER");
+                        var pgPassword = Environment.GetEnvironmentVariable("PASSWORD");
+                        var pgHost = Environment.GetEnvironmentVariable("HOST");
+                        var pgPort = Environment.GetEnvironmentVariable("PORT");
+                        var pgDatabase = Environment.GetEnvironmentVariable("DATABASE");
+
+                        var connStr = $"User Id={pgUser}; Password={pgPassword}; Host={pgHost}; Port={pgPort}; Database={pgDatabase}; sslmode=Prefer; Trust Server Certificate=true";
+                        options.UseNpgsql(connStr);
+                    }
+                });
 
                 // services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 //     .AddEntityFrameworkStores<IdentityDbContext>();
@@ -44,5 +61,6 @@ namespace VNPT_Review.Areas.Identity
 
             });
         }
+
     }
 }
