@@ -26,11 +26,11 @@ namespace VNPT_Review.Areas.Identity
                     }
                     else
                     {
-                        var pgUser = Environment.GetEnvironmentVariable("USER");
-                        var pgPassword = Environment.GetEnvironmentVariable("PASSWORD");
-                        var pgHost = Environment.GetEnvironmentVariable("HOST");
-                        var pgPort = Environment.GetEnvironmentVariable("PORT");
-                        var pgDatabase = Environment.GetEnvironmentVariable("DATABASE");
+                        var pgUser = Environment.GetEnvironmentVariable("PG_USER");
+                        var pgPassword = Environment.GetEnvironmentVariable("PG_PASSWORD");
+                        var pgHost = Environment.GetEnvironmentVariable("PG_HOST");
+                        var pgPort = Environment.GetEnvironmentVariable("PG_PORT");
+                        var pgDatabase = Environment.GetEnvironmentVariable("PG_DATABASE");
 
                         var connStr = $"User Id={pgUser}; Password={pgPassword}; Host={pgHost}; Port={pgPort}; Database={pgDatabase}; sslmode=Require; Trust Server Certificate=true";
                         options.UseNpgsql(connStr);
