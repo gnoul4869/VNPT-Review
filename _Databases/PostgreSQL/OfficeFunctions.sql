@@ -2,6 +2,35 @@ SET TRANSACTION READ WRITE;
 -- 
 START TRANSACTION;
 -- Office's FUNCTIONS -------------------------------------------------------
+CREATE OR REPLACE FUNCTION GET_INFINITE_OFFICE
+(
+    P_Value INT DEFAULT 9
+)
+RETURNS TABLE
+(
+    Id CHAR, 
+    Name VARCHAR, 
+    Note VARCHAR, 
+    FatherId CHAR, 
+    Active BOOLEAN, 
+    Rating DECIMAL
+)
+AS
+$$
+  BEGIN
+      RETURN QUERY
+          SELECT
+              Office.Id,
+              Office.Name,
+              Office.Note,
+              Office.FatherId,
+              Office.Active,
+              Office.Rating
+          FROM Office ORDER BY Office.Id FETCH NEXT P_Value ROWS ONLY;
+  END
+$$
+LANGUAGE PLPGSQL;
+-- 
 CREATE OR REPLACE FUNCTION GET_PAGINATED_OFFICE
 (
     P_SearchValue VARCHAR DEFAULT NULL,
