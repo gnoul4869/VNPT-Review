@@ -42,11 +42,11 @@ namespace VNPT_Review.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "Email không được để trống.")]
             [EmailAddress]
             public string Email { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Mật khẩu không được để trống.")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
