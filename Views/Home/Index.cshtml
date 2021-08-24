@@ -9,6 +9,11 @@
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold lh-1 mb-3" style="color:#1b6ec2">VNPT Review</h1>
         <p class="col-lg-20 fs-5">Website đánh giá nội bộ phòng ban VNPT.</p>
+        @Environment.GetEnvironmentVariable("USER")
+        @Environment.GetEnvironmentVariable("PASSWORD")
+        @Environment.GetEnvironmentVariable("HOST")
+        @Environment.GetEnvironmentVariable("PORT")
+        @Environment.GetEnvironmentVariable("DATABASE")
       </div>
     </div>
 </div>
