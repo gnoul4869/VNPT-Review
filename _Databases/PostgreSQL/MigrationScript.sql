@@ -1,3 +1,5 @@
+START TRANSACTION;
+
 CREATE TABLE "AspNetRoles" (
     "Id" text NOT NULL,
     "Name" character varying(256) NULL,

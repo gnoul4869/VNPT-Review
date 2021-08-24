@@ -1,3 +1,6 @@
+SET TRANSACTION READ WRITE;
+-- 
+START TRANSACTION;
 -- Admin & User ------------------------------------------------------------
 INSERT INTO "AspNetUsers" VALUES(
     'eb54bd7c-5b3b-45e9-bd1a-04d3491dcd14',
@@ -357,3 +360,5 @@ INSERT INTO Office VALUES(
     DEFAULT,
     DEFAULT
 );
+------------------------------------------------------------------------
+COMMIT;
