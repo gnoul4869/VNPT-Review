@@ -18,10 +18,20 @@ namespace VNPT_Review.Repository
         public ReviewRepository(IConfiguration configuration, IWebHostEnvironment env)
         {
             if(env.IsDevelopment())
+            {
                 this.db = new NpgsqlConnection(configuration.GetConnectionString("PostgreSQL"));
-            else 
-                // this.db = new NpgsqlConnection(Environment.GetEnvironmentVariable("DATABASE_URL")); //Production
-                this.db = new NpgsqlConnection(configuration.GetConnectionString("PostgreSQL"));
+            }
+            else
+            {
+                var pgUser = Environment.GetEnvironmentVariable("USER");
+                var pgPassword = Environment.GetEnvironmentVariable("PASSWORD");
+                var pgHost = Environment.GetEnvironmentVariable("HOST");
+                var pgPort = Environment.GetEnvironmentVariable("PORT");
+                var pgDatabase = Environment.GetEnvironmentVariable("DATABASE");
+
+                var connStr = $"User Id={pgUser}; Password={pgPassword}; Host={pgHost}; Port={pgPort}; Database={pgDatabase}; sslmode=Prefer; Trust Server Certificate=true";
+                this.db = new NpgsqlConnection(connStr);
+            } 
         }
 
         public async Task<Review> GetReviewByOffice(string reviewid, string officeid)
