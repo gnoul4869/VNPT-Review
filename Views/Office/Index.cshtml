@@ -19,31 +19,32 @@
 <div id="officeCard" class="row">
     <partial name="_OfficeCardPartial"/>
 </div>
-
-<table id="officeTable" class="hover" style="width:100%">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.office.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.office.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.office.Note)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.office.FatherId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.office.Active)
-            </th>
-            <th>Đánh giá</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-</table>
+<div class="table-responsive-lg">
+    <table id="officeTable" class="hover" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.office.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.office.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.office.Note)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.office.FatherId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.office.Active)
+                </th>
+                <th>Đánh giá</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+</div>
 
 <div id="loader" class="d-flex justify-content-center">
   <div class="spinner-border" role="status">
@@ -65,7 +66,6 @@
                 searching: true,
                 ordering: true,
                 paging: true,
-                reponsive: true,
                 "ajax": {
                     "url": "api/APIOfficePaginated",
                     "type": "POST",
