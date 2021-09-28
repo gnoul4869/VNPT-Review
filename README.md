@@ -1,4 +1,4 @@
-# VNPT_Review
+# VNPT-Review
 Web application to rate and review VNPT offices (ASP.NET CORE MVC)
 
 ASP.NET Core 5.0 using:
