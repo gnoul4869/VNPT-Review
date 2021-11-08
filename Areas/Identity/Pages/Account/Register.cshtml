@@ -2,12 +2,12 @@
 @model RegisterModel
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
-    
+
 @{
     ViewData["Title"] = "Đăng ký tài khoản";
-}   
+}
 
-@if(SignInManager.IsSignedIn(User))
+@if (SignInManager.IsSignedIn(User))
 {
     Response.Redirect(Url.Content("~/"));
 }
@@ -21,19 +21,19 @@
 
                 <div class="mb-4">
                     <label asp-for="Input.Email">Email</label>
-                    <input asp-for="Input.Email" class="form-control form-control-lg"/>
+                    <input asp-for="Input.Email" class="form-control form-control-lg" />
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
 
                 <div class="mb-4">
                     <label asp-for="Input.Password">Mật khẩu</label>
-                    <input asp-for="Input.Password" class="form-control form-control-lg"/>
+                    <input asp-for="Input.Password" class="form-control form-control-lg" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
 
                 <div class="mb-4">
                     <label asp-for="Input.ConfirmPassword">Nhập lại mật khẩu</label>
-                    <input asp-for="Input.ConfirmPassword" class="form-control form-control-lg"/>
+                    <input asp-for="Input.ConfirmPassword" class="form-control form-control-lg" />
                     <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                 </div>
 
@@ -41,14 +41,15 @@
                     <button type="submit" class="btn btn-primary btn-lg">Đăng ký</button>
                 </div>
 
-                @* <div asp-validation-summary="All" class="text-danger"></div> *@
+                <div asp-validation-summary="All" class="text-danger"></div>
 
-                <p class="text-center text-muted mt-5 mb-0">Đã có tài khoản? <a asp-area="Identity" asp-page="/Account/Login">Đăng nhập</a></p>
+                <p class="text-center text-muted mt-5 mb-0">Đã có tài khoản? <a asp-area="Identity"
+                        asp-page="/Account/Login">Đăng nhập</a></p>
 
             </form>
         </div>
     </div>
 </div>
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+<partial name="_ValidationScriptsPartial" />
 }
